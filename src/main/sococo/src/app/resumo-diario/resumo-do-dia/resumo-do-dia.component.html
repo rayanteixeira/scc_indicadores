@@ -1,0 +1,129 @@
+<div class="container-fluid">
+
+    <div class="row row-painel">
+        <div class="col-lg-12 col-md-12 painel-container" *ngFor="let row of dataRows">
+
+            <div class="data-lancamento col-lg-12">
+                <h5>{{row.dataLancamento}}</h5>
+            </div>
+
+
+            <!-- PRODUCAO SOCOCO -->
+            <div class="card row">
+                <div class="header">
+                    <h3 class="text-on-pannel-sococo"><strong class="text-uppeercas title-sococo"> PRODUÇÃO SOCOCO </strong></h3>
+                </div>
+                <div class="content">
+
+                    <div class="form-group col-lg-6">
+                        <label class="col-lg-4 col-form-label form-control-label">Cocos Desfribrados (und)</label>
+                        <div class="col-lg-6">
+                            <span class="form-control">{{row.cocosDesfibrados}}</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                        <label class="col-lg-4 col-form-label form-control-label">Cocos Processados (und)</label>
+                        <div class="col-lg-6">
+                            <span class="form-control">{{row.cocosProcessados}}</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                        <label class="col-lg-4 col-form-label form-control-label">CRI (Kg)</label>
+                        <div class="col-lg-6">
+                            <span class="form-control">{{row.cri}}</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                        <label class="col-lg-4 col-form-label form-control-label">Flococo (Kg)</label>
+                        <div class="col-lg-6">
+                            <span class="form-control">{{row.flococo}}</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                        <label class="col-lg-4 col-form-label form-control-label">Óleo Industrial ETE (L)</label>
+                        <div class="col-lg-6">
+                            <span class="form-control">{{row.oleoIndustrialETE}}</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                        <label class="col-lg-4 col-form-label form-control-label">Óleo Industrial Tipo A (L)</label>
+                        <div class="col-lg-6">
+                            <span class="form-control">{{row.oleoIndustrialTipoA}}</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                        <label class="col-lg-4 col-form-label form-control-label">Torta - ração (Kg)</label>
+                        <div class="col-lg-6">
+                            <span class="form-control">{{row.torta}}</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- PRODUCAO ACGUA -->
+            <div class="card row">
+                <div class="header">
+                    <h3 class="text-on-pannel-acqua text-primary"><strong class="text-uppercase title-acqua"> PRODUÇÃO ACQUA </strong></h3>
+                </div>
+                <div class="content">
+                    <div class="form-group col-lg-6">
+                        <label class="col-lg-4 col-form-label form-control-label">Água de Coco Sococo</label>
+                        <div class="col-lg-6">
+                            <span class="form-control">{{row.aguaDeCocoSococo}}</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                        <label class="col-lg-4 col-form-label form-control-label">Água de Coco Verde</label>
+                        <div class="col-lg-6">
+                            <span class="form-control">{{row.aguaDeCocoVerde}}</span>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label class="col-lg-4 col-form-label form-control-label">Porcentagem de Coco Germinado</label>
+                        <div class="col-lg-6">
+                            <span class="form-control">{{row.porcentagemCocoGerminado}}</span>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label class="col-lg-4 col-form-label form-control-label">Total de Cacambas</label>
+                        <div class="col-lg-6">
+                            <span class="form-control">{{row.totalDeCacambas}}</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                        <label class="col-lg-4 col-form-label form-control-label">Caixa Padrão</label>
+                        <div class="col-lg-6">
+                            <span class="form-control">{{row.caixaPadrao}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRODUCAO AMAFIBRA -->
+            <div class="card row">
+                <div class="header">
+                    <h3 class="text-on-pannel-amafibra text-primary"><strong class="text-uppercase title-amafibra"> PRODUÇÃO AMAFIBRA </strong></h3>
+                </div>
+                <div class="content">
+                    <div class="form-group col-lg-6">
+                        <label class="col-lg-4 col-form-label form-control-label">Número de Fardos</label>
+                        <div class="col-lg-6">
+                            <span class="form-control">{{row.numeroDeFardos}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

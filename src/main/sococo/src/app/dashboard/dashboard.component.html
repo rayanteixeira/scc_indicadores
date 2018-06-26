@@ -1,0 +1,129 @@
+<div class="container-fluid">
+    <div class="row">
+        <!--Inicio dos KPI-->
+        <div style="padding-bottom: 10px;" class="col-md-12">
+            <div class="btn-group" data-toggle="buttons">
+                <label style="height: 25px; width: 42px; font-size: 12px" class="btn btn-sm btn-default active">
+                    <input type="radio" name="options" id="ano"  autocomplete="off" checked> Ano
+                </label>
+                <label style="height: 25px; width: 42px; font-size: 12px" class="btn btn-sm btn-default">
+                    <input type="radio" name="options" id="mes"  autocomplete="off"> Mês
+                </label>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+            <div class="card">
+                <div class="content">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <div class="icon-big icon-warning text-center">
+                                <!-- <i class="ti-server"></i> -->
+                                <img style="width: 100%" src="../../assets/img/logo_sococo2.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-xs-8">
+                            <div class="numbers">
+                                <p>C.R.I & Flococo (Kg)</p>
+                                41.055
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <hr />
+                        <div class="stats">
+                            <i class="ti-reload"></i> 22/04/2018
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+            <div class="card">
+                <div class="content">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <div class="icon-big icon-success text-center">
+                                <!-- <i class="ti-wallet"></i> -->
+                                <img style="width: 100%" src="../../assets/img/logo_acqua2.png" alt="">
+                            </div>
+                        </div>
+                        <div class="col-xs-8">
+                            <div class="numbers">
+                                <p>Água de Coco (L)</p>
+                                93.213
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <hr />
+                        <div class="stats">
+                            <!-- <i class="ti-calendar"></i> 22/04/2018 -->
+                            <i class="ti-reload"></i> 22/04/2018
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+            <div class="card">
+                <div class="content">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <div class="icon-big icon-danger text-center">
+                                <!-- <i class="ti-pulse"></i> -->
+                                <img style="width: 100%" src="../../assets/img/logo_amafibra.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-xs-8">
+                            <div class="numbers">
+                                <p>Número de Fardos</p>
+                                2.866
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <hr />
+                        <div class="stats">
+                            <!-- <i class="ti-timer"></i> 22/04/2018 -->
+                            <i class="ti-reload"></i> 22/04/2018
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="header-sococo">
+        <span>SOCOCO</span>
+    </div>
+    <div class="line-separator"></div>
+    <div class="row">
+        <app-chart-coco></app-chart-coco>
+        <app-chart-cri-flococo></app-chart-cri-flococo>
+        <app-chart-oleo></app-chart-oleo>
+        <app-chart-torta></app-chart-torta>
+    </div>
+
+    <div class="header-acqua">
+        <span>ACQUA</span>
+    </div>
+    <div class="line-separator"></div>
+    <div class="row">
+        <app-chart-agua-coco></app-chart-agua-coco>
+        <app-chart-cacamba></app-chart-cacamba>
+    </div>
+    <div class="row">
+        <app-chart-caixa-padrao></app-chart-caixa-padrao>
+        <app-chart-coco-germinado></app-chart-coco-germinado>
+    </div>
+
+    <div class="header-amafibra">
+        <span>AMAFIBRA</span>
+    </div>
+    <div class="line-separator"></div>
+    <div class="row">
+        <app-chart-fardo></app-chart-fardo>
+    </div>
+
+</div>
