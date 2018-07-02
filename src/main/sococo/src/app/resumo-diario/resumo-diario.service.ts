@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { Http, Response, RequestOptions, Headers } from '@angular/http';
+import { Http, Response, RequestOptions, Headers, URLSearchParams } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/toPromise';
@@ -8,8 +8,15 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/retry';
 import 'rxjs/add/operator/catch';
 
+import * as moment from 'moment';
+
 import { ErrorHandler } from '../ErrorHandler';
 import { ResumoDiario } from './resumo-diario.model';
+
+export class ResumoDiarioFilter {
+    dataLancamento: Date;
+
+}
 
 
 @Injectable()
@@ -194,4 +201,17 @@ export class ResumoDiarioService {
             })
             .catch(ErrorHandler.handlerError);
     }
+
+    public buscarPorData(filter: ResumoDiarioFilter): Observable<ResumoDiario[]> {
+        const params = new URLSearchParams();
+
+        if (filter.dataLancamento) {
+            params.set('dataLancamento', moment(filter.dataLancamento).format('YYYY-MM-DD'))
+        }
+
+        return this.http.get(`${environment.base_url}/buscaPorData`,{search: params})
+            .map((resposta: Response) => resposta.json())
+            .catch(ErrorHandler.handlerError);
+    }
+    
 }

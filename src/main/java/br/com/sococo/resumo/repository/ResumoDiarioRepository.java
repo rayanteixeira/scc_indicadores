@@ -1,17 +1,18 @@
 package br.com.sococo.resumo.repository;
 
 import br.com.sococo.resumo.model.ResumoDiario;
+import br.com.sococo.resumo.repository.impl.ResumoDiarioRepositoryQuery;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
-public interface ResumoDiarioRepository extends JpaRepository<ResumoDiario, Long>, JpaSpecificationExecutor<ResumoDiario> {
+public interface ResumoDiarioRepository extends JpaRepository<ResumoDiario, Long>, ResumoDiarioRepositoryQuery {
 
     @Transactional
     @Query(value = "SELECT rd.dia_lancamento FROM resumo_diario rd WHERE rd.mes_lancamento =:mes GROUP BY rd.dia_lancamento", nativeQuery = true)
@@ -143,5 +144,7 @@ public interface ResumoDiarioRepository extends JpaRepository<ResumoDiario, Long
     @Query(value = "SELECT * FROM resumo_diario rd WHERE rd.data_lancamento = (SELECT MAX(data_lancamento) FROM resumo_diario);", nativeQuery = true)
     List<ResumoDiario> findResumoDiario();
 
-
+    @Transactional
+    @Query("select new ResumoDiario(rd.dataLancamento, sum(rd.cocosProcessados),sum(rd.cocosDesfibrados), sum(rd.cri), sum(rd.flococo), sum(rd.oleoIndustrialTipoA), sum(rd.oleoIndustrialETE), sum(rd.torta),sum(rd.aguaDeCocoSococo), sum(rd.aguaDeCocoVerde), sum(rd.totalDeCacambas), sum(rd.caixaPadrao), sum(rd.numeroDeFardos), avg (rd.porcentagemCocoGerminado)) from ResumoDiario rd where rd.dataLancamento = ?1 group by rd.dataLancamento")
+    List<ResumoDiario> findByDataLancamento(LocalDate data);
 }

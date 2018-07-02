@@ -1,10 +1,17 @@
 <div class="container-fluid">
-
+    
     <div class="row row-painel">
         <div class="col-lg-12 col-md-12 painel-container" *ngFor="let row of dataRows">
 
+            <div class="form-group col-lg-6" style="margin-left: 350px;">
+                <label class="col-lg-4 col-form-label form-control-label">Selecione Data</label>
+                <div class="col-lg-6">
+                    <input class="form-control" type="date" [(ngModel)]="filter.dataLancamento" (ngModelChange)="buscaPorData($event)">
+                </div>
+            </div>
+
             <div class="data-lancamento col-lg-12">
-                <h5>{{row.dataLancamento}}</h5>
+                <h5>{{row.dataLancamento | date: 'dd/MM/yyyy'}}</h5>
             </div>
 
 
@@ -18,35 +25,35 @@
                     <div class="form-group col-lg-6">
                         <label class="col-lg-4 col-form-label form-control-label">Cocos Desfribrados (und)</label>
                         <div class="col-lg-6">
-                            <span class="form-control">{{row.cocosDesfibrados}}</span>
+                            <span class="form-control">{{(row.cocosDesfibrados != null) ? row.cocosDesfibrados : 0}}</span>
                         </div>
                     </div>
 
                     <div class="form-group col-lg-6">
                         <label class="col-lg-4 col-form-label form-control-label">Cocos Processados (und)</label>
                         <div class="col-lg-6">
-                            <span class="form-control">{{row.cocosProcessados}}</span>
+                            <span class="form-control">{{(row.cocosProcessados != null) ? row.cocosProcessados : 0}}</span>
                         </div>
                     </div>
 
                     <div class="form-group col-lg-6">
                         <label class="col-lg-4 col-form-label form-control-label">CRI (Kg)</label>
                         <div class="col-lg-6">
-                            <span class="form-control">{{row.cri}}</span>
+                            <span class="form-control">{{(row.cri != null) ? row.cri : 0}}</span>
                         </div>
                     </div>
 
                     <div class="form-group col-lg-6">
                         <label class="col-lg-4 col-form-label form-control-label">Flococo (Kg)</label>
                         <div class="col-lg-6">
-                            <span class="form-control">{{row.flococo}}</span>
+                            <span class="form-control">{{(row.flococo != null) ? row.flococo : 0}}</span>
                         </div>
                     </div>
 
                     <div class="form-group col-lg-6">
                         <label class="col-lg-4 col-form-label form-control-label">Óleo Industrial ETE (L)</label>
                         <div class="col-lg-6">
-                            <span class="form-control">{{row.oleoIndustrialETE}}</span>
+                            <span class="form-control">{{(row.oleoIndustrialETE != null) ? row.oleoIndustrialETE : 0 }}</span>
                         </div>
                     </div>
 

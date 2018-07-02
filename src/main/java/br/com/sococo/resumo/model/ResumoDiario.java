@@ -45,7 +45,7 @@ public class ResumoDiario implements Serializable {
     private String aguaDeCocoVerde;
 
     @Column(name = "porcentagem_coco_germinado")
-    private String porcentagemCocoGerminado;
+    private Double porcentagemCocoGerminado;
 
     @Column(name = "total_cacambas")
     private String totalDeCacambas;
@@ -68,6 +68,23 @@ public class ResumoDiario implements Serializable {
     private String diaMesLancamento;
 
     public ResumoDiario() {
+    }
+
+    public ResumoDiario(LocalDate dataLancamento, String cocosProcessados, String cocosDesfibrados, String cri, String flococo, String oleoIndustrialTipoA, String oleoIndustrialETE, String torta, String aguaDeCocoSococo, String aguaDeCocoVerde, String totalDeCacambas, String caixaPadrao, String numeroDeFardos, Double porcentagemCocoGerminado) {
+        this.dataLancamento = dataLancamento;
+        this.cocosProcessados = cocosProcessados;
+        this.cocosDesfibrados = cocosDesfibrados;
+        this.cri = cri;
+        this.flococo = flococo;
+        this.oleoIndustrialTipoA = oleoIndustrialTipoA;
+        this.oleoIndustrialETE = oleoIndustrialETE;
+        this.torta = torta;
+        this.aguaDeCocoSococo = aguaDeCocoSococo;
+        this.aguaDeCocoVerde = aguaDeCocoVerde;
+        this.totalDeCacambas = totalDeCacambas;
+        this.caixaPadrao = caixaPadrao;
+        this.numeroDeFardos = numeroDeFardos;
+        this.porcentagemCocoGerminado = porcentagemCocoGerminado;
     }
 
     public Long getId() {
@@ -158,11 +175,11 @@ public class ResumoDiario implements Serializable {
         this.aguaDeCocoVerde = aguaDeCocoVerde;
     }
 
-    public String getPorcentagemCocoGerminado() {
+    public Double getPorcentagemCocoGerminado() {
         return porcentagemCocoGerminado;
     }
 
-    public void setPorcentagemCocoGerminado(String porcentagemCocoGerminado) {
+    public void setPorcentagemCocoGerminado(Double porcentagemCocoGerminado) {
         this.porcentagemCocoGerminado = porcentagemCocoGerminado;
     }
 

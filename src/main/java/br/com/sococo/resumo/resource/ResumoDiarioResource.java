@@ -1,6 +1,7 @@
 package br.com.sococo.resumo.resource;
 
 import br.com.sococo.resumo.model.ResumoDiario;
+import br.com.sococo.resumo.model.ResumoDiarioFilter;
 import br.com.sococo.resumo.resource.util.HeaderUtil;
 import br.com.sococo.resumo.services.CocosService;
 import br.com.sococo.resumo.services.CriFlococoService;
@@ -22,7 +23,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "api")
-@CrossOrigin(maxAge = 10, origins = {"http://localhost:4200"})
+@CrossOrigin(maxAge = 10, origins = {"*"})
 public class ResumoDiarioResource {
 
     private static final String ENTITY_NAME = "resumo-diario";
@@ -224,6 +225,11 @@ public class ResumoDiarioResource {
         return ResponseEntity
                 .ok()
                 .body(lists);
+    }
+
+    @GetMapping("/buscaPorData")
+    public List<ResumoDiario> buscaPorData(ResumoDiarioFilter filter) {
+        return resumoDiarioService.buscaPorData(filter);
     }
 
 }

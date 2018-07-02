@@ -1,6 +1,7 @@
 package br.com.sococo.resumo.services;
 
 import br.com.sococo.resumo.model.ResumoDiario;
+import br.com.sococo.resumo.model.ResumoDiarioFilter;
 import br.com.sococo.resumo.repository.ResumoDiarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,6 +39,11 @@ public class ResumoDiarioService {
 
     public List<ResumoDiario> fingResumoDiario() {
         return resumoDiarioRepository.findResumoDiario();
+
+    }
+
+    public List<ResumoDiario> buscaPorData(ResumoDiarioFilter filter) {
+        return resumoDiarioRepository.findByDataLancamento(filter.getDataLancamento());
 
     }
 }
