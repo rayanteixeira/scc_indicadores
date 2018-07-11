@@ -43,7 +43,14 @@ public class ResumoDiarioService {
     }
 
     public List<ResumoDiario> buscaPorData(ResumoDiarioFilter filter) {
-        return resumoDiarioRepository.findByDataLancamento(filter.getDataLancamento());
+        System.out.println("FILTER "+filter.getDataLancamento());
+        List<ResumoDiario> lista = new ArrayList<>();
+        if (filter.getDataLancamento() != null) {
+            lista = resumoDiarioRepository.findByDataLancamento(filter.getDataLancamento());
+        } else {
+            lista = resumoDiarioRepository.findAll();
+        }
+        return lista;
 
     }
 }

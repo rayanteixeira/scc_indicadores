@@ -145,6 +145,6 @@ public interface ResumoDiarioRepository extends JpaRepository<ResumoDiario, Long
     List<ResumoDiario> findResumoDiario();
 
     @Transactional
-    @Query("select new ResumoDiario(rd.dataLancamento, sum(rd.cocosProcessados),sum(rd.cocosDesfibrados), sum(rd.cri), sum(rd.flococo), sum(rd.oleoIndustrialTipoA), sum(rd.oleoIndustrialETE), sum(rd.torta),sum(rd.aguaDeCocoSococo), sum(rd.aguaDeCocoVerde), sum(rd.totalDeCacambas), sum(rd.caixaPadrao), sum(rd.numeroDeFardos), avg (rd.porcentagemCocoGerminado)) from ResumoDiario rd where rd.dataLancamento = ?1 group by rd.dataLancamento")
+    @Query("select new ResumoDiario(rd.dataLancamento, sum(rd.cocosProcessados),sum(rd.cocosDesfibrados), sum(rd.cri), sum(rd.flococo), sum(rd.oleoIndustrialTipoA), sum(rd.oleoIndustrialETE), sum(rd.torta),sum(rd.aguaDeCocoSococo), sum(rd.aguaDeCocoVerde), sum(rd.totalDeCacambas), sum(rd.caixaPadrao), sum(rd.numeroDeFardos), avg (rd.porcentagemCocoGerminado)) from ResumoDiario rd where rd.dataLancamento = ?1 group by rd.dataLancamento order by rd.dataLancamento")
     List<ResumoDiario> findByDataLancamento(LocalDate data);
 }

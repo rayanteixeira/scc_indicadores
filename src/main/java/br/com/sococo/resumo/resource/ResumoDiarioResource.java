@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -46,7 +47,6 @@ public class ResumoDiarioResource {
 
     @PostMapping(value = "/lancamento-do-dia")
     public ResponseEntity<ResumoDiario> insert(@RequestBody ResumoDiario resumoDiario) throws URISyntaxException {
-
         log.debug("REST request to save Resumo Diario : {}", resumoDiario);
 
         if (resumoDiario.getId() != null) {
@@ -55,7 +55,9 @@ public class ResumoDiarioResource {
                     .body(null);
         }
 
+        resumoDiario.setDataLancamento(LocalDate.now());
         LocalDate date = resumoDiario.getDataLancamento();
+
 
         // separando os valores de data_lancamento
         resumoDiario.setDiaLancamento(String.valueOf(date.getDayOfMonth()));
@@ -68,8 +70,9 @@ public class ResumoDiarioResource {
 
         SimpleMailMessage message = new SimpleMailMessage();
 
-        message.setTo("rayanteixeira91@gmail.com");
-        message.setFrom("rayanteixeira91@gmail.com");
+        System.out.println("RESUMO"+ resumoDiario);
+        message.setTo("jaironsousa@gmail.com");
+        message.setFrom("jaironsousa@gmail.com");
         message.setText("Hello...estou funcionando");
         message.setSubject("Teste envio de e-mail");
 
