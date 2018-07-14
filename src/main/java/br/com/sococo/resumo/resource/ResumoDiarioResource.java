@@ -11,14 +11,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -41,9 +38,6 @@ public class ResumoDiarioResource {
 
     @Autowired
     private CriFlococoService criFlococoService;
-
-    @Autowired
-    private JavaMailSender mailSender;
 
     @PostMapping(value = "/lancamento-do-dia")
     public ResponseEntity<ResumoDiario> insert(@RequestBody ResumoDiario resumoDiario) throws URISyntaxException {
@@ -68,20 +62,6 @@ public class ResumoDiarioResource {
         ResumoDiario obj = resumoDiarioService.insert(resumoDiario);
         URI uri = new URI("/api/lancamento-do-dia/" + obj.getId());
 
-        SimpleMailMessage message = new SimpleMailMessage();
-
-        System.out.println("RESUMO"+ resumoDiario);
-        message.setTo("jaironsousa@gmail.com");
-        message.setFrom("jaironsousa@gmail.com");
-        message.setText("Hello...estou funcionando");
-        message.setSubject("Teste envio de e-mail");
-
-
-        try {
-            mailSender.send(message);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
         return ResponseEntity.created(uri)
                 .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, obj.getId().toString()))
@@ -99,6 +79,7 @@ public class ResumoDiarioResource {
                 .ok()
                 .body(list);
     }
+
     @GetMapping(value = "/resumo-do-dia")
     public ResponseEntity<List<ResumoDiario>> fingResumoDiario() {
 
