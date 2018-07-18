@@ -1,16 +1,14 @@
 package br.com.sococo.resumo.services;
 
-import br.com.sococo.resumo.SococoApplication;
 import br.com.sococo.resumo.envio.Mailer;
 import br.com.sococo.resumo.envio.Mensagem;
 import br.com.sococo.resumo.model.ResumoDiario;
 import br.com.sococo.resumo.model.ResumoDiarioFilter;
 import br.com.sococo.resumo.repository.ResumoDiarioRepository;
-import com.sun.xml.internal.messaging.saaj.packaging.mime.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Service;
 
+import javax.mail.MessagingException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -47,8 +45,6 @@ public class ResumoDiarioService {
                     (Arrays.asList(emails))
                     , "Lançamento Resumo Diário", corpo));
         } catch (MessagingException e) {
-            e.printStackTrace();
-        } catch (javax.mail.MessagingException e) {
             e.printStackTrace();
         }
 
