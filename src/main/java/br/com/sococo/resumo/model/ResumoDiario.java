@@ -1,5 +1,7 @@
 package br.com.sococo.resumo.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:remove="all">Order Confirmation</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+
+</head>
+<body>
+<div>
+    <h1>
+        Lançamento número: <span th:text="${obj.id}"> </span>
+    </h1>
+    <p>
+        Data: <span
+            th:text="${obj.dataLancamento}"></span>
+    </p>
+
+    <h3>Detalhes do lançamento:</h3>
+    <table border="1">
+        <tr>
+            <th>Cocos Processados</th>
+            <th>cocos Desfibrados</th>
+            <th>Cri</th>
+            <th>Flococo</th>
+            <th>Óleo Ind. TA</th>
+            <th>Óleo Ind. ETE</th>
+            <th>Torta</th>
+            <th>Água Coco Sococo</th>
+            <th>Água Coco Verde</th>
+            <th>% Coco Germinado</th>
+            <th>Total De Cacambas</th>
+            <th>Caixa Padrao</th>
+            <th>numerNº De Fardos</th>
+        </tr>
+        <tr>
+            <td th:text="${obj.cocosProcessados}"></td>
+            <td th:text="${obj.cocosDesfibrados}"></td>
+            <td th:text="${obj.cri}"></td>
+            <td th:text="${obj.flococo}"></td>
+            <td th:text="${obj.oleoIndustrialTipoA}"></td>
+            <td th:text="${obj.oleoIndustrialETE}"></td>
+            <td th:text="${obj.torta}"></td>
+            <td th:text="${obj.aguaDeCocoSococo}"></td>
+            <td th:text="${obj.aguaDeCocoVerde}"></td>
+            <td th:text="${obj.porcentagemCocoGerminado}"></td>
+            <td th:text="${obj.totalDeCacambas}"></td>
+            <td th:text="${obj.caixaPadrao}"></td>
+            <td th:text="${obj.numeroDeFardos}"></td>
+
+        </tr>
+    </table>
+    <p>
+        Atualização diária
+    </p>
+</div>
+</body>
+</html>
