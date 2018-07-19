@@ -1,5 +1,7 @@
 package br.com.sococo.resumo.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
@@ -16,6 +18,7 @@ public class ResumoDiario implements Serializable {
 
     // SOCOCO
     @NotNull
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Column(name = "data_lancamento")
     private LocalDate dataLancamento;
 
