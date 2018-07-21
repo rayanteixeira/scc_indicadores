@@ -90,6 +90,26 @@ public class ResumoDiario implements Serializable {
         this.porcentagemCocoGerminado = porcentagemCocoGerminado;
     }
 
+    public ResumoDiario(String cocosProcessados, String cocosDesfibrados, String cri, String flococo, String oleoIndustrialTipoA, String oleoIndustrialETE, String torta, String aguaDeCocoSococo, String aguaDeCocoVerde, String totalDeCacambas, String caixaPadrao, String numeroDeFardos, Double porcentagemCocoGerminado) {
+        this.cocosProcessados = cocosProcessados;
+        this.cocosDesfibrados = cocosDesfibrados;
+        this.cri = cri;
+        this.flococo = flococo;
+        this.oleoIndustrialTipoA = oleoIndustrialTipoA;
+        this.oleoIndustrialETE = oleoIndustrialETE;
+        this.torta = torta;
+        this.aguaDeCocoSococo = aguaDeCocoSococo;
+        this.aguaDeCocoVerde = aguaDeCocoVerde;
+        this.totalDeCacambas = totalDeCacambas;
+        this.caixaPadrao = caixaPadrao;
+        this.numeroDeFardos = numeroDeFardos;
+        this.porcentagemCocoGerminado = porcentagemCocoGerminado;
+    }
+
+    public String getCocoGerminado() {
+        return Double.toString(this.porcentagemCocoGerminado);
+    }
+
     public Long getId() {
         return id;
     }

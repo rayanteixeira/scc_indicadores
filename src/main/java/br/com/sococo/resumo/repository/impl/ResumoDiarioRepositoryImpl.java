@@ -1,7 +1,7 @@
 package br.com.sococo.resumo.repository.impl;
 
+import br.com.sococo.resumo.model.FiltroBusca;
 import br.com.sococo.resumo.model.ResumoDiario;
-import br.com.sococo.resumo.model.ResumoDiarioFilter;
 import br.com.sococo.resumo.model.ResumoDiario_;
 
 import javax.persistence.EntityManager;
@@ -20,7 +20,7 @@ public class ResumoDiarioRepositoryImpl implements ResumoDiarioRepositoryQuery {
     private EntityManager manager;
 
     @Override
-    public List<ResumoDiario> buscarPorData(ResumoDiarioFilter filter) {
+    public List<ResumoDiario> buscarPorData(FiltroBusca filter) {
 
         CriteriaBuilder builder = manager.getCriteriaBuilder();
         CriteriaQuery<ResumoDiario> criteria = builder.createQuery(ResumoDiario.class);
@@ -37,7 +37,7 @@ public class ResumoDiarioRepositoryImpl implements ResumoDiarioRepositoryQuery {
         return query.getResultList();
     }
 
-    private Predicate[] criarRestricoes(ResumoDiarioFilter filter, CriteriaBuilder builder, Root<ResumoDiario> root) {
+    private Predicate[] criarRestricoes(FiltroBusca filter, CriteriaBuilder builder, Root<ResumoDiario> root) {
 
         List<Predicate> predicates = new ArrayList<>();
 

@@ -1,6 +1,6 @@
 package br.com.sococo.resumo;
 
-import br.com.sococo.resumo.services.CocosService;
+import br.com.sococo.resumo.services.DashboardService;
 import br.com.sococo.resumo.services.ResumoDiarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -18,7 +18,7 @@ public class SococoApplication implements CommandLineRunner {
 	private ResumoDiarioService resumoDiarioService;
 
 	@Autowired
-	private CocosService cocosService;
+	private DashboardService dashiboardService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SococoApplication.class, args);

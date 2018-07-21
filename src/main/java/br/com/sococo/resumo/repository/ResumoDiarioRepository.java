@@ -22,14 +22,10 @@ public interface ResumoDiarioRepository extends JpaRepository<ResumoDiario, Long
     @Query(value = "SELECT rd.mes_lancamento FROM resumo_diario rd WHERE rd.ano_lancamento =:ano GROUP BY rd.mes_lancamento", nativeQuery = true)
     List<String> findByMeses(@Param("ano") String ano);
 
-    //Cocos Mes
+    //EntidadesMeses Mes
     @Transactional
     @Query(value = "SELECT SUM(rd.cocos_desfibrados) FROM resumo_diario rd WHERE rd.ano_lancamento =:ano GROUP BY rd.mes_lancamento", nativeQuery = true)
     List<Double> findCocoDesfibradosAno(@Param("ano") String ano);
-
-    @Transactional
-    @Query(value = "select sum(rd.cocos_processados) FROM resumo_diario rd WHERE rd.ano_lancamento =:ano GROUP BY rd.mes_lancamento", nativeQuery = true)
-    List<Double> findCocoProcessadoAno(@Param("ano") String ano);
 
     @Transactional
     @Query(value = "SELECT SUM(rd.cocos_desfibrados) FROM resumo_diario rd WHERE rd.mes_lancamento =:mes GROUP BY rd.dia_lancamento", nativeQuery = true)
@@ -147,4 +143,8 @@ public interface ResumoDiarioRepository extends JpaRepository<ResumoDiario, Long
     @Transactional
     @Query("select new ResumoDiario(rd.dataLancamento, sum(rd.cocosProcessados),sum(rd.cocosDesfibrados), sum(rd.cri), sum(rd.flococo), sum(rd.oleoIndustrialTipoA), sum(rd.oleoIndustrialETE), sum(rd.torta),sum(rd.aguaDeCocoSococo), sum(rd.aguaDeCocoVerde), sum(rd.totalDeCacambas), sum(rd.caixaPadrao), sum(rd.numeroDeFardos), avg (rd.porcentagemCocoGerminado)) from ResumoDiario rd where rd.dataLancamento = ?1 group by rd.dataLancamento order by rd.dataLancamento")
     List<ResumoDiario> findByDataLancamento(LocalDate data);
+
+    @Transactional
+    @Query("select new ResumoDiario(sum(rd.cocosProcessados),sum(rd.cocosDesfibrados), sum(rd.cri), sum(rd.flococo), sum(rd.oleoIndustrialTipoA), sum(rd.oleoIndustrialETE), sum(rd.torta),sum(rd.aguaDeCocoSococo), sum(rd.aguaDeCocoVerde), sum(rd.totalDeCacambas), sum(rd.caixaPadrao), sum(rd.numeroDeFardos), avg (rd.porcentagemCocoGerminado)) from ResumoDiario rd where rd.mesLancamento = ?1 AND rd.anoLancamento = ?2 group by rd.mesLancamento order by rd.mesLancamento")
+    List<ResumoDiario> findByMesLancamento(String mesLancamento, String anoLancamento);
 }

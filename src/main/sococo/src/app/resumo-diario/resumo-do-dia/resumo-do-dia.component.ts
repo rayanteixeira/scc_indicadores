@@ -61,7 +61,7 @@ export class ResumoDoDiaComponent implements OnInit {
   }
 
   public listaHeaderRow(): void {
-    this.headerRow = ['ID', 'Data', 'Cocos Desfibrados', 'Cocos Processados', 'CRI', 'Flococo', 'O.I. ETE', 'O. I. Tipo A', 'Torta'];
+    this.headerRow = ['ID', 'Data', 'EntidadesMeses Desfibrados', 'EntidadesMeses Processados', 'CRI', 'Flococo', 'O.I. ETE', 'O. I. Tipo A', 'Torta'];
   }
 
 }
