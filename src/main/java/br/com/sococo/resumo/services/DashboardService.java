@@ -3,8 +3,8 @@ package br.com.sococo.resumo.services;
 import br.com.sococo.resumo.model.FiltroBusca;
 import br.com.sococo.resumo.model.dashboard.EntidadesDias;
 import br.com.sococo.resumo.model.dashboard.EntidadesMeses;
-import br.com.sococo.resumo.services.dia.ResumoPorDia;
-import br.com.sococo.resumo.services.mes.ResumoPorMes;
+import br.com.sococo.resumo.services.resumo.dia.ResumoPorDia;
+import br.com.sococo.resumo.services.resumo.mes.ResumoPorMes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

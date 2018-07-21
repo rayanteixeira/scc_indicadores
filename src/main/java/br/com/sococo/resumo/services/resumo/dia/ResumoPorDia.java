@@ -1,4 +1,4 @@
-package br.com.sococo.resumo.services.dia;
+package br.com.sococo.resumo.services.resumo.dia;
 
 import br.com.sococo.resumo.model.FiltroBusca;
 import br.com.sococo.resumo.model.dashboard.DadosDia;

@@ -1,4 +1,4 @@
-package br.com.sococo.resumo.services.mes;
+package br.com.sococo.resumo.services.resumo.mes;
 
 import br.com.sococo.resumo.model.FiltroBusca;
 import br.com.sococo.resumo.model.dashboard.DadosMes;
@@ -166,23 +166,23 @@ public class ResumoPorMes {
     }
 
     private List<DadosMes> listaCocosDesfibrados(FiltroBusca filter) {
-        List<DadosMes> cocosDesfibrados = new ArrayList<>();
+        List<DadosMes> obj = new ArrayList<>();
         List<Object[]> objects = repository.findCocoDesfribadosoAno(filter.getAnoLancamento());
 
-        for (Object[] coco : objects) {
-            cocosDesfibrados.add(new DadosMes(coco[0].toString(), coco[1].toString()));
+        for (Object[] dado : objects) {
+            obj.add(new DadosMes(dado[0].toString(), dado[1].toString()));
         }
-        return cocosDesfibrados;
+        return obj;
     }
 
     private List<DadosMes> listaCocosProcessados(FiltroBusca filter) {
-        List<DadosMes> cocosProcessados = new ArrayList<>();
+        List<DadosMes> obj = new ArrayList<>();
         List<Object[]> objects = repository.findCocoProcessadoAno(filter.getAnoLancamento());
 
-        for (Object[] coco : objects) {
-            cocosProcessados.add(new DadosMes(coco[0].toString(), coco[1].toString()));
+        for (Object[] dado : objects) {
+            obj.add(new DadosMes(dado[0].toString(), dado[1].toString()));
         }
-        return cocosProcessados;
+        return obj;
     }
 
 }
