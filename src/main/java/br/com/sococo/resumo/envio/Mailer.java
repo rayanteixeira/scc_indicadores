@@ -1,7 +1,6 @@
 package br.com.sococo.resumo.envio;
 
 import br.com.sococo.resumo.model.ResumoDiario;
-import com.sun.xml.internal.messaging.saaj.packaging.mime.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -9,6 +8,7 @@ import org.springframework.stereotype.Component;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
+import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.util.Arrays;
 
@@ -36,8 +36,6 @@ public class Mailer {
                     (Arrays.asList(emails))
                     , "Lançamento Resumo Diário", corpo));
         } catch (MessagingException e) {
-            e.printStackTrace();
-        } catch (javax.mail.MessagingException e) {
             e.printStackTrace();
         }
 
