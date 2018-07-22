@@ -1,6 +1,8 @@
 package br.com.sococo.resumo.envio;
 
+import br.com.sococo.resumo.model.Destinatario;
 import br.com.sococo.resumo.model.ResumoDiario;
+import br.com.sococo.resumo.repository.DestinatarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -10,10 +12,15 @@ import org.thymeleaf.context.Context;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 @Component
 public class Mailer {
+
+    @Autowired
+    private DestinatarioRepository destinatarioRepository;
 
     @Autowired
     private JavaMailSender javaMailSender;
@@ -25,15 +32,16 @@ public class Mailer {
 
         String corpo = htmlFromTemplatePedido(obj);
 
-        String[] emails = {"Jairo <jairo.sousa@yahoo.com.br>",
-                "Rayan Teixeira<rayanteixeira91@gmail.com>",
-                "Jairo Sousa<jaironsousa@gmail.com>"
-        };
+        List<String> emails = new ArrayList<>();
+
+        destinatarioRepository.findAll().forEach(destinatario -> {
+            emails.add(destinatario.getDestinatario());
+        });
 
         try {
             enviar(new Mensagem(
                     "Sistema Sococo <appacaipaidegua@gmail.com>",
-                    (Arrays.asList(emails))
+                    (emails)
                     , "Lançamento Resumo Diário", corpo));
         } catch (MessagingException e) {
             e.printStackTrace();
