@@ -14,6 +14,12 @@ public class OleoDTO {
     public OleoDTO() {
     }
 
+    public OleoDTO(String mesLancamento, String oleoIndustrialTipoA, String oleoIndustrialETE) {
+        this.mesLancamento = mesLancamento;
+        this.oleoIndustrialTipoA = oleoIndustrialTipoA;
+        this.oleoIndustrialETE = oleoIndustrialETE;
+    }
+
     public OleoDTO(String mesLancamento, String diaLancamento, String oleoIndustrialTipoA, String oleoIndustrialETE) {
         this.mesLancamento = mesLancamento;
         this.diaLancamento = diaLancamento;

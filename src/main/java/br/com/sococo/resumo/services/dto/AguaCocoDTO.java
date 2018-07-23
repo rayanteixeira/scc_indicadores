@@ -14,6 +14,12 @@ public class AguaCocoDTO {
     public AguaCocoDTO() {
     }
 
+    public AguaCocoDTO(String mesLancamento, String aguaDeCocoSococo, String aguaDeCocoVerde) {
+        this.mesLancamento = mesLancamento;
+        this.aguaDeCocoSococo = aguaDeCocoSococo;
+        this.aguaDeCocoVerde = aguaDeCocoVerde;
+    }
+
     public AguaCocoDTO(String mesLancamento, String diaLancamento, String aguaDeCocoSococo, String aguaDeCocoVerde) {
         this.mesLancamento = mesLancamento;
         this.diaLancamento = diaLancamento;

@@ -42,7 +42,7 @@ public class UsuarioResource {
                 .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, obj.getId().toString()))
                 .body(obj);
     }
-
+/*
     @GetMapping(value = "/usuario")
     public ResponseEntity<List<UsuarioDTO>> findAll(){
 
@@ -60,6 +60,6 @@ public class UsuarioResource {
         return ResponseEntity.ok(obj);
     }
 
-
+*/
 
 }

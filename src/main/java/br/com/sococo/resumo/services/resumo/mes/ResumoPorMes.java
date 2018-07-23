@@ -4,6 +4,7 @@ import br.com.sococo.resumo.model.FiltroBusca;
 import br.com.sococo.resumo.model.dashboard.DadosMes;
 import br.com.sococo.resumo.model.dashboard.EntidadesMeses;
 import br.com.sococo.resumo.repository.DashboardMesRepository;
+import br.com.sococo.resumo.services.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,168 +22,126 @@ public class ResumoPorMes {
 
         filter.setAnoLancamento(String.valueOf(filter.getDataLancamento().getYear()));
 
-        List<DadosMes> cocosProcessados = listaCocosProcessados(filter);
-        List<DadosMes> cocosDesfibrados = listaCocosDesfibrados(filter);
-        List<DadosMes> cris = listaCris(filter);
-        List<DadosMes> flococos = listaFlococo(filter);
-        List<DadosMes> oleosTipoA = listaoleosTipoA(filter);
-        List<DadosMes> oleosTipoETE = listaoleosTipoETE(filter);
-        List<DadosMes> tortas = listaTortas(filter);
-        List<DadosMes> aguasCocos = listaAguasCocos(filter);
-        List<DadosMes> aguasVerde = listaAguasVerde(filter);
-        List<DadosMes> percentGerminado = listaPercentGerminado(filter);
-        List<DadosMes> totalCacambas = listaTotalCacambas(filter);
-        List<DadosMes> caixasPadraos = listaCaixasPadraos(filter);
-        List<DadosMes> numFados = listaNumFados(filter);
+        List<CocoDTO> cocos = listaCocos(filter);
+        List<CRIFlococoDTO> criFlococos = listaCRIFlococos(filter);
+        List<OleoDTO> oleos = listaOleos(filter);
+        List<TortaDTO> tortas = listaTorta(filter);
+        List<AguaCocoDTO> aguaCocos = listaAguaCocos(filter);
+        List<CocoGerminadoDTO> cocoGerminados = listaCocoGerminado(filter);
+        List<TotalCacambaDTO> totalCacambas = listaTotalCacamba(filter);
+        List<CaixaPadraoDTO> caixaPadraos = listaCaixaPadrao(filter);
+        List<TotalFardosDTO> totalFardos = listaTotalFardos(filter);
+
+
 
         EntidadesMeses entidade = new EntidadesMeses(
-                cocosProcessados,
-                cocosDesfibrados,
-                cris,
-                flococos,
-                oleosTipoA,
-                oleosTipoETE,
+                cocos,
+                criFlococos,
+                oleos,
                 tortas,
-                aguasCocos,
-                aguasVerde,
-                percentGerminado,
+                aguaCocos,
+                cocoGerminados,
                 totalCacambas,
-                caixasPadraos,
-                numFados
+                caixaPadraos,
+                totalFardos
         );
 
         entidades.add(entidade);
         return entidades;
     }
 
-    private List<DadosMes> listaNumFados(FiltroBusca filter) {
-        List<DadosMes> obj = new ArrayList<>();
+    private List<TotalFardosDTO> listaTotalFardos(FiltroBusca filter) {
+        List<TotalFardosDTO> obj = new ArrayList<>();
         List<Object[]> objects = repository.findNumFardosAno(filter.getAnoLancamento());
 
         for (Object[] dado : objects) {
-            obj.add(new DadosMes(dado[0].toString(), dado[1].toString()));
+            obj.add(new TotalFardosDTO(dado[0].toString(), dado[1].toString()));
         }
         return obj;
     }
 
-    private List<DadosMes> listaCaixasPadraos(FiltroBusca filter) {
-        List<DadosMes> obj = new ArrayList<>();
+    private List<CaixaPadraoDTO> listaCaixaPadrao(FiltroBusca filter) {
+        List<CaixaPadraoDTO> obj = new ArrayList<>();
         List<Object[]> objects = repository.findCaixaPadraoAno(filter.getAnoLancamento());
 
         for (Object[] dado : objects) {
-            obj.add(new DadosMes(dado[0].toString(), dado[1].toString()));
+            obj.add(new CaixaPadraoDTO(dado[0].toString(), dado[1].toString()));
         }
         return obj;
     }
 
-    private List<DadosMes> listaTotalCacambas(FiltroBusca filter) {
-        List<DadosMes> obj = new ArrayList<>();
+    private List<TotalCacambaDTO> listaTotalCacamba(FiltroBusca filter) {
+        List<TotalCacambaDTO> obj = new ArrayList<>();
         List<Object[]> objects = repository.findTotalCacambasAno(filter.getAnoLancamento());
 
         for (Object[] dado : objects) {
-            obj.add(new DadosMes(dado[0].toString(), dado[1].toString()));
+            obj.add(new TotalCacambaDTO(dado[0].toString(), dado[1].toString()));
         }
         return obj;
     }
 
-    private List<DadosMes> listaPercentGerminado(FiltroBusca filter) {
-        List<DadosMes> obj = new ArrayList<>();
+    private List<CocoGerminadoDTO> listaCocoGerminado(FiltroBusca filter) {
+        List<CocoGerminadoDTO> obj = new ArrayList<>();
         List<Object[]> objects = repository.findPercentGerminadoAno(filter.getAnoLancamento());
 
         for (Object[] dado : objects) {
-            obj.add(new DadosMes(dado[0].toString(), dado[1].toString()));
+            obj.add(new CocoGerminadoDTO(dado[0].toString(), dado[1].toString()));
         }
         return obj;
     }
 
-    private List<DadosMes> listaAguasVerde(FiltroBusca filter) {
-        List<DadosMes> obj = new ArrayList<>();
-        List<Object[]> objects = repository.findAguaVerdeAno(filter.getAnoLancamento());
+    private List<AguaCocoDTO> listaAguaCocos(FiltroBusca filter) {
+        List<AguaCocoDTO> obj = new ArrayList<>();
+        List<Object[]> objects = repository.findAguaCocosAno(filter.getAnoLancamento());
 
         for (Object[] dado : objects) {
-            obj.add(new DadosMes(dado[0].toString(), dado[1].toString()));
+            obj.add(new AguaCocoDTO(dado[0].toString(), dado[1].toString(), dado[2].toString()));
         }
         return obj;
     }
 
-    private List<DadosMes> listaAguasCocos(FiltroBusca filter) {
-        List<DadosMes> obj = new ArrayList<>();
-        List<Object[]> objects = repository.findAguaCocoAno(filter.getAnoLancamento());
-
-        for (Object[] dado : objects) {
-            obj.add(new DadosMes(dado[0].toString(), dado[1].toString()));
-        }
-        return obj;
-    }
-
-    private List<DadosMes> listaTortas(FiltroBusca filter) {
-        List<DadosMes> obj = new ArrayList<>();
+    private List<TortaDTO> listaTorta(FiltroBusca filter) {
+        List<TortaDTO> obj = new ArrayList<>();
         List<Object[]> objects = repository.findTortaAno(filter.getAnoLancamento());
 
         for (Object[] dado : objects) {
-            obj.add(new DadosMes(dado[0].toString(), dado[1].toString()));
+            obj.add(new TortaDTO(dado[0].toString(), dado[1].toString()));
         }
         return obj;
     }
 
-    private List<DadosMes> listaoleosTipoETE(FiltroBusca filter) {
-        List<DadosMes> obj = new ArrayList<>();
-        List<Object[]> objects = repository.findOleoETEAno(filter.getAnoLancamento());
+    private List<OleoDTO> listaOleos(FiltroBusca filter) {
+        List<OleoDTO> obj = new ArrayList<>();
+        List<Object[]> objects = repository.findOleoAno(filter.getAnoLancamento());
 
         for (Object[] dado : objects) {
-            obj.add(new DadosMes(dado[0].toString(), dado[1].toString()));
+            obj.add(new OleoDTO(dado[0].toString(), dado[1].toString(), dado[2].toString()));
         }
         return obj;
     }
 
-    private List<DadosMes> listaoleosTipoA(FiltroBusca filter) {
-        List<DadosMes> obj = new ArrayList<>();
-        List<Object[]> objects = repository.findOleoTipoAAno(filter.getAnoLancamento());
+    private List<CRIFlococoDTO> listaCRIFlococos (FiltroBusca filter){
+        List<CRIFlococoDTO> obj = new ArrayList<>();
+        List<Object[]> objects = repository.findCRIFlococoAno(filter.getAnoLancamento());
 
         for (Object[] dado : objects) {
-            obj.add(new DadosMes(dado[0].toString(), dado[1].toString()));
+            obj.add(new CRIFlococoDTO(dado[0].toString(), dado[1].toString(), dado[2].toString()));
         }
         return obj;
+
     }
 
-    private List<DadosMes> listaFlococo(FiltroBusca filter) {
-        List<DadosMes> obj = new ArrayList<>();
-        List<Object[]> objects = repository.findFlococoAno(filter.getAnoLancamento());
+    private List<CocoDTO> listaCocos(FiltroBusca filter) {
+        List<CocoDTO> obj = new ArrayList<>();
+        List<Object[]> objects = repository.findCocoAno(filter.getAnoLancamento());
 
         for (Object[] dado : objects) {
-            obj.add(new DadosMes(dado[0].toString(), dado[1].toString()));
+            obj.add(new CocoDTO(dado[0].toString(), dado[1].toString(), dado[2].toString()));
         }
         return obj;
     }
 
-    private List<DadosMes> listaCris(FiltroBusca filter) {
-        List<DadosMes> obj = new ArrayList<>();
-        List<Object[]> objects = repository.findCriAno(filter.getAnoLancamento());
 
-        for (Object[] dado : objects) {
-            obj.add(new DadosMes(dado[0].toString(), dado[1].toString()));
-        }
-        return obj;
-    }
 
-    private List<DadosMes> listaCocosDesfibrados(FiltroBusca filter) {
-        List<DadosMes> obj = new ArrayList<>();
-        List<Object[]> objects = repository.findCocoDesfribadosoAno(filter.getAnoLancamento());
-
-        for (Object[] dado : objects) {
-            obj.add(new DadosMes(dado[0].toString(), dado[1].toString()));
-        }
-        return obj;
-    }
-
-    private List<DadosMes> listaCocosProcessados(FiltroBusca filter) {
-        List<DadosMes> obj = new ArrayList<>();
-        List<Object[]> objects = repository.findCocoProcessadoAno(filter.getAnoLancamento());
-
-        for (Object[] dado : objects) {
-            obj.add(new DadosMes(dado[0].toString(), dado[1].toString()));
-        }
-        return obj;
-    }
 
 }

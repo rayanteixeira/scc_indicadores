@@ -1,7 +1,7 @@
 package br.com.sococo.resumo.services;
 
 import br.com.sococo.resumo.services.dto.UsuarioDTO;
-import br.com.sococo.resumo.services.mapper.UsuarioMapper;
+// import br.com.sococo.resumo.services.mapper.UsuarioMapper;
 import br.com.sococo.resumo.model.Usuario;
 import br.com.sococo.resumo.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +17,8 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    @Autowired
-    private UsuarioMapper usuarioMapper;
+  //  @Autowired
+   // private UsuarioMapper usuarioMapper;
 
     //@Autowired
     //private BCryptPasswordEncoder bCrypt;
@@ -32,11 +32,11 @@ public class UsuarioService {
         return usuarioRepository.save(obj);
     }
 
-    public List<UsuarioDTO> findAll() {
+  /*  public List<UsuarioDTO> findAll() {
 
         List<UsuarioDTO> listObjDTO = usuarioMapper.toDTO(usuarioRepository.findAll());
 
-        return listObjDTO;
+       return listObjDTO;
     }
 
     public UsuarioDTO find(Long id) {
@@ -52,4 +52,6 @@ public class UsuarioService {
 //        UsuarioDTO objDTO = usuarioMapper.toDto(obj);
 //        return objDTO;
     }
+
+    */
 }
