@@ -1,12 +1,14 @@
 package br.com.sococo.resumo.resource;
 
 import br.com.sococo.resumo.model.FiltroBusca;
-import br.com.sococo.resumo.model.dashboard.EntidadesDias;
-import br.com.sococo.resumo.model.dashboard.EntidadesMeses;
+import br.com.sococo.resumo.model.Dashboard;
 import br.com.sococo.resumo.services.DashboardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -18,17 +20,17 @@ public class DashboardResource {
     @Autowired
     private DashboardService dashiboardService;
 
-    @GetMapping(value = "/mes")
-    public ResponseEntity<List<EntidadesMeses>> findAno(FiltroBusca filter) {
-        List<EntidadesMeses> lists = dashiboardService.findAno(filter);
+    @GetMapping(value = "/ano")
+    public ResponseEntity<List<Dashboard>> findAno(FiltroBusca filter) {
+        List<Dashboard> lists = dashiboardService.findAno(filter);
         return ResponseEntity
                 .ok()
                 .body(lists);
     }
 
-    @GetMapping(value = "/dia")
-    public ResponseEntity<List<EntidadesDias>> findMes(FiltroBusca filter) {
-        List<EntidadesDias> lists = dashiboardService.findMes(filter);
+    @GetMapping(value = "/mes")
+    public ResponseEntity<List<Dashboard>> findMes(FiltroBusca filter) {
+        List<Dashboard> lists = dashiboardService.findMes(filter);
         return ResponseEntity
                 .ok()
                 .body(lists);

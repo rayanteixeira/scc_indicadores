@@ -23,9 +23,6 @@ public interface DashboardMesRepository extends JpaRepository<ResumoDiario, Long
     @Query("select rd.mesLancamento, sum(rd.cocosProcessados), sum(rd.cocosDesfibrados) FROM ResumoDiario rd WHERE rd.anoLancamento = ?1 GROUP BY rd.mesLancamento")
     List<Object[]> findCocoAno(String ano);
 
-
-
-
     @Transactional
     @Query("select rd.mesLancamento, sum(rd.cri) FROM ResumoDiario rd WHERE rd.anoLancamento = ?1 GROUP BY rd.mesLancamento")
     List<Object[]> findCriAno(String ano);
@@ -38,10 +35,6 @@ public interface DashboardMesRepository extends JpaRepository<ResumoDiario, Long
     @Query("select rd.mesLancamento, sum(rd.cri), sum(rd.flococo) FROM ResumoDiario rd WHERE rd.anoLancamento = ?1 GROUP BY rd.mesLancamento")
     List<Object[]> findCRIFlococoAno(String ano);
 
-
-
-
-
     @Transactional
     @Query("select rd.mesLancamento, sum(rd.oleoIndustrialTipoA) FROM ResumoDiario rd WHERE rd.anoLancamento = ?1 GROUP BY rd.mesLancamento")
     List<Object[]> findOleoTipoAAno(String ano);
@@ -53,11 +46,6 @@ public interface DashboardMesRepository extends JpaRepository<ResumoDiario, Long
     @Transactional
     @Query("select rd.mesLancamento, sum(rd.oleoIndustrialTipoA), sum(rd.oleoIndustrialETE) FROM ResumoDiario rd WHERE rd.anoLancamento = ?1 GROUP BY rd.mesLancamento")
     List<Object[]> findOleoAno(String ano);
-
-
-
-
-
 
     @Transactional
     @Query("select rd.mesLancamento, sum(rd.torta) FROM ResumoDiario rd WHERE rd.anoLancamento = ?1 GROUP BY rd.mesLancamento")
@@ -74,8 +62,6 @@ public interface DashboardMesRepository extends JpaRepository<ResumoDiario, Long
     @Transactional
     @Query("select rd.mesLancamento, sum(rd.aguaDeCocoSococo), sum(rd.aguaDeCocoVerde) FROM ResumoDiario rd WHERE rd.anoLancamento = ?1 GROUP BY rd.mesLancamento")
     List<Object[]> findAguaCocosAno(String ano);
-
-
 
     @Transactional
     @Query("select rd.mesLancamento, avg(rd.porcentagemCocoGerminado) FROM ResumoDiario rd WHERE rd.anoLancamento = ?1 GROUP BY rd.mesLancamento")

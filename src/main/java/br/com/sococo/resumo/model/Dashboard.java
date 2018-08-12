@@ -1,13 +1,10 @@
-package br.com.sococo.resumo.model.dashboard;
+package br.com.sococo.resumo.model;
 
 import br.com.sococo.resumo.services.dto.*;
 
 import java.util.List;
 
-public class EntidadesMeses {
-
-
-
+public class Dashboard {
     List<CocoDTO> cocos;
     List<CRIFlococoDTO> criFlococos;
     List<OleoDTO> oleos;
@@ -18,10 +15,10 @@ public class EntidadesMeses {
     List<CaixaPadraoDTO> caixaPadraos;
     List<TotalFardosDTO> totalFardos;
 
-    public EntidadesMeses() {
+    public Dashboard() {
     }
 
-    public EntidadesMeses(List<CocoDTO> cocos, List<CRIFlococoDTO> criFlococos, List<OleoDTO> oleos, List<TortaDTO> tortas, List<AguaCocoDTO> aguaCocos, List<CocoGerminadoDTO> cocoGerminados, List<TotalCacambaDTO> totalCacambas, List<CaixaPadraoDTO> caixaPadraos, List<TotalFardosDTO> totalFardos) {
+    public Dashboard(List<CocoDTO> cocos, List<CRIFlococoDTO> criFlococos, List<OleoDTO> oleos, List<TortaDTO> tortas, List<AguaCocoDTO> aguaCocos, List<CocoGerminadoDTO> cocoGerminados, List<TotalCacambaDTO> totalCacambas, List<CaixaPadraoDTO> caixaPadraos, List<TotalFardosDTO> totalFardos) {
         this.cocos = cocos;
         this.criFlococos = criFlococos;
         this.oleos = oleos;

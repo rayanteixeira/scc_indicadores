@@ -1,6 +1,7 @@
 package br.com.sococo.resumo.services.dto;
 
 import br.com.sococo.resumo.model.ResumoDiario;
+import org.springframework.util.StringUtils;
 
 import java.text.DateFormatSymbols;
 
@@ -24,14 +25,16 @@ public class TotalFardosDTO {
         this.numeroFardos = numeroFardos;
     }
 
-    public TotalFardosDTO(ResumoDiario resumoDiario){
+    public TotalFardosDTO(ResumoDiario resumoDiario) {
         this(resumoDiario.getMesLancamento(), resumoDiario.getDiaLancamento(), resumoDiario.getNumeroDeFardos());
     }
 
-
     public String getMesLancamento() {
-        String nomeMesCompleto = new DateFormatSymbols().getMonths()[Integer.parseInt(mesLancamento)-1];
-        return nomeMesCompleto.substring(0,3);
+        if (StringUtils.isEmpty(mesLancamento)) {
+            return null;
+        }
+        String nomeMesCompleto = new DateFormatSymbols().getMonths()[Integer.parseInt(mesLancamento) - 1];
+        return nomeMesCompleto.substring(0, 3);
     }
 
     public void setMesLancamento(String mesLancamento) {

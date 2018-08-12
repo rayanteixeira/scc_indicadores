@@ -1,8 +1,7 @@
 package br.com.sococo.resumo.services.resumo.mes;
 
 import br.com.sococo.resumo.model.FiltroBusca;
-import br.com.sococo.resumo.model.dashboard.DadosMes;
-import br.com.sococo.resumo.model.dashboard.EntidadesMeses;
+import br.com.sococo.resumo.model.Dashboard;
 import br.com.sococo.resumo.repository.DashboardMesRepository;
 import br.com.sococo.resumo.services.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +16,8 @@ public class ResumoPorMes {
     @Autowired
     private DashboardMesRepository repository;
 
-    public List<EntidadesMeses> listar(FiltroBusca filter) {
-        List<EntidadesMeses> entidades = new ArrayList<>();
+    public List<Dashboard> listar(FiltroBusca filter) {
+        List<Dashboard> dashboards = new ArrayList<>();
 
         filter.setAnoLancamento(String.valueOf(filter.getDataLancamento().getYear()));
 
@@ -32,9 +31,7 @@ public class ResumoPorMes {
         List<CaixaPadraoDTO> caixaPadraos = listaCaixaPadrao(filter);
         List<TotalFardosDTO> totalFardos = listaTotalFardos(filter);
 
-
-
-        EntidadesMeses entidade = new EntidadesMeses(
+        Dashboard dashboard = new Dashboard(
                 cocos,
                 criFlococos,
                 oleos,
@@ -46,8 +43,8 @@ public class ResumoPorMes {
                 totalFardos
         );
 
-        entidades.add(entidade);
-        return entidades;
+        dashboards.add(dashboard);
+        return dashboards;
     }
 
     private List<TotalFardosDTO> listaTotalFardos(FiltroBusca filter) {
@@ -120,7 +117,7 @@ public class ResumoPorMes {
         return obj;
     }
 
-    private List<CRIFlococoDTO> listaCRIFlococos (FiltroBusca filter){
+    private List<CRIFlococoDTO> listaCRIFlococos(FiltroBusca filter) {
         List<CRIFlococoDTO> obj = new ArrayList<>();
         List<Object[]> objects = repository.findCRIFlococoAno(filter.getAnoLancamento());
 
@@ -140,8 +137,6 @@ public class ResumoPorMes {
         }
         return obj;
     }
-
-
 
 
 }

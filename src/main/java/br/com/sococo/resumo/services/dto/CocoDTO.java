@@ -1,6 +1,7 @@
 package br.com.sococo.resumo.services.dto;
 
 import br.com.sococo.resumo.model.ResumoDiario;
+import org.springframework.util.StringUtils;
 
 import java.text.DateFormatSymbols;
 
@@ -9,8 +10,6 @@ public class CocoDTO {
     private String diaLancamento;
     private String cocoDesfibrados;
     private String cocoProcessados;
-
-
 
     public CocoDTO() {
     }
@@ -33,6 +32,9 @@ public class CocoDTO {
     }
 
     public String getMesLancamento() {
+        if (StringUtils.isEmpty(mesLancamento)) {
+            return null;
+        }
         //converto o numero para o nome do mês
         String nomeMesCompleto = new DateFormatSymbols().getMonths()[Integer.parseInt(mesLancamento)-1];
         return nomeMesCompleto.substring(0,3);

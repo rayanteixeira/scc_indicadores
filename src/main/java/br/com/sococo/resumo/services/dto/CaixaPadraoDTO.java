@@ -1,6 +1,7 @@
 package br.com.sococo.resumo.services.dto;
 
 import br.com.sococo.resumo.model.ResumoDiario;
+import org.springframework.util.StringUtils;
 
 import java.text.DateFormatSymbols;
 
@@ -9,7 +10,6 @@ public class CaixaPadraoDTO {
     private String mesLancamento;
     private String diaLancamento;
     private String caixaPadrao;
-
 
     public CaixaPadraoDTO() {
     }
@@ -30,6 +30,9 @@ public class CaixaPadraoDTO {
     }
 
     public String getMesLancamento() {
+        if (StringUtils.isEmpty(mesLancamento)) {
+            return null;
+        }
         String nomeMesCompleto = new DateFormatSymbols().getMonths()[Integer.parseInt(mesLancamento) - 1];
         return nomeMesCompleto.substring(0, 3);
     }
