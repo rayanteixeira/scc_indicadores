@@ -20,6 +20,11 @@ public class TortaDTO {
         this.torta = torta;
     }
 
+    public TortaDTO(String mesLancamento, String torta) {
+        this.mesLancamento = mesLancamento;
+        this.torta = torta;
+    }
+
     public TortaDTO(ResumoDiario resumoDiario) {
         this(resumoDiario.getMesLancamento(), resumoDiario.getDiaLancamento(), resumoDiario.getTorta());
     }

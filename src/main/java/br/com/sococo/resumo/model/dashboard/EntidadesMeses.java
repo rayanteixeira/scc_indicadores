@@ -1,144 +1,108 @@
 package br.com.sococo.resumo.model.dashboard;
 
+import br.com.sococo.resumo.services.dto.*;
+
 import java.util.List;
 
 public class EntidadesMeses {
 
-    List<DadosMes> processados;
-    List<DadosMes> desfibrados;
-    List<DadosMes> cris;
-    List<DadosMes> flococos;
-    List<DadosMes> oleosTipoA;
-    List<DadosMes> oleosETE;
-    List<DadosMes> tortas;
-    List<DadosMes> aguasSococo;
-    List<DadosMes> aguasVerde;
-    List<DadosMes> percentGerminados;
-    List<DadosMes> totalCacambas;
-    List<DadosMes> caixasPadraos;
-    List<DadosMes> numFados;
 
+
+    List<CocoDTO> cocos;
+    List<CRIFlococoDTO> criFlococos;
+    List<OleoDTO> oleos;
+    List<TortaDTO> tortas;
+    List<AguaCocoDTO> aguaCocos;
+    List<CocoGerminadoDTO> cocoGerminados;
+    List<TotalCacambaDTO> totalCacambas;
+    List<CaixaPadraoDTO> caixaPadraos;
+    List<TotalFardosDTO> totalFardos;
 
     public EntidadesMeses() {
     }
 
-    public EntidadesMeses(List<DadosMes> processados, List<DadosMes> desfibrados, List<DadosMes> cris, List<DadosMes> flococos, List<DadosMes> oleosTipoA, List<DadosMes> oleosETE, List<DadosMes> tortas, List<DadosMes> aguasSococo, List<DadosMes> aguasVerde, List<DadosMes> percentGerminados, List<DadosMes> totalCacambas, List<DadosMes> caixasPadraos, List<DadosMes> numFados) {
-        this.processados = processados;
-        this.desfibrados = desfibrados;
-        this.cris = cris;
-        this.flococos = flococos;
-        this.oleosTipoA = oleosTipoA;
-        this.oleosETE = oleosETE;
+    public EntidadesMeses(List<CocoDTO> cocos, List<CRIFlococoDTO> criFlococos, List<OleoDTO> oleos, List<TortaDTO> tortas, List<AguaCocoDTO> aguaCocos, List<CocoGerminadoDTO> cocoGerminados, List<TotalCacambaDTO> totalCacambas, List<CaixaPadraoDTO> caixaPadraos, List<TotalFardosDTO> totalFardos) {
+        this.cocos = cocos;
+        this.criFlococos = criFlococos;
+        this.oleos = oleos;
         this.tortas = tortas;
-        this.aguasSococo = aguasSococo;
-        this.aguasVerde = aguasVerde;
-        this.percentGerminados = percentGerminados;
+        this.aguaCocos = aguaCocos;
+        this.cocoGerminados = cocoGerminados;
         this.totalCacambas = totalCacambas;
-        this.caixasPadraos = caixasPadraos;
-        this.numFados = numFados;
+        this.caixaPadraos = caixaPadraos;
+        this.totalFardos = totalFardos;
     }
 
-    public List<DadosMes> getProcessados() {
-        return processados;
+    public List<CocoDTO> getCocos() {
+        return cocos;
     }
 
-    public void setProcessados(List<DadosMes> processados) {
-        this.processados = processados;
+    public void setCocos(List<CocoDTO> cocos) {
+        this.cocos = cocos;
     }
 
-    public List<DadosMes> getDesfibrados() {
-        return desfibrados;
+    public List<CRIFlococoDTO> getCriFlococos() {
+        return criFlococos;
     }
 
-    public void setDesfibrados(List<DadosMes> desfibrados) {
-        this.desfibrados = desfibrados;
+    public void setCriFlococos(List<CRIFlococoDTO> criFlococos) {
+        this.criFlococos = criFlococos;
     }
 
-    public List<DadosMes> getCris() {
-        return cris;
+    public List<OleoDTO> getOleos() {
+        return oleos;
     }
 
-    public void setCris(List<DadosMes> cris) {
-        this.cris = cris;
+    public void setOleos(List<OleoDTO> oleos) {
+        this.oleos = oleos;
     }
 
-    public List<DadosMes> getFlococos() {
-        return flococos;
-    }
-
-    public void setFlococos(List<DadosMes> flococos) {
-        this.flococos = flococos;
-    }
-
-    public List<DadosMes> getOleosTipoA() {
-        return oleosTipoA;
-    }
-
-    public void setOleosTipoA(List<DadosMes> oleosTipoA) {
-        this.oleosTipoA = oleosTipoA;
-    }
-
-    public List<DadosMes> getOleosETE() {
-        return oleosETE;
-    }
-
-    public void setOleosETE(List<DadosMes> oleosETE) {
-        this.oleosETE = oleosETE;
-    }
-
-    public List<DadosMes> getTortas() {
+    public List<TortaDTO> getTortas() {
         return tortas;
     }
 
-    public void setTortas(List<DadosMes> tortas) {
+    public void setTortas(List<TortaDTO> tortas) {
         this.tortas = tortas;
     }
 
-    public List<DadosMes> getAguasSococo() {
-        return aguasSococo;
+    public List<AguaCocoDTO> getAguaCocos() {
+        return aguaCocos;
     }
 
-    public void setAguasSococo(List<DadosMes> aguasSococo) {
-        this.aguasSococo = aguasSococo;
+    public void setAguaCocos(List<AguaCocoDTO> aguaCocos) {
+        this.aguaCocos = aguaCocos;
     }
 
-    public List<DadosMes> getAguasVerde() {
-        return aguasVerde;
+    public List<CocoGerminadoDTO> getCocoGerminados() {
+        return cocoGerminados;
     }
 
-    public void setAguasVerde(List<DadosMes> aguasVerde) {
-        this.aguasVerde = aguasVerde;
+    public void setCocoGerminados(List<CocoGerminadoDTO> cocoGerminados) {
+        this.cocoGerminados = cocoGerminados;
     }
 
-    public List<DadosMes> getPercentGerminados() {
-        return percentGerminados;
-    }
-
-    public void setPercentGerminados(List<DadosMes> percentGerminados) {
-        this.percentGerminados = percentGerminados;
-    }
-
-    public List<DadosMes> getTotalCacambas() {
+    public List<TotalCacambaDTO> getTotalCacambas() {
         return totalCacambas;
     }
 
-    public void setTotalCacambas(List<DadosMes> totalCacambas) {
+    public void setTotalCacambas(List<TotalCacambaDTO> totalCacambas) {
         this.totalCacambas = totalCacambas;
     }
 
-    public List<DadosMes> getCaixasPadraos() {
-        return caixasPadraos;
+    public List<CaixaPadraoDTO> getCaixaPadraos() {
+        return caixaPadraos;
     }
 
-    public void setCaixasPadraos(List<DadosMes> caixasPadraos) {
-        this.caixasPadraos = caixasPadraos;
+    public void setCaixaPadraos(List<CaixaPadraoDTO> caixaPadraos) {
+        this.caixaPadraos = caixaPadraos;
     }
 
-    public List<DadosMes> getNumFados() {
-        return numFados;
+    public List<TotalFardosDTO> getTotalFardos() {
+        return totalFardos;
     }
 
-    public void setNumFados(List<DadosMes> numFados) {
-        this.numFados = numFados;
+    public void setTotalFardos(List<TotalFardosDTO> totalFardos) {
+        this.totalFardos = totalFardos;
     }
 }
+

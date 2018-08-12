@@ -22,6 +22,12 @@ public class CocoDTO {
         this.cocoProcessados = cocoProcessados;
     }
 
+    public CocoDTO(String mesLancamento, String cocoDesfibrados, String cocoProcessados) {
+        this.mesLancamento = mesLancamento;
+        this.cocoDesfibrados = cocoDesfibrados;
+        this.cocoProcessados = cocoProcessados;
+    }
+
     public CocoDTO(ResumoDiario resumoDiario){
         this(resumoDiario.getMesLancamento(), resumoDiario.getDiaLancamento(), resumoDiario.getCocosDesfibrados(), resumoDiario.getCocosProcessados());
     }

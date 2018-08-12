@@ -14,6 +14,11 @@ public class CocoGerminadoDTO {
     public CocoGerminadoDTO() {
     }
 
+    public CocoGerminadoDTO(String mesLancamento, String cocoGerminado) {
+        this.mesLancamento = mesLancamento;
+        this.cocoGerminado = cocoGerminado;
+    }
+
     public CocoGerminadoDTO(String mesLancamento, String diaLancamento, String cocoGerminado) {
         this.mesLancamento = mesLancamento;
         this.diaLancamento = diaLancamento;

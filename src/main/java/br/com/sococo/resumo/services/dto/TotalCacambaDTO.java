@@ -13,8 +13,14 @@ public class TotalCacambaDTO {
     public TotalCacambaDTO() {
     }
 
+    public TotalCacambaDTO(String mesLancamento, String totalCacamba) {
+        this.mesLancamento = mesLancamento;
+        this.totalCacamba = totalCacamba;
+    }
+
     public TotalCacambaDTO(String mesLancamento, String diaLancamento, String totalCacamba) {
         this.mesLancamento = mesLancamento;
+        this.diaLancamento = diaLancamento;
         this.totalCacamba = totalCacamba;
     }
 

@@ -13,6 +13,11 @@ public class TotalFardosDTO {
     public TotalFardosDTO() {
     }
 
+    public TotalFardosDTO(String mesLancamento, String numeroFardos) {
+        this.mesLancamento = mesLancamento;
+        this.numeroFardos = numeroFardos;
+    }
+
     public TotalFardosDTO(String mesLancamento, String diaLancamento, String numeroFardos) {
         this.mesLancamento = mesLancamento;
         this.diaLancamento = diaLancamento;

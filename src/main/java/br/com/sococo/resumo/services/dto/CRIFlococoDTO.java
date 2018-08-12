@@ -20,6 +20,12 @@ public class CRIFlococoDTO {
         this.flococo = flococo;
     }
 
+    public CRIFlococoDTO(String mesLancamento, String cli, String flococo) {
+        this.mesLancamento = mesLancamento;
+        this.cri = cli;
+        this.flococo = flococo;
+    }
+
     public CRIFlococoDTO(ResumoDiario resumoDiario){
         this(resumoDiario.getMesLancamento(), resumoDiario.getDiaLancamento(),resumoDiario.getCri(), resumoDiario.getFlococo());
     }

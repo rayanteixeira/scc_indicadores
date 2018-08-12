@@ -14,6 +14,11 @@ public class CaixaPadraoDTO {
     public CaixaPadraoDTO() {
     }
 
+    public CaixaPadraoDTO(String mesLancamento, String caixaPadrao) {
+        this.mesLancamento = mesLancamento;
+        this.caixaPadrao = caixaPadrao;
+    }
+
     public CaixaPadraoDTO(String mesLancamento, String diaLancamento, String caixaPadrao) {
         this.mesLancamento = mesLancamento;
         this.diaLancamento = diaLancamento;
