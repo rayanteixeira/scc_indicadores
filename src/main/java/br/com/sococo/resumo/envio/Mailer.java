@@ -32,11 +32,7 @@ public class Mailer {
 
         String corpo = htmlFromTemplatePedido(obj);
 
-        List<String> emails = new ArrayList<>();
-
-        destinatarioRepository.findAll().forEach(destinatario -> {
-            emails.add(destinatario.getDestinatario());
-        });
+        List<String> emails = listaDestinatarios();
 
         try {
             enviar(new Mensagem(
@@ -49,6 +45,14 @@ public class Mailer {
 
         System.out.println("Email enviado com sucesso!");
 
+    }
+
+    private List<String> listaDestinatarios() {
+        List<String> emails = new ArrayList<>();
+        destinatarioRepository.findAll().forEach(destinatario -> {
+            emails.add(destinatario.getDestinatario());
+        });
+        return emails;
     }
 
     public void enviar(Mensagem mensagem) throws MessagingException, javax.mail.MessagingException {
