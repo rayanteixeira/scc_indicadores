@@ -43,23 +43,5 @@ public class UsuarioResource {
                 .body(obj);
     }
 
-    @GetMapping(value = "/usuario")
-    public ResponseEntity<List<UsuarioDTO>> findAll(){
-
-        log.debug("REST request findAll() Usuario");
-
-        List<UsuarioDTO> list = usuarioService.findAll();
-
-        return ResponseEntity.ok().body(list);
-    }
-
-    @GetMapping(value = "/usuario/{id}")
-    public ResponseEntity<?> find(@PathVariable Long id) {
-        UsuarioDTO obj = usuarioService.find(id);
-
-        return ResponseEntity.ok(obj);
-    }
-
-
 
 }
