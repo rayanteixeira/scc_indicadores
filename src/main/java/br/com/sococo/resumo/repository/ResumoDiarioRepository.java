@@ -14,14 +14,7 @@ import java.util.List;
 @Repository
 public interface ResumoDiarioRepository extends JpaRepository<ResumoDiario, Long>, ResumoDiarioRepositoryQuery {
 
-    @Transactional
-    @Query(value = "SELECT rd.dia_lancamento FROM resumo_diario rd WHERE rd.mes_lancamento =:mes GROUP BY rd.dia_lancamento", nativeQuery = true)
-    List<String> findByDias(@Param("mes") String mes);
-
-    @Transactional
-    @Query(value = "SELECT rd.mes_lancamento FROM resumo_diario rd WHERE rd.ano_lancamento =:ano GROUP BY rd.mes_lancamento", nativeQuery = true)
-    List<String> findByMeses(@Param("ano") String ano);
-
+    /*
     //EntidadesMeses Mes
     @Transactional
     @Query(value = "SELECT SUM(rd.cocos_desfibrados) FROM resumo_diario rd WHERE rd.ano_lancamento =:ano GROUP BY rd.mes_lancamento", nativeQuery = true)
@@ -96,8 +89,6 @@ public interface ResumoDiarioRepository extends JpaRepository<ResumoDiario, Long
     @Query(value = "SELECT rd.* , SUM(rd.caixa_padrao) AS tlCaixaPadrao FROM resumo_diario rd WHERE rd.ano_lancamento =:ano GROUP BY rd.mes_lancamento", nativeQuery = true)
     List<ResumoDiario> findResumoDiarioCaixaPadrao(@Param("ano") String anoLancamento);
 
-
-
     @Transactional
     @Query(value = "SELECT rd.* , SUM(rd.cocos_processados) AS tlCocoProcessados, SUM(rd.cocos_desfibrados) AS tlCocoDesfibrados FROM resumo_diario rd WHERE rd.ano_lancamento =:ano AND rd.mes_lancamento =:mes GROUP BY rd.dia_lancamento", nativeQuery = true)
     List<ResumoDiario> findResumoDiarioCocoPorMes(@Param("ano") String anoLancamento, @Param("mes") String mesLancamento);
@@ -137,8 +128,15 @@ public interface ResumoDiarioRepository extends JpaRepository<ResumoDiario, Long
 
 
     @Transactional
-    @Query(value = "SELECT * FROM resumo_diario rd WHERE rd.data_lancamento = (SELECT MAX(data_lancamento) FROM resumo_diario);", nativeQuery = true)
-    List<ResumoDiario> findResumoDiario();
+    @Query(value = "SELECT rd.dia_lancamento FROM resumo_diario rd WHERE rd.mes_lancamento =:mes GROUP BY rd.dia_lancamento", nativeQuery = true)
+    List<String> findByDias(@Param("mes") String mes);
+
+    @Transactional
+    @Query(value = "SELECT rd.mes_lancamento FROM resumo_diario rd WHERE rd.ano_lancamento =:ano GROUP BY rd.mes_lancamento", nativeQuery = true)
+    List<String> findByMeses(@Param("ano") String ano);
+
+    */
+
 
     @Transactional
     @Query("select new ResumoDiario(rd.dataLancamento, sum(rd.cocosProcessados),sum(rd.cocosDesfibrados), sum(rd.cri), sum(rd.flococo), sum(rd.oleoIndustrialTipoA), sum(rd.oleoIndustrialETE), sum(rd.torta),sum(rd.aguaDeCocoSococo), sum(rd.aguaDeCocoVerde), sum(rd.totalDeCacambas), sum(rd.caixaPadrao), sum(rd.numeroDeFardos), avg (rd.porcentagemCocoGerminado)) from ResumoDiario rd where rd.dataLancamento = ?1 group by rd.dataLancamento order by rd.dataLancamento")
@@ -147,4 +145,17 @@ public interface ResumoDiarioRepository extends JpaRepository<ResumoDiario, Long
     @Transactional
     @Query("select new ResumoDiario(sum(rd.cocosProcessados),sum(rd.cocosDesfibrados), sum(rd.cri), sum(rd.flococo), sum(rd.oleoIndustrialTipoA), sum(rd.oleoIndustrialETE), sum(rd.torta),sum(rd.aguaDeCocoSococo), sum(rd.aguaDeCocoVerde), sum(rd.totalDeCacambas), sum(rd.caixaPadrao), sum(rd.numeroDeFardos), avg (rd.porcentagemCocoGerminado)) from ResumoDiario rd where rd.mesLancamento = ?1 AND rd.anoLancamento = ?2 group by rd.mesLancamento order by rd.mesLancamento")
     List<ResumoDiario> findByMesLancamento(String mesLancamento, String anoLancamento);
+
+
+
+    // Pegar o maior dia de lançamento, ou seja, o ultimo dia que teve lançamento
+    @Transactional
+    @Query(value = "SELECT * FROM resumo_diario rd WHERE rd.data_lancamento = (SELECT MAX(data_lancamento) FROM resumo_diario);", nativeQuery = true)
+    List<ResumoDiario> findResumoDoDia();
+
+    // Resumo diário por SEMANA - Recebe como parametro uma data e recupera todos os dias daquela semana.
+    @Transactional
+    @Query(value = "select SUM(rd.cocos_processados), SUM(rd.cocos_desfibrados), SUM(rd.cri), SUM(rd.flococo), SUM(rd.oleo_industrial_tipo_a), SUM(rd.oleo_industrial_ete), SUM(rd.torta), SUM(rd.agua_coco_sococo), SUM(rd.agua_coco_verde), SUM(rd.total_cacambas), SUM(rd.caixa_padrao), SUM(rd.numero_fardos), AVG(rd.porcentagem_coco_germinado) from resumo_diario rd where weekofyear(:dataSemana) = weekofyear(rd.data_lancamento)", nativeQuery = true)
+    List<Object[]> findByDiasDaSemana(@Param("dataSemana") LocalDate dataSemana);
+
 }

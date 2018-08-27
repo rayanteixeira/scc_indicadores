@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,6 +19,7 @@ public class ResumoDiarioService {
 
     @Autowired
     private Mailer mailer;
+
 
     public ResumoDiario insert(ResumoDiario obj) {
 
@@ -48,6 +48,27 @@ public class ResumoDiarioService {
         return obj.orElse(null);
     }
 
+    public List<ResumoDiario> fingResumoDoDia() {
+        return resumoDiarioRepository.findResumoDoDia();
+    }
+
+    public List<ResumoDiario> buscaPorData(FiltroBusca filter) {
+        return resumoDiarioRepository.findByDataLancamento(filter.getDataLancamento());
+    }
+
+    public List<Object[]> buscaPorSemana(FiltroBusca filter) {
+        return resumoDiarioRepository.findByDiasDaSemana(filter.getDataLancamento());
+    }
+
+     /*
+     public List<ResumoDiario> buscaPorMes(FiltroBusca filter) {
+          filter.setMesLancamento(String.valueOf(filter.getDataLancamento().getMonthValue()));
+          filter.setAnoLancamento(String.valueOf(filter.getDataLancamento().getYear()));
+          return resumoDiarioRepository.findByMesLancamento(filter.getMesLancamento(), filter.getAnoLancamento());
+      }*/
+
+
+     /*
     public List<String> findByMeses(String ano) {
         return resumoDiarioRepository.findByMeses(ano);
     }
@@ -55,41 +76,5 @@ public class ResumoDiarioService {
     public List<String> findByDias(String mes) {
         return resumoDiarioRepository.findByDias(mes);
     }
-
-    public List<ResumoDiario> fingResumoDiario() {
-        return resumoDiarioRepository.findResumoDiario();
-
-    }
-
-    public List<ResumoDiario> buscaPorData(FiltroBusca filter) {
-        System.out.println("FILTER "+filter.getDataLancamento());
-        List<ResumoDiario> lista = new ArrayList<>();
-        if (filter.getDataLancamento() != null) {
-            lista = resumoDiarioRepository.findByDataLancamento(filter.getDataLancamento());
-        } else {
-            lista = resumoDiarioRepository.findAll();
-        }
-        return lista;
-
-    }
-
-    public List<ResumoDiario> buscaPorMes(FiltroBusca filter) {
-        //System.out.println("FILTER "+filter.getDataLancamento());
-
-        filter.setMesLancamento(String.valueOf(filter.getDataLancamento().getMonthValue()));
-        filter.setAnoLancamento(String.valueOf(filter.getDataLancamento().getYear()));
-
-        System.out.println("Filter :" + filter.toString());
-
-        List<ResumoDiario> lista = new ArrayList<>();
-        if (filter.getDataLancamento() != null) {
-            lista = resumoDiarioRepository.findByMesLancamento(filter.getMesLancamento(), filter.getAnoLancamento());
-        } else {
-
-            // fazer logica buscar mes atual
-            lista = resumoDiarioRepository.findAll();
-        }
-        return lista;
-
-    }
+    */
 }
