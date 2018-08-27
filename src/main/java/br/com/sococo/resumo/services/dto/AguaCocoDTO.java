@@ -1,6 +1,7 @@
 package br.com.sococo.resumo.services.dto;
 
 import br.com.sococo.resumo.model.ResumoDiario;
+import org.springframework.util.StringUtils;
 
 import java.text.DateFormatSymbols;
 
@@ -12,6 +13,12 @@ public class AguaCocoDTO {
     private String aguaDeCocoVerde;
 
     public AguaCocoDTO() {
+    }
+
+    public AguaCocoDTO(String mesLancamento, String aguaDeCocoSococo, String aguaDeCocoVerde) {
+        this.mesLancamento = mesLancamento;
+        this.aguaDeCocoSococo = aguaDeCocoSococo;
+        this.aguaDeCocoVerde = aguaDeCocoVerde;
     }
 
     public AguaCocoDTO(String mesLancamento, String diaLancamento, String aguaDeCocoSococo, String aguaDeCocoVerde) {
@@ -26,6 +33,9 @@ public class AguaCocoDTO {
     }
 
     public String getMesLancamento() {
+        if (StringUtils.isEmpty(mesLancamento)) {
+            return null;
+        }
         String nomeMesCompleto = new DateFormatSymbols().getMonths()[Integer.parseInt(mesLancamento)-1];
         return nomeMesCompleto.substring(0,3);
     }
