@@ -5,6 +5,7 @@ import br.com.sococo.resumo.model.ResumoDiario;
 import br.com.sococo.resumo.resource.util.HeaderUtil;
 import br.com.sococo.resumo.services.DashboardService;
 import br.com.sococo.resumo.services.ResumoDiarioService;
+import br.com.sococo.resumo.services.dto.LancamentoDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,10 +29,11 @@ public class ResumoDiarioResource {
     @Autowired
     private ResumoDiarioService resumoDiarioService;
 
-    @Autowired
-    private DashboardService dashiboardService;
-
-    @PostMapping(value = "/lancamento-do-dia")
+    /**
+     *POST - Usado para cadastrar um resumo diário
+     * @return
+     */
+    @PostMapping(value = "/salva-resumo") //salva resumo
     public ResponseEntity<ResumoDiario> insert(@RequestBody ResumoDiario resumoDiario) throws URISyntaxException {
         log.debug("REST request to save Resumo Diario : {}", resumoDiario);
 
@@ -50,7 +52,11 @@ public class ResumoDiarioResource {
                 .body(obj);
     }
 
-    @GetMapping(value = "/lancamentos")
+    /**
+     * Lista com Resumos Diários Cadastrados
+     * @return
+     */
+    @GetMapping(value = "/lista-resumo") //lista de resumos
     public ResponseEntity<List<ResumoDiario>> findAll() {
 
         log.debug("REST request findAll() Resumo Diario");
@@ -63,7 +69,7 @@ public class ResumoDiarioResource {
     }
 
     /**
-     * Não tem finalidade busca o último lançamento
+     * É usado para mostra na tabela de resumo diário o último resumo cadastrado,
      * @return
      */
     @GetMapping(value = "/resumo-do-dia")
@@ -71,32 +77,40 @@ public class ResumoDiarioResource {
 
         log.debug("REST request fingResumoDiario() Resumo Diario");
 
-        List<ResumoDiario> resumoDoDia = resumoDiarioService.fingResumoDiario();
+        List<ResumoDiario> resumoDoDia = resumoDiarioService.fingResumoDoDia();
 
         return ResponseEntity
                 .ok()
                 .body(resumoDoDia);
     }
 
-    /**
-     * Verificar se tem finalidade busca por id
-     * @return
-     */
-    @GetMapping(value = "/resumo-diario/{id}")
+    @GetMapping("/resumo-diario")
+    public LancamentoDTO buscaResumoDiario(FiltroBusca filter) {
+        // return resumoDiarioService.buscaPorSemana(filter);
+        return resumoDiarioService.buscaResumo(filter);
+    }
+
+    @GetMapping("/busca-por-data")
+    public List<ResumoDiario> buscaPorData(FiltroBusca filter) {
+      // return resumoDiarioService.buscaPorSemana(filter);
+       return resumoDiarioService.buscaPorData(filter);
+    }
+
+    @GetMapping("/busca-por-semana")
+    public List<Object[]> buscaPorSemana(FiltroBusca filter) {
+        // return resumoDiarioService.buscaPorSemana(filter);
+        return resumoDiarioService.buscaPorSemana(filter);
+    }
+
+  /*  @GetMapping("/buscaPorMes")
+    public List<ResumoDiario> buscaPorMes(FiltroBusca filter) {
+        return resumoDiarioService.buscaPorMes(filter);
+    }*/
+
+    /*@GetMapping(value = "/resumo-diario/{id}")
     public ResponseEntity<?> find(@PathVariable Long id) {
         ResumoDiario obj = resumoDiarioService.find(id);
         return ResponseEntity
                 .ok(obj);
-    }
-
-    @GetMapping("/buscaPorData")
-    public List<ResumoDiario> buscaPorData(FiltroBusca filter) {
-        return resumoDiarioService.buscaPorData(filter);
-    }
-
-    @GetMapping("/buscaPorMes")
-    public List<ResumoDiario> buscaPorMes(FiltroBusca filter) {
-        return resumoDiarioService.buscaPorMes(filter);
-    }
-
+    }*/
 }

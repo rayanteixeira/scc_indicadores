@@ -4,11 +4,11 @@ import br.com.sococo.resumo.envio.Mailer;
 import br.com.sococo.resumo.model.FiltroBusca;
 import br.com.sococo.resumo.model.ResumoDiario;
 import br.com.sococo.resumo.repository.ResumoDiarioRepository;
+import br.com.sococo.resumo.services.dto.LancamentoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,6 +20,7 @@ public class ResumoDiarioService {
 
     @Autowired
     private Mailer mailer;
+
 
     public ResumoDiario insert(ResumoDiario obj) {
 
@@ -48,48 +49,29 @@ public class ResumoDiarioService {
         return obj.orElse(null);
     }
 
-    public List<String> findByMeses(String ano) {
-        return resumoDiarioRepository.findByMeses(ano);
-    }
-
-    public List<String> findByDias(String mes) {
-        return resumoDiarioRepository.findByDias(mes);
-    }
-
-    public List<ResumoDiario> fingResumoDiario() {
-        return resumoDiarioRepository.findResumoDiario();
-
+    public List<ResumoDiario> fingResumoDoDia() {
+        return resumoDiarioRepository.findResumoDoDia();
     }
 
     public List<ResumoDiario> buscaPorData(FiltroBusca filter) {
-        System.out.println("FILTER "+filter.getDataLancamento());
-        List<ResumoDiario> lista = new ArrayList<>();
-        if (filter.getDataLancamento() != null) {
-            lista = resumoDiarioRepository.findByDataLancamento(filter.getDataLancamento());
-        } else {
-            lista = resumoDiarioRepository.findAll();
-        }
-        return lista;
-
+        return resumoDiarioRepository.findByDataLancamento(filter.getDataLancamento());
     }
 
-    public List<ResumoDiario> buscaPorMes(FiltroBusca filter) {
-        //System.out.println("FILTER "+filter.getDataLancamento());
+    public List<Object[]> buscaPorSemana(FiltroBusca filter) {
+        return resumoDiarioRepository.findByDiasDaSemana(filter.getDataLancamento());
+    }
+
+    public LancamentoDTO buscaResumo(FiltroBusca filter) {
+        LancamentoDTO lancamentoDTO = new LancamentoDTO();
 
         filter.setMesLancamento(String.valueOf(filter.getDataLancamento().getMonthValue()));
         filter.setAnoLancamento(String.valueOf(filter.getDataLancamento().getYear()));
 
-        System.out.println("Filter :" + filter.toString());
+        lancamentoDTO.setResumosDiarios(resumoDiarioRepository.findByDataLancamento(filter.getDataLancamento()));
+        lancamentoDTO.setResumosMensal(resumoDiarioRepository.findByMesLancamento(filter.getMesLancamento(), filter.getAnoLancamento()));
+        lancamentoDTO.setBuscaSemanal(resumoDiarioRepository.findByDiasDaSemana(filter.getDataLancamento()));
 
-        List<ResumoDiario> lista = new ArrayList<>();
-        if (filter.getDataLancamento() != null) {
-            lista = resumoDiarioRepository.findByMesLancamento(filter.getMesLancamento(), filter.getAnoLancamento());
-        } else {
-
-            // fazer logica buscar mes atual
-            lista = resumoDiarioRepository.findAll();
-        }
-        return lista;
-
+        return lancamentoDTO;
     }
+
 }
