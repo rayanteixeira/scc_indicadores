@@ -1,9 +1,8 @@
 package br.com.sococo.resumo.resource;
 
-import br.com.sococo.resumo.services.UsuarioService;
-import br.com.sococo.resumo.services.dto.UsuarioDTO;
-import br.com.sococo.resumo.model.Usuario;
+import br.com.sococo.resumo.model.Destinatario;
 import br.com.sococo.resumo.resource.util.HeaderUtil;
+import br.com.sococo.resumo.services.DestinatarioService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,25 +16,23 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "api")
 @CrossOrigin(maxAge = 10, origins = {"*"})
-public class UsuarioResource {
+public class DestinatarioResource {
 
     @Autowired
-    private UsuarioService usuarioService;
+    private DestinatarioService destinatarioService;
 
-    private static final String ENTITY_NAME = "usuario";
+    private static final String ENTITY_NAME = "destinatario";
 
-    private final Logger log = LoggerFactory.getLogger(UsuarioResource.class);
+    private final Logger log = LoggerFactory.getLogger(DestinatarioResource.class);
 
-    @PostMapping(value = "/usuario")
-    public ResponseEntity<Usuario> insert(@RequestBody Usuario usuario) throws URISyntaxException {
+    @PostMapping(value = "/destinatario")
+    public ResponseEntity<Destinatario> insert(@RequestBody Destinatario destinatario) throws URISyntaxException {
 
-        log.debug("REST request to save Usuario : {}", usuario);
-
-        if (usuario.getId() != null) {
+        if (destinatario.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A id ja consta na base de dados")).body(null);
         }
 
-        Usuario obj = usuarioService.insert(usuario);
+        Destinatario obj = destinatarioService.insert(destinatario);
         URI uri = new URI("/api/usuario/"+ obj.getId());
 
         return ResponseEntity.created(uri)
@@ -43,23 +40,22 @@ public class UsuarioResource {
                 .body(obj);
     }
 
-    @GetMapping(value = "/usuario")
-    public ResponseEntity<List<Usuario>> findAll(){
+    @GetMapping(value = "/destinatario")
+    public ResponseEntity<List<Destinatario>> findAll(){
 
         log.debug("REST request findAll() Usuario");
 
-        List<Usuario> list = usuarioService.findAll();
+        List<Destinatario> list = destinatarioService.findAll();
 
         return ResponseEntity.ok().body(list);
     }
 
-    /*@GetMapping(value = "/usuario/{id}")
-    public ResponseEntity<?> find(@PathVariable Long id) {
-        UsuarioDTO obj = usuarioService.find(id);
-
-        return ResponseEntity.ok(obj);
-    }*/
-
+    @DeleteMapping(value = "/destinatario/{id}")
+    public void deleteDestinatario(@PathVariable  Long id) {
+        if(id != null) {
+            destinatarioService.deleteById(id);
+        }
+    }
 
 
 }

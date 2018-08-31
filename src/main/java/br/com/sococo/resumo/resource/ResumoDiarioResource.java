@@ -74,11 +74,7 @@ public class ResumoDiarioResource {
      */
     @GetMapping(value = "/resumo-do-dia")
     public ResponseEntity<List<ResumoDiario>> fingResumoDiario() {
-
-        log.debug("REST request fingResumoDiario() Resumo Diario");
-
         List<ResumoDiario> resumoDoDia = resumoDiarioService.fingResumoDoDia();
-
         return ResponseEntity
                 .ok()
                 .body(resumoDoDia);
@@ -86,21 +82,13 @@ public class ResumoDiarioResource {
 
     @GetMapping("/resumo-diario")
     public LancamentoDTO buscaResumoDiario(FiltroBusca filter) {
-        // return resumoDiarioService.buscaPorSemana(filter);
         return resumoDiarioService.buscaResumo(filter);
     }
 
-    @GetMapping("/busca-por-data")
+ /*   @GetMapping("/busca-por-data")
     public List<ResumoDiario> buscaPorData(FiltroBusca filter) {
-      // return resumoDiarioService.buscaPorSemana(filter);
        return resumoDiarioService.buscaPorData(filter);
-    }
-
-    @GetMapping("/busca-por-semana")
-    public List<Object[]> buscaPorSemana(FiltroBusca filter) {
-        // return resumoDiarioService.buscaPorSemana(filter);
-        return resumoDiarioService.buscaPorSemana(filter);
-    }
+    }*/
 
   /*  @GetMapping("/buscaPorMes")
     public List<ResumoDiario> buscaPorMes(FiltroBusca filter) {

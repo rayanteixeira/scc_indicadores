@@ -54,6 +54,7 @@ public class ResumoDiarioService {
     }
 
     public List<ResumoDiario> buscaPorData(FiltroBusca filter) {
+
         return resumoDiarioRepository.findByDataLancamento(filter.getDataLancamento());
     }
 
@@ -66,6 +67,12 @@ public class ResumoDiarioService {
 
         filter.setMesLancamento(String.valueOf(filter.getDataLancamento().getMonthValue()));
         filter.setAnoLancamento(String.valueOf(filter.getDataLancamento().getYear()));
+        System.out.println("buscaResumo : " +filter);
+        System.out.println("buscaResumo : " +filter.getDataLancamento());
+        System.out.println("mes : " + filter.getMesLancamento());
+        System.out.println("ano : " +filter.getAnoLancamento());
+
+
 
         lancamentoDTO.setResumosDiarios(resumoDiarioRepository.findByDataLancamento(filter.getDataLancamento()));
         lancamentoDTO.setResumosMensal(resumoDiarioRepository.findByMesLancamento(filter.getMesLancamento(), filter.getAnoLancamento()));
