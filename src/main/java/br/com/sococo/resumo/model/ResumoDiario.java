@@ -47,14 +47,14 @@ public class ResumoDiario implements Serializable {
     @Column(name = "agua_coco_verde")
     private String aguaDeCocoVerde;
 
+    @Column(name = "caixa_padrao")
+    private String caixaPadrao;
+
     @Column(name = "porcentagem_coco_germinado")
     private Double porcentagemCocoGerminado;
 
     @Column(name = "total_cacambas")
     private String totalDeCacambas;
-
-    @Column(name = "caixa_padrao")
-    private String caixaPadrao;
 
     //AMAFIBRA
     @Column(name = "numero_fardos")
@@ -73,7 +73,7 @@ public class ResumoDiario implements Serializable {
     public ResumoDiario() {
     }
 
-    public ResumoDiario(LocalDate dataLancamento, String cocosProcessados, String cocosDesfibrados, String cri, String flococo, String oleoIndustrialTipoA, String oleoIndustrialETE, String torta, String aguaDeCocoSococo, String aguaDeCocoVerde, String totalDeCacambas, String caixaPadrao, String numeroDeFardos, Double porcentagemCocoGerminado) {
+    public ResumoDiario(LocalDate dataLancamento, String cocosProcessados, String cocosDesfibrados, String cri, String flococo, String oleoIndustrialTipoA, String oleoIndustrialETE, String torta, String aguaDeCocoSococo, String aguaDeCocoVerde, String caixaPadrao, Double porcentagemCocoGerminado, String totalDeCacambas, String numeroDeFardos) {
         this.dataLancamento = dataLancamento;
         this.cocosProcessados = cocosProcessados;
         this.cocosDesfibrados = cocosDesfibrados;
@@ -90,7 +90,7 @@ public class ResumoDiario implements Serializable {
         this.porcentagemCocoGerminado = porcentagemCocoGerminado;
     }
 
-    public ResumoDiario(String cocosProcessados, String cocosDesfibrados, String cri, String flococo, String oleoIndustrialTipoA, String oleoIndustrialETE, String torta, String aguaDeCocoSococo, String aguaDeCocoVerde, String totalDeCacambas, String caixaPadrao, String numeroDeFardos, Double porcentagemCocoGerminado) {
+    public ResumoDiario(String cocosProcessados, String cocosDesfibrados, String cri, String flococo, String oleoIndustrialTipoA, String oleoIndustrialETE, String torta, String aguaDeCocoSococo, String aguaDeCocoVerde,  String caixaPadrao, Double porcentagemCocoGerminado, String totalDeCacambas, String numeroDeFardos) {
         this.cocosProcessados = cocosProcessados;
         this.cocosDesfibrados = cocosDesfibrados;
         this.cri = cri;

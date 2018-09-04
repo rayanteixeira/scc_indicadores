@@ -53,13 +53,9 @@ public class ResumoDiarioService {
         return resumoDiarioRepository.findResumoDoDia();
     }
 
-    public List<ResumoDiario> buscaPorData(FiltroBusca filter) {
+    public List<ResumoDiario> buscaPorAnoMes(FiltroBusca filter) {
 
         return resumoDiarioRepository.findByDataLancamento(filter.getDataLancamento());
-    }
-
-    public List<Object[]> buscaPorSemana(FiltroBusca filter) {
-        return resumoDiarioRepository.findByDiasDaSemana(filter.getDataLancamento());
     }
 
     public LancamentoDTO buscaResumo(FiltroBusca filter) {

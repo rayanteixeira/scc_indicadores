@@ -85,12 +85,16 @@ public class ResumoDiarioResource {
         return resumoDiarioService.buscaResumo(filter);
     }
 
- /*   @GetMapping("/busca-por-data")
-    public List<ResumoDiario> buscaPorData(FiltroBusca filter) {
-       return resumoDiarioService.buscaPorData(filter);
-    }*/
+    @GetMapping("/busca-por-ano-mes")
+    public List<ResumoDiario> buscaPorAnoMes(FiltroBusca filter) {
+       return resumoDiarioService.buscaPorAnoMes(filter);
+    }
 
-  /*  @GetMapping("/buscaPorMes")
+   /*  @GetMapping("/bu
+
+
+
+  scaPorMes")
     public List<ResumoDiario> buscaPorMes(FiltroBusca filter) {
         return resumoDiarioService.buscaPorMes(filter);
     }*/
