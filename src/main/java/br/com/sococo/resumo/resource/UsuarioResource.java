@@ -43,14 +43,24 @@ public class UsuarioResource {
                 .body(obj);
     }
 
+//    @GetMapping(value = "/usuario")
+//    public ResponseEntity<List<Usuario>> findAll(){
+//
+//        log.debug("REST request findAll() Usuario");
+//
+//        List<Usuario> list = usuarioService.findAll();
+//
+//        return ResponseEntity.ok().body(list);
+//    }
+
     @GetMapping(value = "/usuario")
-    public ResponseEntity<List<Usuario>> findAll(){
+    public String loginer() {
+        return "Logou";
+    }
 
-        log.debug("REST request findAll() Usuario");
-
-        List<Usuario> list = usuarioService.findAll();
-
-        return ResponseEntity.ok().body(list);
+    @GetMapping(value = "/acesso")
+    public String acesso() {
+        return "acessou!";
     }
 
     /*@GetMapping(value = "/usuario/{id}")
