@@ -58,17 +58,12 @@ public class Usuario implements Serializable {
         addPerfil(Perfil.USER);
     }
 
-    public Usuario(Long id, String nome, String sobrenome, String codigo, String username) {
+    public Usuario(Long id, String nome, String sobrenome, String password) {
         this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
-        this.codigo = codigo;
-        this.username = username;
-    }
-
-    public Usuario(UsuarioDTO usuario) {
-        this(usuario.getId(), usuario.getNome(), usuario.getSobrenome(),
-                usuario.getCodigo(), usuario.getUsername());
+        this.password = password;
+        addPerfil(Perfil.USER);
     }
 
     public static long getSerialVersionUID() {
