@@ -63,8 +63,7 @@ public class UsuarioService {
         find(id);
         try {
             usuarioRepository.deleteById(id);
-        }
-        catch (DataIntegrityViolationException e) {
+        } catch (DataIntegrityViolationException e) {
             throw new DataIntegrityException("Não é possível excluir o Usuário");
         }
     }

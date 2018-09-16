@@ -26,10 +26,6 @@ public class Usuario implements Serializable {
 
     private String sobrenome;
 
-    @NotEmpty(message = "O código é obrigatório")
-    @Column(name = "codigo", nullable = false, unique = true)
-    private String codigo;
-
     @NotEmpty(message = "O username é obrigatório")
     @Column(nullable = false, unique = true)
     private String username;
@@ -39,18 +35,12 @@ public class Usuario implements Serializable {
     @Column(name = "password", nullable = false)
     private String password;
 
-    // pattern = "dd/MM/yyyy HH:mm:ss"
-    //@DateTimeFormat(pattern = "dd/MM/yyyy")
-    //@Temporal(TemporalType.DATE)
-    @Column(name = "data_cadastro", nullable = false)
-    private LocalDate dataCadastro;
-
     @Column(name = "enabled")
     private boolean enabled = true;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "usuario_permissao", joinColumns = @JoinColumn(name = "codigo_usuario")
-            , inverseJoinColumns = @JoinColumn(name = "codigo_permissao"))
+    @JoinTable(name = "usuario_permissao", joinColumns = @JoinColumn(name = "id_usuario")
+            , inverseJoinColumns = @JoinColumn(name = "id_permissao"))
     private List<Permissao> permissoes;
 
 //    @ElementCollection(fetch = FetchType.EAGER)
@@ -61,6 +51,9 @@ public class Usuario implements Serializable {
 //    public Usuario() {
 //        addPerfil(Perfil.USER);
 //    }
+
+    public Usuario() {
+    }
 
     public Usuario(Long id, String nome, String sobrenome, String password) {
         this.id = id;
@@ -98,14 +91,6 @@ public class Usuario implements Serializable {
         this.sobrenome = sobrenome;
     }
 
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
-
     public String getUsername() {
         return username;
     }
@@ -120,14 +105,6 @@ public class Usuario implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public LocalDate getDataCadastro() {
-        return dataCadastro;
-    }
-
-    public void setDataCadastro(LocalDate dataCadastro) {
-        this.dataCadastro = dataCadastro;
     }
 
     public boolean isEnabled() {
@@ -174,10 +151,8 @@ public class Usuario implements Serializable {
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", sobrenome='" + sobrenome + '\'' +
-                ", codigo='" + codigo + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", dataCadastro=" + dataCadastro +
                 ", enabled=" + enabled +
                 '}';
     }

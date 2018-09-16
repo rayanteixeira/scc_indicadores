@@ -13,8 +13,6 @@ public class UsuarioDTO implements Serializable {
 
     private String sobrenome;
 
-    private String codigo;
-
     private String username;
 
     private boolean enabled = true;
@@ -22,17 +20,15 @@ public class UsuarioDTO implements Serializable {
     public UsuarioDTO() {
     }
 
-    public UsuarioDTO(Long id, String nome, String sobrenome, String codigo, String username) {
+    public UsuarioDTO(Long id, String nome, String sobrenome, String username) {
         this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
-        this.codigo = codigo;
         this.username = username;
     }
 
     public UsuarioDTO(Usuario usuario) {
-        this(usuario.getId(), usuario.getNome(), usuario.getSobrenome(),
-                usuario.getCodigo(), usuario.getUsername());
+        this(usuario.getId(), usuario.getNome(), usuario.getSobrenome(),usuario.getUsername());
     }
 
     public Long getId() {
@@ -57,14 +53,6 @@ public class UsuarioDTO implements Serializable {
 
     public void setSobrenome(String sobrenome) {
         this.sobrenome = sobrenome;
-    }
-
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
     }
 
     public String getUsername() {

@@ -43,32 +43,30 @@ public class UsuarioResource {
                 .body(obj);
     }
 
-//    @GetMapping(value = "/usuario")
-//    public ResponseEntity<List<Usuario>> findAll(){
-//
-//        log.debug("REST request findAll() Usuario");
-//
-//        List<Usuario> list = usuarioService.findAll();
-//
-//        return ResponseEntity.ok().body(list);
-//    }
-
     @GetMapping(value = "/usuario")
-    public String loginer() {
-        return "Logou";
+    public List<Usuario> findAll(){
+
+        log.debug("REST request findAll() Usuario");
+
+        return usuarioService.findAll();
     }
+
+//    @GetMapping(value = "/usuario")
+//    public String loginer() {
+//        return "Logou";
+//    }
 
     @GetMapping(value = "/acesso")
     public String acesso() {
         return "acessou!";
     }
 
-    /*@GetMapping(value = "/usuario/{id}")
+    @GetMapping(value = "/usuario/{id}")
     public ResponseEntity<?> find(@PathVariable Long id) {
-        UsuarioDTO obj = usuarioService.find(id);
+        Usuario obj = usuarioService.find(id);
 
-        return ResponseEntity.ok(obj);
-    }*/
+        return ResponseEntity.ok().body(obj);
+    }
 
 
 

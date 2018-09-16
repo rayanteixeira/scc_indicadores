@@ -3,7 +3,8 @@ CREATE TABLE usuario (
 	nome VARCHAR(50) NOT NULL,
 	sobrenome VARCHAR(50) NOT NULL,
 	password VARCHAR(150) NOT NULL,
-	username VARCHAR(50) NOT NULL
+	username VARCHAR(50) NOT NULL,
+	enabled BOOLEAN
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE permissao (
@@ -19,8 +20,8 @@ CREATE TABLE usuario_permissao (
 	FOREIGN KEY (id_permissao) REFERENCES permissao(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO usuario (id, nome, sobrenome, password, username) values (1, 'administrador', 'administrador', '$2a$10$X607ZPhQ4EgGNaYKt3n4SONjIv9zc.VMWdEuhCuba7oLAL5IvcL5.', 'admin');
-INSERT INTO usuario (id, nome, sobrenome, password, username) values (2, 'user', 'user', '$2a$10$PWEgXQFhHgsPhawnnQO5M.cuTRqSh3edO8yMiNEC2rzF9uiKGPkQW', 'user');
+INSERT INTO usuario (id, nome, sobrenome, password, username, enabled) values (1, 'administrador', 'administrador', '$2a$10$X607ZPhQ4EgGNaYKt3n4SONjIv9zc.VMWdEuhCuba7oLAL5IvcL5.', 'admin', TRUE);
+INSERT INTO usuario (id, nome, sobrenome, password, username, enabled) values (2, 'user', 'user', '$2a$10$PWEgXQFhHgsPhawnnQO5M.cuTRqSh3edO8yMiNEC2rzF9uiKGPkQW', 'user', TRUE);
 
 INSERT INTO permissao (id, descricao) values (1, 'ROLE_CADASTRAR_USUARIO');
 INSERT INTO permissao (id, descricao) values (2, 'ROLE_VISUALIZAR_USUARIO');
