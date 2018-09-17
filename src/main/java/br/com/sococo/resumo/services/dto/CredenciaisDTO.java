@@ -1,7 +1,5 @@
 package br.com.sococo.resumo.services.dto;
 
-import com.sun.org.apache.xpath.internal.operations.String;
-
 import java.io.Serializable;
 
 public class CredenciaisDTO implements Serializable {
