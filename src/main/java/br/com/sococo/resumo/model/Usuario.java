@@ -1,19 +1,17 @@
 package br.com.sococo.resumo.model;
 
+import br.com.sococo.resumo.model.enums.Perfil;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
-
-import br.com.sococo.resumo.services.dto.UsuarioDTO;
-import br.com.sococo.resumo.model.enums.Perfil;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
+@Table(name = "usuario")
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -28,10 +26,6 @@ public class Usuario implements Serializable {
 
     private String sobrenome;
 
-    @NotEmpty(message = "O código é obrigatório")
-    @Column(name = "codigo", nullable = false, unique = true)
-    private String codigo;
-
     @NotEmpty(message = "O username é obrigatório")
     @Column(nullable = false, unique = true)
     private String username;
@@ -41,34 +35,32 @@ public class Usuario implements Serializable {
     @Column(name = "password", nullable = false)
     private String password;
 
-    // pattern = "dd/MM/yyyy HH:mm:ss"
-    //@DateTimeFormat(pattern = "dd/MM/yyyy")
-    //@Temporal(TemporalType.DATE)
-    @Column(name = "data_cadastro", nullable = false)
-    private LocalDate dataCadastro;
-
     @Column(name = "enabled")
     private boolean enabled = true;
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "PERFIS")
-    private Set<Integer> perfis = new HashSet<>();
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "usuario_permissao", joinColumns = @JoinColumn(name = "id_usuario")
+            , inverseJoinColumns = @JoinColumn(name = "id_permissao"))
+    private List<Permissao> permissoes;
+
+//    @ElementCollection(fetch = FetchType.EAGER)
+//    @CollectionTable(name = "PERFIS")
+//    private Set<Integer> perfis = new HashSet<>();
+
+    //    para garantir que todos os usuarios tenha o perfil cliente
+//    public Usuario() {
+//        addPerfil(Perfil.USER);
+//    }
 
     public Usuario() {
-        addPerfil(Perfil.USER);
     }
 
-    public Usuario(Long id, String nome, String sobrenome, String codigo, String username) {
+    public Usuario(Long id, String nome, String sobrenome, String password) {
         this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
-        this.codigo = codigo;
-        this.username = username;
-    }
-
-    public Usuario(UsuarioDTO usuario) {
-        this(usuario.getId(), usuario.getNome(), usuario.getSobrenome(),
-                usuario.getCodigo(), usuario.getUsername());
+        this.password = password;
+//        addPerfil(Perfil.USER);
     }
 
     public static long getSerialVersionUID() {
@@ -99,14 +91,6 @@ public class Usuario implements Serializable {
         this.sobrenome = sobrenome;
     }
 
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
-
     public String getUsername() {
         return username;
     }
@@ -123,14 +107,6 @@ public class Usuario implements Serializable {
         this.password = password;
     }
 
-    public LocalDate getDataCadastro() {
-        return dataCadastro;
-    }
-
-    public void setDataCadastro(LocalDate dataCadastro) {
-        this.dataCadastro = dataCadastro;
-    }
-
     public boolean isEnabled() {
         return enabled;
     }
@@ -139,13 +115,20 @@ public class Usuario implements Serializable {
         this.enabled = enabled;
     }
 
-    public Set<Perfil> getPerfis() {
+//    public Set<Perfil> getPerfis() {
+//        return perfis.stream().map(x -> Perfil.toEnum(x)).collect(Collectors.toSet());
+//    }
+//
+//    public void addPerfil(Perfil perfil) {
+//        perfis.add(perfil.getCod());
+//    }
 
-        return perfis.stream().map(x -> Perfil.toEnum(x)).collect(Collectors.toSet());
+    public List<Permissao> getPermissoes() {
+        return permissoes;
     }
 
-    public void addPerfil(Perfil perfil) {
-        perfis.add(perfil.getCod());
+    public void setPermissoes(List<Permissao> permissoes) {
+        this.permissoes = permissoes;
     }
 
     @Override
@@ -168,10 +151,8 @@ public class Usuario implements Serializable {
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", sobrenome='" + sobrenome + '\'' +
-                ", codigo='" + codigo + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", dataCadastro=" + dataCadastro +
                 ", enabled=" + enabled +
                 '}';
     }

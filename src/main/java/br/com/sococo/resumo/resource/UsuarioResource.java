@@ -1,9 +1,8 @@
 package br.com.sococo.resumo.resource;
 
-import br.com.sococo.resumo.services.UsuarioService;
-import br.com.sococo.resumo.services.dto.UsuarioDTO;
 import br.com.sococo.resumo.model.Usuario;
 import br.com.sococo.resumo.resource.util.HeaderUtil;
+import br.com.sococo.resumo.services.UsuarioService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "api")
-@CrossOrigin(maxAge = 10, origins = {"*"})
 public class UsuarioResource {
 
     @Autowired
@@ -36,7 +34,7 @@ public class UsuarioResource {
         }
 
         Usuario obj = usuarioService.insert(usuario);
-        URI uri = new URI("/api/usuario/"+ obj.getId());
+        URI uri = new URI("/api/usuario/" + obj.getId());
 
         return ResponseEntity.created(uri)
                 .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, obj.getId().toString()))
@@ -44,22 +42,27 @@ public class UsuarioResource {
     }
 
     @GetMapping(value = "/usuario")
-    public ResponseEntity<List<Usuario>> findAll(){
+    public List<Usuario> findAll() {
 
         log.debug("REST request findAll() Usuario");
 
-        List<Usuario> list = usuarioService.findAll();
-
-        return ResponseEntity.ok().body(list);
+        return usuarioService.findAll();
     }
 
-    /*@GetMapping(value = "/usuario/{id}")
+//    @GetMapping(value = "/usuario")
+//    public String loginer() {
+//        return "Logou";
+//    }
+
+    @GetMapping(value = "/acesso")
+    public String acesso() {
+        return "acessou!";
+    }
+
+    @GetMapping(value = "/usuario/{id}")
     public ResponseEntity<?> find(@PathVariable Long id) {
-        UsuarioDTO obj = usuarioService.find(id);
-
-        return ResponseEntity.ok(obj);
-    }*/
-
-
+        Usuario obj = usuarioService.find(id);
+        return ResponseEntity.ok().body(obj);
+    }
 
 }
