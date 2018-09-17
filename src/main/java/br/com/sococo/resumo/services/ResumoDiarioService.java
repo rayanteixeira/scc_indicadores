@@ -22,18 +22,19 @@ public class ResumoDiarioService {
     private Mailer mailer;
 
 
-    public ResumoDiario insert(ResumoDiario obj) {
+    public ResumoDiario insert(ResumoDiario resumoDiario) {
+        System.out.println("dataLancamento : " +resumoDiario.getDataLancamento());
+        // resumoDiario.setDataLancamento(LocalDate.now());
+        LocalDate date = resumoDiario.getDataLancamento();
 
-        obj.setDataLancamento(LocalDate.now());
-        LocalDate date = obj.getDataLancamento();
         // separando os valores de data_lancamento
-        obj.setDiaLancamento(String.valueOf(date.getDayOfMonth()));
-        obj.setMesLancamento(String.valueOf(date.getMonthValue()));
-        obj.setAnoLancamento(String.valueOf(date.getYear()));
-        obj.setDiaMesLancamento(String.valueOf(date.getDayOfMonth() + "-" + date.getMonthValue()));
+        resumoDiario.setDiaLancamento(String.valueOf(date.getDayOfMonth()));
+        resumoDiario.setMesLancamento(String.valueOf(date.getMonthValue()));
+        resumoDiario.setAnoLancamento(String.valueOf(date.getYear()));
+        resumoDiario.setDiaMesLancamento(String.valueOf(date.getDayOfMonth() + "-" + date.getMonthValue()));
 
 
-        ResumoDiario objSave = resumoDiarioRepository.save(obj);
+        ResumoDiario objSave = resumoDiarioRepository.save(resumoDiario);
 
         mailer.enviarEmail(objSave);
 
