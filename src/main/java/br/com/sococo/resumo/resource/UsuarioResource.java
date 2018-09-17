@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -41,6 +42,7 @@ public class UsuarioResource {
                 .body(obj);
     }
 
+    @PreAuthorize("hasAnyRole('VISUALIZAR_USUARIO')")
     @GetMapping(value = "/usuario")
     public List<Usuario> findAll() {
 
@@ -49,16 +51,7 @@ public class UsuarioResource {
         return usuarioService.findAll();
     }
 
-//    @GetMapping(value = "/usuario")
-//    public String loginer() {
-//        return "Logou";
-//    }
-
-    @GetMapping(value = "/acesso")
-    public String acesso() {
-        return "acessou!";
-    }
-
+    @PreAuthorize("hasAnyRole('VISUALIZAR_USUARIO')")
     @GetMapping(value = "/usuario/{id}")
     public ResponseEntity<?> find(@PathVariable Long id) {
         Usuario obj = usuarioService.find(id);
