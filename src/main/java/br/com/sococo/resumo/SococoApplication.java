@@ -22,11 +22,11 @@ public class SococoApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        Optional<Usuario> usuario = usuarioRepository.findByUsername("admin");
-
-        if (usuario.isPresent()) {
-            System.out.println(usuario.get().getNome());
-        } else System.out.println("ERRO");
+//        Optional<Usuario> usuario = usuarioRepository.findByUsername("admin");
+//
+//        if (usuario.isPresent()) {
+//            System.out.println(usuario.get().getNome());
+//        } else System.out.println("ERRO");
 
     }
 }

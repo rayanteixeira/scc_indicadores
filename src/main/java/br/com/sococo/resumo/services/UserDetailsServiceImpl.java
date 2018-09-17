@@ -25,10 +25,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<Usuario> usuarioOptional = usuarioRepository.findByUsername(username);
-        if (usuarioOptional.isPresent()) {
-            System.out.println(usuarioOptional.get().getNome());
-        } else System.out.println("ERRO");
-
         Usuario usuario = usuarioOptional
                 .orElseThrow(() -> new UsernameNotFoundException("Usuário e/ou senha incorretos"));
 

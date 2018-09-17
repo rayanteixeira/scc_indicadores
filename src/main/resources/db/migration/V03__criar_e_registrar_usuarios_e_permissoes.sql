@@ -21,7 +21,7 @@ CREATE TABLE usuario_permissao (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO usuario (id, nome, sobrenome, password, username, enabled) values (1, 'administrador', 'administrador', '$2a$10$C4B0em1oYoQYqlWqIgjvRe7wDeaQFYQp91Sngm3rqRWKMk9EfJSt6', 'admin', TRUE);
-INSERT INTO usuario (id, nome, sobrenome, password, username, enabled) values (2, 'user', 'user', '$$2a$10$Tw3swBxgcBhwGHJzOf7jVeJ4A23/hxH2HgUCsTE3bkWPJj32ILhIu', 'user', TRUE);
+INSERT INTO usuario (id, nome, sobrenome, password, username, enabled) values (2, 'user', 'user', '$2a$10$dpeJjt3P3u799WJS/D10qe6st0y.WjOq2fq.1HtEBO8Z7.GzNduIK', 'user', TRUE);
 
 INSERT INTO permissao (id, descricao) values (1, 'ROLE_CADASTRAR_USUARIO');
 INSERT INTO permissao (id, descricao) values (2, 'ROLE_VISUALIZAR_USUARIO');
