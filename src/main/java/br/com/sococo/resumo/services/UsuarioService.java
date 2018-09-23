@@ -2,8 +2,10 @@ package br.com.sococo.resumo.services;
 
 import br.com.sococo.resumo.model.Usuario;
 import br.com.sococo.resumo.repository.UsuarioRepository;
+import br.com.sococo.resumo.security.UserSS;
 import br.com.sococo.resumo.services.dto.UsuarioDTO;
 import br.com.sococo.resumo.services.dto.UsuarioNewDTO;
+import br.com.sococo.resumo.services.exceptions.AuthorizationException;
 import br.com.sococo.resumo.services.exceptions.DataIntegrityException;
 import br.com.sococo.resumo.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,15 +29,16 @@ public class UsuarioService {
 
     public Usuario find(Long id) {
 
-        //UserSS user = UserService.authenticated();
+        UserSS user = UserService.authenticated();
 
-//        if (user == null || !user.hasRole(Perfil.ADMIN) && !id.equals(user.getId())) {
-//            throw new AuthorizationException("Acesso Negado");
-//        }
+        if (user == null || !user.isAdmin() && !id.equals(user.getId())) {
+            throw new AuthorizationException("Acesso Negado");
+        }
 
         Optional<Usuario> obj = usuarioRepository.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException(
                 "Objeto não encontrado! Id: " + id + ", tipo: " + Usuario.class.getName()));
+
     }
 
     public Usuario insert(Usuario obj) {
@@ -51,6 +54,11 @@ public class UsuarioService {
     }
 
     public List<Usuario> findAll() {
+        UserSS user = UserService.authenticated();
+
+        if (user == null || !user.isAdmin()) {
+            throw new AuthorizationException("Acesso Negado");
+        }
         return usuarioRepository.findAll();
     }
 

@@ -2,6 +2,7 @@ package br.com.sococo.resumo.security;
 
 import br.com.sococo.resumo.model.Usuario;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
@@ -24,6 +25,10 @@ public class UserSS implements UserDetails {
         this.password = usuario.getPassword();
         this.enable = usuario.isEnabled();
         this.permissoes = permissoes;
+    }
+
+    public boolean isAdmin() {
+        return getAuthorities().contains(new SimpleGrantedAuthority("ROLE_ADMIN"));
     }
 
     public Long getId() {
@@ -63,5 +68,16 @@ public class UserSS implements UserDetails {
     @Override
     public boolean isEnabled() {
         return enable;
+    }
+
+    @Override
+    public String toString() {
+        return "UserSS{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", enable=" + enable +
+                ", permissoes=" + permissoes +
+                '}';
     }
 }

@@ -42,16 +42,14 @@ public class UsuarioResource {
                 .body(obj);
     }
 
-    @PreAuthorize("hasAnyRole('VISUALIZAR_USUARIO')")
     @GetMapping(value = "/usuario")
-    public List<Usuario> findAll() {
+    public ResponseEntity<List<Usuario>> findAll() {
 
         log.debug("REST request findAll() Usuario");
 
-        return usuarioService.findAll();
+        return ResponseEntity.ok().body(usuarioService.findAll());
     }
 
-    @PreAuthorize("hasAnyRole('VISUALIZAR_USUARIO')")
     @GetMapping(value = "/usuario/{id}")
     public ResponseEntity<?> find(@PathVariable Long id) {
         Usuario obj = usuarioService.find(id);
