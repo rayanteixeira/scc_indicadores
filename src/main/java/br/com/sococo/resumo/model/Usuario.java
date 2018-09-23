@@ -1,12 +1,10 @@
 package br.com.sococo.resumo.model;
 
-import br.com.sococo.resumo.model.enums.Perfil;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
@@ -30,6 +28,11 @@ public class Usuario implements Serializable {
     @Column(nullable = false, unique = true)
     private String username;
 
+
+    @NotEmpty(message = "O email é obrigatório")
+    @Column(nullable = false, unique = true)
+    private String email;
+
     //@NotEmpty(message = "A senha é obrigatória")
     @JsonIgnore
     @Column(name = "password", nullable = false)
@@ -37,6 +40,14 @@ public class Usuario implements Serializable {
 
     @Column(name = "enabled")
     private boolean enabled = true;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "usuario_permissao", joinColumns = @JoinColumn(name = "id_usuario")

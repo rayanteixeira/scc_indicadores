@@ -4,6 +4,7 @@ CREATE TABLE usuario (
 	sobrenome VARCHAR(50) NOT NULL,
 	password VARCHAR(150) NOT NULL,
 	username VARCHAR(50) NOT NULL,
+	email VARCHAR(50) NOT NULL,
 	enabled BOOLEAN
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -20,8 +21,8 @@ CREATE TABLE usuario_permissao (
 	FOREIGN KEY (id_permissao) REFERENCES permissao(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO usuario (id, nome, sobrenome, password, username, enabled) values (1, 'administrador', 'administrador', '$2a$10$C4B0em1oYoQYqlWqIgjvRe7wDeaQFYQp91Sngm3rqRWKMk9EfJSt6', 'admin', TRUE);
-INSERT INTO usuario (id, nome, sobrenome, password, username, enabled) values (2, 'user', 'user', '$2a$10$dpeJjt3P3u799WJS/D10qe6st0y.WjOq2fq.1HtEBO8Z7.GzNduIK', 'user', TRUE);
+INSERT INTO usuario (id, nome, sobrenome, password, username, email, enabled) values (1, 'administrador', 'administrador', '$2a$10$C4B0em1oYoQYqlWqIgjvRe7wDeaQFYQp91Sngm3rqRWKMk9EfJSt6', 'admin', 'jaironsousa@gmail.com', TRUE);
+INSERT INTO usuario (id, nome, sobrenome, password, username, email, enabled) values (2, 'user', 'user', '$2a$10$dpeJjt3P3u799WJS/D10qe6st0y.WjOq2fq.1HtEBO8Z7.GzNduIK', 'user', 'user@email.com', TRUE);
 
 INSERT INTO permissao (id, descricao) values (1, 'ROLE_ADMIN');
 INSERT INTO permissao (id, descricao) values (2, 'ROLE_CADASTRAR_USUARIO');
