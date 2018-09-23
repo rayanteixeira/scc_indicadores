@@ -3,11 +3,11 @@ package br.com.sococo.resumo.resource;
 import br.com.sococo.resumo.model.Usuario;
 import br.com.sococo.resumo.resource.util.HeaderUtil;
 import br.com.sococo.resumo.services.UsuarioService;
+import br.com.sococo.resumo.services.dto.UsuarioNewDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -26,15 +26,17 @@ public class UsuarioResource {
     private final Logger log = LoggerFactory.getLogger(UsuarioResource.class);
 
     @PostMapping(value = "/usuario")
-    public ResponseEntity<Usuario> insert(@RequestBody Usuario usuario) throws URISyntaxException {
+    public ResponseEntity<Usuario> insert(@RequestBody UsuarioNewDTO usuarioDTO) throws URISyntaxException {
 
-        log.debug("REST request to save Usuario : {}", usuario);
+        log.debug("REST request to save Usuario : {}", usuarioDTO);
 
-        if (usuario.getId() != null) {
-            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A id ja consta na base de dados")).body(null);
-        }
+//        if (usuarioDTO.getId() != null) {
+//            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A id ja consta na base de dados")).body(null);
+//        }
 
-        Usuario obj = usuarioService.insert(usuario);
+        Usuario obj = usuarioService.fromDTO(usuarioDTO);
+
+        obj = usuarioService.insert(obj);
         URI uri = new URI("/api/usuario/" + obj.getId());
 
         return ResponseEntity.created(uri)

@@ -3,7 +3,6 @@ package br.com.sococo.resumo.resource;
 import br.com.sococo.resumo.model.FiltroBusca;
 import br.com.sococo.resumo.model.ResumoDiario;
 import br.com.sococo.resumo.resource.util.HeaderUtil;
-import br.com.sococo.resumo.services.DashboardService;
 import br.com.sococo.resumo.services.ResumoDiarioService;
 import br.com.sococo.resumo.services.dto.LancamentoDTO;
 import org.slf4j.Logger;
@@ -19,7 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "api")
-@CrossOrigin(maxAge = 10, origins = {"*"})
+//@CrossOrigin(maxAge = 10, origins = {"*"})
 public class ResumoDiarioResource {
 
     private static final String ENTITY_NAME = "resumo-diario";

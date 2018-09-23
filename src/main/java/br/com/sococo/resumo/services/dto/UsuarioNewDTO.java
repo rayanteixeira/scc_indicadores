@@ -2,6 +2,7 @@ package br.com.sococo.resumo.services.dto;
 
 import org.hibernate.validator.constraints.Length;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
@@ -18,6 +19,10 @@ public class UsuarioNewDTO implements Serializable {
 
     @NotEmpty(message = "Preenchimento Obrigatório")
     private String username;
+
+    @NotEmpty(message = "Preenchimento Obrigatório")
+    @Email(message = "Email inválido")
+    private String email;
 
     @NotEmpty(message = "Preenchimento Obrigatório")
     private String password;
@@ -47,6 +52,14 @@ public class UsuarioNewDTO implements Serializable {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
