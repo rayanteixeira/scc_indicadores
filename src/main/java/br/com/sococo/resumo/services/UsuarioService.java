@@ -1,6 +1,8 @@
 package br.com.sococo.resumo.services;
 
+import br.com.sococo.resumo.model.Permissao;
 import br.com.sococo.resumo.model.Usuario;
+import br.com.sococo.resumo.repository.PermissapRepository;
 import br.com.sococo.resumo.repository.UsuarioRepository;
 import br.com.sococo.resumo.security.UserSS;
 import br.com.sococo.resumo.services.dto.UsuarioDTO;
@@ -13,6 +15,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,6 +26,9 @@ public class UsuarioService {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private PermissapRepository permissapRepository;
 
     @Autowired
     private BCryptPasswordEncoder bCrypt;
@@ -38,13 +44,20 @@ public class UsuarioService {
         Optional<Usuario> obj = usuarioRepository.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException(
                 "Objeto não encontrado! Id: " + id + ", tipo: " + Usuario.class.getName()));
-
     }
 
     public Usuario insert(Usuario obj) {
         obj.setId(null);
-        usuarioRepository.save(obj);
-        return obj;
+        obj.setEnabled(Boolean.TRUE);
+        obj.setPermissoes(addPermissaoUser());
+        Usuario objsalvo = usuarioRepository.save(obj);
+        return objsalvo;
+    }
+
+    private List<Permissao> addPermissaoUser() {
+        List<Permissao> list = new ArrayList<>();
+        list.add(permissapRepository.findByDescricao("ROLE_USER"));
+        return list;
     }
 
     public Usuario update(Usuario obj) {
@@ -77,10 +90,10 @@ public class UsuarioService {
     }
 
     public Usuario fromDTO(UsuarioDTO objDto) {
-        return new Usuario(objDto.getId(), objDto.getNome(), objDto.getSobrenome(), null);
+        return new Usuario(objDto.getId(), objDto.getNome(), objDto.getSobrenome(), objDto.getUsername(), objDto.getEmail());
     }
 
     public Usuario fromDTO(UsuarioNewDTO objDto) {
-        return new Usuario(null, objDto.getNome(), objDto.getSobrenome(), bCrypt.encode(objDto.getPassword()));
+        return new Usuario(objDto.getNome(), objDto.getSobrenome(), objDto.getUsername(), objDto.getEmail(), bCrypt.encode(objDto.getPassword()));
     }
 }

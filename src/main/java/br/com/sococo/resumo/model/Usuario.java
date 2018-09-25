@@ -1,12 +1,10 @@
 package br.com.sococo.resumo.model;
 
-import br.com.sococo.resumo.model.enums.Perfil;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
@@ -30,35 +28,35 @@ public class Usuario implements Serializable {
     @Column(nullable = false, unique = true)
     private String username;
 
+    @NotEmpty(message = "O email é obrigatório")
+    @Column(nullable = false, unique = true)
+    private String email;
+
     //@NotEmpty(message = "A senha é obrigatória")
     @JsonIgnore
     @Column(name = "password", nullable = false)
     private String password;
 
     @Column(name = "enabled")
-    private boolean enabled = true;
+    private boolean enabled;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "usuario_permissao", joinColumns = @JoinColumn(name = "id_usuario")
             , inverseJoinColumns = @JoinColumn(name = "id_permissao"))
     private List<Permissao> permissoes;
 
-//    @ElementCollection(fetch = FetchType.EAGER)
-//    @CollectionTable(name = "PERFIS")
-//    private Set<Integer> perfis = new HashSet<>();
-
-    //    para garantir que todos os usuarios tenha o perfil cliente
-//    public Usuario() {
-//        addPerfil(Perfil.USER);
-//    }
-
     public Usuario() {
     }
 
-    public Usuario(Long id, String nome, String sobrenome, String password) {
-        this.id = id;
+    public Usuario(Long id, String nome, String sobrenome, String username, Object o) {
+    }
+
+    public Usuario(String nome, String sobrenome, String username, String email, String password) {
+
         this.nome = nome;
         this.sobrenome = sobrenome;
+        this.username = username;
+        this.email = email;
         this.password = password;
 //        addPerfil(Perfil.USER);
     }
@@ -97,6 +95,14 @@ public class Usuario implements Serializable {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
