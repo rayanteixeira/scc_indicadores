@@ -3,61 +3,19 @@
 <head>
     <title th:remove="all">Order Confirmation</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
-
 </head>
 <body>
 <div>
-    <h1>
-        Lançamento número: <span th:text="${obj.id}"> </span>
-    </h1>
-    <p>
-        Data: <span
-            th:text="|${obj.diaLancamento}/${obj.mesLancamento}/${obj.getAnoLancamento()}|"></span>
-    </p>
 
-    <h3>Detalhes do lançamento:</h3>
-    <table border="1">
-        <tr>
-            <th>Cocos Processados</th>
-            <th>cocos Desfibrados</th>
-            <th>Cri</th>
-            <th>Flococo</th>
-            <th>Óleo Ind. TA</th>
-            <th>Óleo Ind. ETE</th>
-            <th>Torta</th>
-            <th>Água Coco Sococo</th>
-            <th>Água Coco Verde</th>
-            <th>% Coco Germinado</th>
-            <th>Total De Cacambas</th>
-            <th>Caixa Padrao</th>
-            <th>numerNº De Fardos</th>
-        </tr>
-        <tr>
-            <td th:text="${obj.cocosProcessados}"></td>
-            <td th:text="${obj.cocosDesfibrados}"></td>
-            <td th:text="${obj.cri}"></td>
-            <td th:text="${obj.flococo}"></td>
-            <td th:text="${obj.oleoIndustrialTipoA}"></td>
-            <td th:text="${obj.oleoIndustrialETE}"></td>
-            <td th:text="${obj.torta}"></td>
-            <td th:text="${obj.aguaDeCocoSococo}"></td>
-            <td th:text="${obj.aguaDeCocoVerde}"></td>
-            <td th:text="${obj.porcentagemCocoGerminado}"></td>
-            <td th:text="${obj.totalDeCacambas}"></td>
-            <td th:text="${obj.caixaPadrao}"></td>
-            <td th:text="${obj.numeroDeFardos}"></td>
-
-        </tr>
-    </table>
-
+    <h3>Produção do dia: <span style="color:rgb(154, 0, 0)" th:text="|${obj.diaLancamento}/${obj.mesLancamento}/${obj.anoLancamento}|"></span></h3>
+    <h3>Nº da produção:<span th:text="${obj.id}"> </span></h3>
 
     <table border="1">
-        <tr>
+        <tr style="background-color: red; color: white;">
             <th>
                 <strong>SOCOCO</strong>
             </th>
-            <th th:text="Total Dia"></th>
+            <th>Total Dia</th>
         </tr>
         <tr>
             <th>Cocos Proces. (und)</th>
@@ -69,9 +27,9 @@
         </tr>
         <tr>
             <th>
-                <span>Rendimento</span>
+                <span style="color:rgb(154, 0, 0)">Rendimento</span>
             </th>
-            <td th:text="Rendimento"></td>
+            <td>FALTA SOMAR AQUI</td>
         </tr>
         <tr>
             <th>C.R.I (kg)</th>
@@ -85,7 +43,7 @@
             <th>
                 <span style="color:rgb(154, 0, 0)">Total (C.R.I + Flococo)</span>
             </th>
-            <td th:text="TOTAL CRI FLOCOCO"></td>
+            <td>FALTA SOMAR AQUI</td>
         </tr>
         <tr>
             <th>Óleo Ind. Tipo A (L)</th>
@@ -101,11 +59,11 @@
         </tr>
 
         <!-- PRODUCAO ACQUA -->
-        <tr>
+        <tr style="background-color: green; color: white;">
             <th>
                 <strong>ACQUA</strong>
             </th>
-            <th th:text="Total Dia"></th>
+            <th>Total Dia</th>
         </tr>
         <tr>
             <th>Água de C. Sococo (L)</th>
@@ -119,7 +77,7 @@
             <th>
                 <span style="color:rgb(154, 0, 0)">TOTAL</span>
             </th>
-            <td th:text="TOTAL"></td>
+            <td>FALTA SOMAR AQUI</td>
         </tr>
         <tr>
             <th>Caixa Padrão (und)</th>
@@ -135,11 +93,11 @@
         </tr>
 
         <!-- PRODUCAO AMAFIBRA -->
-        <tr>
+        <tr style="background-color: darkgoldenrod; color: white;">
             <th>
                 <strong>AMAFIBRA</strong>
             </th>
-            <th th:text="Total Dia"></th>
+            <th>Total Dia</th>
         </tr>
         <tr>
             <th>Nº de Fardos (L)</th>
@@ -147,9 +105,6 @@
         </tr>
     </table>
 
-    <p>
-        Atualização diária
-    </p>
 </div>
 </body>
 </html>
