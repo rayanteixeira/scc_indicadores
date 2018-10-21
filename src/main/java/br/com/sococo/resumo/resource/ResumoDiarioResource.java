@@ -5,6 +5,7 @@ import br.com.sococo.resumo.model.ResumoDiario;
 import br.com.sococo.resumo.resource.util.HeaderUtil;
 import br.com.sococo.resumo.services.ResumoDiarioService;
 import br.com.sococo.resumo.services.dto.LancamentoDTO;
+import br.com.sococo.resumo.services.dto.ResumoDiarioDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,16 +34,16 @@ public class ResumoDiarioResource {
      * @return
      */
     @PostMapping(value = "/salva-resumo") //salva resumo
-    public ResponseEntity<ResumoDiario> insert(@RequestBody ResumoDiario resumoDiario) throws URISyntaxException {
-        log.debug("REST request to save Resumo Diario : {}", resumoDiario);
+    public ResponseEntity<ResumoDiario> insert(@RequestBody ResumoDiarioDTO resumoDiarioDTO) throws URISyntaxException {
+        log.debug("REST request to save Resumo Diario : {}", resumoDiarioDTO);
 
-        if (resumoDiario.getId() != null) {
+        if (resumoDiarioDTO.getId() != null) {
             return ResponseEntity.badRequest()
                     .headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "O id ja consta na base de dados"))
                     .body(null);
         }
 
-        ResumoDiario obj = resumoDiarioService.insert(resumoDiario);
+        ResumoDiario obj = resumoDiarioService.insert(resumoDiarioDTO);
         URI uri = new URI("/api/lancamento-do-dia/" + obj.getId());
 
 

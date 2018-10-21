@@ -1,5 +1,6 @@
-package br.com.sococo.resumo.model;
+package br.com.sococo.resumo.services.dto;
 
+import br.com.sococo.resumo.model.ResumoDiario;
 import br.com.sococo.resumo.services.converter.ConverterUtil;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -10,7 +11,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
-public class ResumoDiario implements Serializable {
+public class ResumoDiarioDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -24,41 +25,41 @@ public class ResumoDiario implements Serializable {
     private LocalDate dataLancamento;
 
     @Column(name = "cocos_processados")
-    private Double cocosProcessados;
+    private String cocosProcessados;
 
     @Column(name = "cocos_desfibrados")
-    private Double cocosDesfibrados;
+    private String cocosDesfibrados;
 
-    private Double cri;
+    private String cri;
 
-    private Double flococo;
+    private String flococo;
 
     @Column(name = "oleo_industrial_tipo_a")
-    private Double oleoIndustrialTipoA;
+    private String oleoIndustrialTipoA;
 
     @Column(name = "oleo_industrial_ete")
-    private Double oleoIndustrialETE;
+    private String oleoIndustrialETE;
 
-    private Double torta;
+    private String torta;
 
     // ACQUA
     @Column(name = "agua_coco_sococo")
-    private Double aguaDeCocoSococo;
+    private String aguaDeCocoSococo;
 
     @Column(name = "agua_coco_verde")
-    private Double aguaDeCocoVerde;
+    private String aguaDeCocoVerde;
 
     @Column(name = "caixa_padrao")
-    private Double caixaPadrao;
+    private String caixaPadrao;
 
     @Column(name = "porcentagem_coco_germinado")
-    private Double porcentagemCocoGerminado;
+    private String porcentagemCocoGerminado;
 
     @Column(name = "total_cacambas")
-    private Double totalDeCacambas;
+    private String totalDeCacambas;
     //AMAFIBRA
     @Column(name = "numero_fardos")
-    private Double numeroDeFardos;
+    private String numeroDeFardos;
     //DATAS
     @Column(name = "dia_lancamento")
     private String diaLancamento;
@@ -69,10 +70,10 @@ public class ResumoDiario implements Serializable {
     @Column(name = "dia_mes_lancamento")
     private String diaMesLancamento;
 
-    public ResumoDiario() {
+    public ResumoDiarioDTO() {
     }
 
-    public ResumoDiario(LocalDate dataLancamento, Double cocosProcessados, Double cocosDesfibrados, Double cri, Double flococo, Double oleoIndustrialTipoA, Double oleoIndustrialETE, Double torta, Double aguaDeCocoSococo, Double aguaDeCocoVerde, Double caixaPadrao, Double porcentagemCocoGerminado, Double totalDeCacambas, Double numeroDeFardos) {
+    public ResumoDiarioDTO(LocalDate dataLancamento, String cocosProcessados, String cocosDesfibrados, String cri, String flococo, String oleoIndustrialTipoA, String oleoIndustrialETE, String torta, String aguaDeCocoSococo, String aguaDeCocoVerde, String caixaPadrao, String porcentagemCocoGerminado, String totalDeCacambas, String numeroDeFardos) {
         this.dataLancamento = dataLancamento;
         this.cocosProcessados = cocosProcessados;
         this.cocosDesfibrados = cocosDesfibrados;
@@ -89,7 +90,7 @@ public class ResumoDiario implements Serializable {
         this.porcentagemCocoGerminado = porcentagemCocoGerminado;
     }
 
-    public ResumoDiario(Double cocosProcessados, Double cocosDesfibrados, Double cri, Double flococo, Double oleoIndustrialTipoA, Double oleoIndustrialETE, Double torta, Double aguaDeCocoSococo, Double aguaDeCocoVerde,  Double caixaPadrao, Double porcentagemCocoGerminado, Double totalDeCacambas, Double numeroDeFardos) {
+    public ResumoDiarioDTO(String cocosProcessados, String cocosDesfibrados, String cri, String flococo, String oleoIndustrialTipoA, String oleoIndustrialETE, String torta, String aguaDeCocoSococo, String aguaDeCocoVerde, String caixaPadrao, String porcentagemCocoGerminado, String totalDeCacambas, String numeroDeFardos) {
         this.cocosProcessados = cocosProcessados;
         this.cocosDesfibrados = cocosDesfibrados;
         this.cri = cri;
@@ -105,19 +106,25 @@ public class ResumoDiario implements Serializable {
         this.porcentagemCocoGerminado = porcentagemCocoGerminado;
     }
 
-    public Double getTotalCocos() {
-        //DecimalFormat fmt = new DecimalFormat("#.##");
-        return ConverterUtil.converterDoubleDoisDecimais(Double.valueOf(cocosDesfibrados + cocosProcessados));
-    }
+    public ResumoDiario toEntity(ResumoDiarioDTO diarioDTO) {
+        ResumoDiario resumoDiario = new ResumoDiario(
+                diarioDTO.getDataLancamento(),
+                ConverterUtil.substituiVirgulaPorPonto(diarioDTO.getCocosProcessados()),
+                ConverterUtil.substituiVirgulaPorPonto(diarioDTO.getCocosDesfibrados()),
+                ConverterUtil.substituiVirgulaPorPonto(diarioDTO.getCri()),
+                ConverterUtil.substituiVirgulaPorPonto(diarioDTO.getFlococo()),
+                ConverterUtil.substituiVirgulaPorPonto(diarioDTO.getOleoIndustrialTipoA()),
+                ConverterUtil.substituiVirgulaPorPonto(diarioDTO.getOleoIndustrialETE()),
+                ConverterUtil.substituiVirgulaPorPonto(diarioDTO.getTorta()),
+                ConverterUtil.substituiVirgulaPorPonto(diarioDTO.getAguaDeCocoSococo()),
+                ConverterUtil.substituiVirgulaPorPonto(diarioDTO.getAguaDeCocoVerde()),
+                ConverterUtil.substituiVirgulaPorPonto(diarioDTO.getCaixaPadrao()),
+                ConverterUtil.substituiVirgulaPorPonto(diarioDTO.getPorcentagemCocoGerminado()),
+                ConverterUtil.substituiVirgulaPorPonto(diarioDTO.getTotalDeCacambas()),
+                ConverterUtil.substituiVirgulaPorPonto(diarioDTO.getNumeroDeFardos())
+        );
 
-    public Double getTotalCriFlococo() {
-        //DecimalFormat fmt = new DecimalFormat("#.##");
-        return ConverterUtil.converterDoubleDoisDecimais(Double.valueOf(cri + flococo));
-    }
-
-    public Double getTotalAguaCocos() {
-        //DecimalFormat fmt = new DecimalFormat("#.##");
-        return ConverterUtil.converterDoubleDoisDecimais(Double.valueOf(aguaDeCocoSococo + aguaDeCocoVerde));
+        return resumoDiario;
     }
 
     public Long getId() {
@@ -136,103 +143,108 @@ public class ResumoDiario implements Serializable {
         this.dataLancamento = dataLancamento;
     }
 
-    public Double getCocosProcessados() {
-        return ConverterUtil.converterDoubleDoisDecimais(cocosProcessados);
+    public String getCocosProcessados() {
+        return cocosProcessados;
     }
 
-    public void setCocosProcessados(Double cocosProcessados) {
+    public void setCocosProcessados(String cocosProcessados) {
         this.cocosProcessados = cocosProcessados;
     }
 
-    public Double getCocosDesfibrados() { return ConverterUtil.converterDoubleDoisDecimais(cocosDesfibrados); }
+    public String getCocosDesfibrados() {
+        return cocosDesfibrados;
+    }
 
-    public void setCocosDesfibrados(Double cocosDesfibrados) {
+    public void setCocosDesfibrados(String cocosDesfibrados) {
         this.cocosDesfibrados = cocosDesfibrados;
     }
 
-    public Double getCri() {
-        return ConverterUtil.converterDoubleDoisDecimais(cri);
+    public String getCri() {
+        return cri;
     }
 
-    public void setCri(Double cri) {
+    public void setCri(String cri) {
         this.cri = cri;
     }
 
-    public Double getFlococo() {
-        return ConverterUtil.converterDoubleDoisDecimais(flococo);
+    public String getFlococo() {
+        return flococo;
     }
 
-    public void setFlococo(Double flococo) {
+    public void setFlococo(String flococo) {
         this.flococo = flococo;
     }
 
-    public Double getOleoIndustrialTipoA() {
-        return ConverterUtil.converterDoubleDoisDecimais(oleoIndustrialTipoA); }
+    public String getOleoIndustrialTipoA() {
+        return oleoIndustrialTipoA;
+    }
 
-    public void setOleoIndustrialTipoA(Double oleoIndustrialTipoA) {
+    public void setOleoIndustrialTipoA(String oleoIndustrialTipoA) {
         this.oleoIndustrialTipoA = oleoIndustrialTipoA;
     }
 
-    public Double getOleoIndustrialETE() {
-        return ConverterUtil.converterDoubleDoisDecimais(oleoIndustrialETE);
+    public String getOleoIndustrialETE() {
+        return oleoIndustrialETE;
     }
 
-    public void setOleoIndustrialETE(Double oleoIndustrialETE) {
+    public void setOleoIndustrialETE(String oleoIndustrialETE) {
         this.oleoIndustrialETE = oleoIndustrialETE;
     }
 
-    public Double getTorta() {
-        return ConverterUtil.converterDoubleDoisDecimais(torta);
+    public String getTorta() {
+        return torta;
     }
 
-    public void setTorta(Double torta) {
+    public void setTorta(String torta) {
         this.torta = torta;
     }
 
-    public Double getAguaDeCocoSococo() {
-        return ConverterUtil.converterDoubleDoisDecimais(aguaDeCocoSococo);
+    public String getAguaDeCocoSococo() {
+        return aguaDeCocoSococo;
     }
 
-    public void setAguaDeCocoSococo(Double aguaDeCocoSococo) {
+    public void setAguaDeCocoSococo(String aguaDeCocoSococo) {
         this.aguaDeCocoSococo = aguaDeCocoSococo;
     }
 
-    public Double getAguaDeCocoVerde() {
-        return ConverterUtil.converterDoubleDoisDecimais(aguaDeCocoVerde); }
+    public String getAguaDeCocoVerde() {
+        return aguaDeCocoVerde;
+    }
 
-    public void setAguaDeCocoVerde(Double aguaDeCocoVerde) {
+    public void setAguaDeCocoVerde(String aguaDeCocoVerde) {
         this.aguaDeCocoVerde = aguaDeCocoVerde;
     }
 
-    public Double getPorcentagemCocoGerminado() {
-        return ConverterUtil.converterDoubleDoisDecimais(porcentagemCocoGerminado); }
+    public String getCaixaPadrao() {
+        return caixaPadrao;
+    }
 
-    public void setPorcentagemCocoGerminado(Double porcentagemCocoGerminado) {
+    public void setCaixaPadrao(String caixaPadrao) {
+        this.caixaPadrao = caixaPadrao;
+    }
+
+    public String getPorcentagemCocoGerminado() {
+        return porcentagemCocoGerminado;
+    }
+
+    public void setPorcentagemCocoGerminado(String porcentagemCocoGerminado) {
         this.porcentagemCocoGerminado = porcentagemCocoGerminado;
     }
 
-    public Double getTotalDeCacambas() {
-        return ConverterUtil.converterDoubleDoisDecimais(totalDeCacambas);
+    public String getTotalDeCacambas() {
+        return totalDeCacambas;
     }
 
-    public void setTotalDeCacambas(Double totalDeCacambas) {
+    public void setTotalDeCacambas(String totalDeCacambas) {
         this.totalDeCacambas = totalDeCacambas;
     }
 
-    public Double getNumeroDeFardos() {
-        return ConverterUtil.converterDoubleDoisDecimais(numeroDeFardos);
+    public String getNumeroDeFardos() {
+        return numeroDeFardos;
     }
 
-    public void setNumeroDeFardos(Double numeroDeFardos) {
+    public void setNumeroDeFardos(String numeroDeFardos) {
         this.numeroDeFardos = numeroDeFardos;
-    }
-
-    public Double getCaixaPadrao() {
-        return ConverterUtil.converterDoubleDoisDecimais(caixaPadrao);
-    }
-
-    public void setCaixaPadrao(Double caixaPadrao) {
-        this.caixaPadrao = caixaPadrao;
     }
 
     public String getDiaLancamento() {
@@ -271,7 +283,7 @@ public class ResumoDiario implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ResumoDiario that = (ResumoDiario) o;
+        ResumoDiarioDTO that = (ResumoDiarioDTO) o;
         return Objects.equals(id, that.id) &&
                 Objects.equals(dataLancamento, that.dataLancamento);
     }

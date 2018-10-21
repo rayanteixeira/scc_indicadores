@@ -4,7 +4,9 @@ import br.com.sococo.resumo.envio.Mailer;
 import br.com.sococo.resumo.model.FiltroBusca;
 import br.com.sococo.resumo.model.ResumoDiario;
 import br.com.sococo.resumo.repository.ResumoDiarioRepository;
+import br.com.sococo.resumo.services.converter.ConverterUtil;
 import br.com.sococo.resumo.services.dto.LancamentoDTO;
+import br.com.sococo.resumo.services.dto.ResumoDiarioDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,23 +23,20 @@ public class ResumoDiarioService {
     @Autowired
     private Mailer mailer;
 
-
-    public ResumoDiario insert(ResumoDiario resumoDiario) {
-        System.out.println("dataLancamento : " +resumoDiario.getDataLancamento());
-        // resumoDiario.setDataLancamento(LocalDate.now());
-        LocalDate date = resumoDiario.getDataLancamento();
+    public ResumoDiario insert(ResumoDiarioDTO resumoDiarioDTO) {
+        LocalDate date = resumoDiarioDTO.getDataLancamento();
         // separando os valores de data_lancamento
+        ResumoDiario resumoDiario = resumoDiarioDTO.toEntity(resumoDiarioDTO);
         resumoDiario.setDiaLancamento(String.valueOf(date.getDayOfMonth()));
         resumoDiario.setMesLancamento(String.valueOf(date.getMonthValue()));
         resumoDiario.setAnoLancamento(String.valueOf(date.getYear()));
         resumoDiario.setDiaMesLancamento(String.valueOf(date.getDayOfMonth() + "-" + date.getMonthValue()));
 
+        resumoDiario.setId(resumoDiarioRepository.save(resumoDiario).getId());
 
-        ResumoDiario objSave = resumoDiarioRepository.save(resumoDiario);
+        mailer.enviarEmail(resumoDiario);
 
-        mailer.enviarEmail(objSave);
-
-        return objSave;
+        return resumoDiario;
     }
 
     public List<ResumoDiario> findAll() {
