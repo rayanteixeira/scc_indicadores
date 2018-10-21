@@ -3,7 +3,7 @@ webpackJsonp(["styles"],{
 /***/ "./node_modules/raw-loader/index.js!./node_modules/postcss-loader/lib/index.js??embedded!./src/styles.css":
 /***/ (function(module, exports) {
 
-module.exports = "/* You can add global styles to this file, and also import other style files */\n.scc-link-panel {\n    margin-top: -47px;\n    float: right;\n    padding: 5px;\n}\n.scc-titulo-panel {\n    float: left;\n    padding-top: 6px;\n}\ninput.ng-invalid.ng-touched {\n    border: 0.5px solid rgba(186, 78, 78, 0.5);\n    background-color: #fffcf9;\n    color: rgba(135, 16, 45, 0.75);;\n}\ninput.ng-valid.ng-touched {\n    border: 1px solid rgba(52, 135, 99, 0.5);\n    background-color: #fffcf9;\n    color: rgba(104, 178, 94, 0.90);\n}"
+module.exports = "/* You can add global styles to this file, and also import other style files */\r\n.scc-link-panel {\r\n    margin-top: -47px;\r\n    float: right;\r\n    padding: 5px;\r\n}\r\n.scc-titulo-panel {\r\n    float: left;\r\n    padding-top: 6px;\r\n}\r\ninput.ng-invalid.ng-touched {\r\n    border: 0.5px solid rgba(186, 78, 78, 0.5);\r\n    background-color: #fffcf9;\r\n    color: rgba(135, 16, 45, 0.75);;\r\n}\r\ninput.ng-valid.ng-touched {\r\n    border: 1px solid rgba(52, 135, 99, 0.5);\r\n    background-color: #fffcf9;\r\n    color: rgba(104, 178, 94, 0.90);\r\n}"
 
 /***/ }),
 

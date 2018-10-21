@@ -8,20 +8,20 @@ import java.text.DateFormatSymbols;
 public class CRIFlococoDTO {
     private String mesLancamento;
     private String diaLancamento;
-    private String cri;
-    private String flococo;
+    private Double cri;
+    private Double flococo;
 
     public CRIFlococoDTO() {
     }
 
-    public CRIFlococoDTO(String mesLancamento, String diaLancamento, String cli, String flococo) {
+    public CRIFlococoDTO(String mesLancamento, String diaLancamento, Double cli, Double flococo) {
         this.mesLancamento = mesLancamento;
         this.diaLancamento = diaLancamento;
         this.cri = cli;
         this.flococo = flococo;
     }
 
-    public CRIFlococoDTO(String mesLancamento, String cli, String flococo) {
+    public CRIFlococoDTO(String mesLancamento, Double cli, Double flococo) {
         this.mesLancamento = mesLancamento;
         this.cri = cli;
         this.flococo = flococo;
@@ -51,19 +51,19 @@ public class CRIFlococoDTO {
         this.diaLancamento = diaLancamento;
     }
 
-    public String getCri() {
+    public Double getCri() {
         return cri;
     }
 
-    public void setCri(String cri) {
+    public void setCri(Double cri) {
         this.cri = cri;
     }
 
-    public String getFlococo() {
+    public Double getFlococo() {
         return flococo;
     }
 
-    public void setFlococo(String flococo) {
+    public void setFlococo(Double flococo) {
         this.flococo = flococo;
     }
 }

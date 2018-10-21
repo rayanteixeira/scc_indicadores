@@ -23,43 +23,41 @@ public class ResumoDiario implements Serializable {
     private LocalDate dataLancamento;
 
     @Column(name = "cocos_processados")
-    private String cocosProcessados;
+    private Double cocosProcessados;
 
     @Column(name = "cocos_desfibrados")
-    private String cocosDesfibrados;
+    private Double cocosDesfibrados;
 
-    private String cri;
+    private Double cri;
 
-    private String flococo;
+    private Double flococo;
 
     @Column(name = "oleo_industrial_tipo_a")
-    private String oleoIndustrialTipoA;
+    private Double oleoIndustrialTipoA;
 
     @Column(name = "oleo_industrial_ete")
-    private String oleoIndustrialETE;
+    private Double oleoIndustrialETE;
 
-    private String torta;
+    private Double torta;
 
     // ACQUA
     @Column(name = "agua_coco_sococo")
-    private String aguaDeCocoSococo;
+    private Double aguaDeCocoSococo;
 
     @Column(name = "agua_coco_verde")
-    private String aguaDeCocoVerde;
+    private Double aguaDeCocoVerde;
 
     @Column(name = "caixa_padrao")
-    private String caixaPadrao;
+    private Double caixaPadrao;
 
     @Column(name = "porcentagem_coco_germinado")
     private Double porcentagemCocoGerminado;
 
     @Column(name = "total_cacambas")
-    private String totalDeCacambas;
-
+    private Double totalDeCacambas;
     //AMAFIBRA
     @Column(name = "numero_fardos")
-    private String numeroDeFardos;
-
+    private Double numeroDeFardos;
     //DATAS
     @Column(name = "dia_lancamento")
     private String diaLancamento;
@@ -73,7 +71,7 @@ public class ResumoDiario implements Serializable {
     public ResumoDiario() {
     }
 
-    public ResumoDiario(LocalDate dataLancamento, String cocosProcessados, String cocosDesfibrados, String cri, String flococo, String oleoIndustrialTipoA, String oleoIndustrialETE, String torta, String aguaDeCocoSococo, String aguaDeCocoVerde, String caixaPadrao, Double porcentagemCocoGerminado, String totalDeCacambas, String numeroDeFardos) {
+    public ResumoDiario(LocalDate dataLancamento, Double cocosProcessados, Double cocosDesfibrados, Double cri, Double flococo, Double oleoIndustrialTipoA, Double oleoIndustrialETE, Double torta, Double aguaDeCocoSococo, Double aguaDeCocoVerde, Double caixaPadrao, Double porcentagemCocoGerminado, Double totalDeCacambas, Double numeroDeFardos) {
         this.dataLancamento = dataLancamento;
         this.cocosProcessados = cocosProcessados;
         this.cocosDesfibrados = cocosDesfibrados;
@@ -90,7 +88,7 @@ public class ResumoDiario implements Serializable {
         this.porcentagemCocoGerminado = porcentagemCocoGerminado;
     }
 
-    public ResumoDiario(String cocosProcessados, String cocosDesfibrados, String cri, String flococo, String oleoIndustrialTipoA, String oleoIndustrialETE, String torta, String aguaDeCocoSococo, String aguaDeCocoVerde,  String caixaPadrao, Double porcentagemCocoGerminado, String totalDeCacambas, String numeroDeFardos) {
+    public ResumoDiario(Double cocosProcessados, Double cocosDesfibrados, Double cri, Double flococo, Double oleoIndustrialTipoA, Double oleoIndustrialETE, Double torta, Double aguaDeCocoSococo, Double aguaDeCocoVerde,  Double caixaPadrao, Double porcentagemCocoGerminado, Double totalDeCacambas, Double numeroDeFardos) {
         this.cocosProcessados = cocosProcessados;
         this.cocosDesfibrados = cocosDesfibrados;
         this.cri = cri;
@@ -106,8 +104,19 @@ public class ResumoDiario implements Serializable {
         this.porcentagemCocoGerminado = porcentagemCocoGerminado;
     }
 
-    public String getCocoGerminado() {
-        return Double.toString(this.porcentagemCocoGerminado);
+    public Double getTotalCocos() {
+        //DecimalFormat fmt = new DecimalFormat("#.##");
+        return Double.valueOf(cocosDesfibrados + cocosDesfibrados);
+    }
+
+    public Double getTotalCriFlococo() {
+        //DecimalFormat fmt = new DecimalFormat("#.##");
+        return Double.valueOf(cri + flococo);
+    }
+
+    public Double getTotalAguaCocos() {
+        //DecimalFormat fmt = new DecimalFormat("#.##");
+        return Double.valueOf(aguaDeCocoSococo + aguaDeCocoVerde);
     }
 
     public Long getId() {
@@ -126,75 +135,75 @@ public class ResumoDiario implements Serializable {
         this.dataLancamento = dataLancamento;
     }
 
-    public String getCocosProcessados() {
+    public Double getCocosProcessados() {
         return cocosProcessados;
     }
 
-    public void setCocosProcessados(String cocosProcessados) {
+    public void setCocosProcessados(Double cocosProcessados) {
         this.cocosProcessados = cocosProcessados;
     }
 
-    public String getCocosDesfibrados() {
+    public Double getCocosDesfibrados() {
         return cocosDesfibrados;
     }
 
-    public void setCocosDesfibrados(String cocosDesfibrados) {
+    public void setCocosDesfibrados(Double cocosDesfibrados) {
         this.cocosDesfibrados = cocosDesfibrados;
     }
 
-    public String getCri() {
+    public Double getCri() {
         return cri;
     }
 
-    public void setCri(String cri) {
+    public void setCri(Double cri) {
         this.cri = cri;
     }
 
-    public String getFlococo() {
+    public Double getFlococo() {
         return flococo;
     }
 
-    public void setFlococo(String flococo) {
+    public void setFlococo(Double flococo) {
         this.flococo = flococo;
     }
 
-    public String getOleoIndustrialTipoA() {
+    public Double getOleoIndustrialTipoA() {
         return oleoIndustrialTipoA;
     }
 
-    public void setOleoIndustrialTipoA(String oleoIndustrialTipoA) {
+    public void setOleoIndustrialTipoA(Double oleoIndustrialTipoA) {
         this.oleoIndustrialTipoA = oleoIndustrialTipoA;
     }
 
-    public String getOleoIndustrialETE() {
+    public Double getOleoIndustrialETE() {
         return oleoIndustrialETE;
     }
 
-    public void setOleoIndustrialETE(String oleoIndustrialETE) {
+    public void setOleoIndustrialETE(Double oleoIndustrialETE) {
         this.oleoIndustrialETE = oleoIndustrialETE;
     }
 
-    public String getTorta() {
+    public Double getTorta() {
         return torta;
     }
 
-    public void setTorta(String torta) {
+    public void setTorta(Double torta) {
         this.torta = torta;
     }
 
-    public String getAguaDeCocoSococo() {
+    public Double getAguaDeCocoSococo() {
         return aguaDeCocoSococo;
     }
 
-    public void setAguaDeCocoSococo(String aguaDeCocoSococo) {
+    public void setAguaDeCocoSococo(Double aguaDeCocoSococo) {
         this.aguaDeCocoSococo = aguaDeCocoSococo;
     }
 
-    public String getAguaDeCocoVerde() {
+    public Double getAguaDeCocoVerde() {
         return aguaDeCocoVerde;
     }
 
-    public void setAguaDeCocoVerde(String aguaDeCocoVerde) {
+    public void setAguaDeCocoVerde(Double aguaDeCocoVerde) {
         this.aguaDeCocoVerde = aguaDeCocoVerde;
     }
 
@@ -206,20 +215,28 @@ public class ResumoDiario implements Serializable {
         this.porcentagemCocoGerminado = porcentagemCocoGerminado;
     }
 
-    public String getTotalDeCacambas() {
+    public Double getTotalDeCacambas() {
         return totalDeCacambas;
     }
 
-    public void setTotalDeCacambas(String totalDeCacambas) {
+    public void setTotalDeCacambas(Double totalDeCacambas) {
         this.totalDeCacambas = totalDeCacambas;
     }
 
-    public String getNumeroDeFardos() {
+    public Double getNumeroDeFardos() {
         return numeroDeFardos;
     }
 
-    public void setNumeroDeFardos(String numeroDeFardos) {
+    public void setNumeroDeFardos(Double numeroDeFardos) {
         this.numeroDeFardos = numeroDeFardos;
+    }
+
+    public Double getCaixaPadrao() {
+        return caixaPadrao;
+    }
+
+    public void setCaixaPadrao(Double caixaPadrao) {
+        this.caixaPadrao = caixaPadrao;
     }
 
     public String getDiaLancamento() {
@@ -252,14 +269,6 @@ public class ResumoDiario implements Serializable {
 
     public void setDiaMesLancamento(String diaMesLancamento) {
         this.diaMesLancamento = diaMesLancamento;
-    }
-
-    public String getCaixaPadrao() {
-        return caixaPadrao;
-    }
-
-    public void setCaixaPadrao(String caixaPadrao) {
-        this.caixaPadrao = caixaPadrao;
     }
 
     @Override

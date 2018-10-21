@@ -27,9 +27,7 @@ public class UsuarioResource {
 
     @PostMapping(value = "/usuario")
     public ResponseEntity<Usuario> insert(@RequestBody UsuarioNewDTO usuarioDTO) throws URISyntaxException {
-
         log.debug("REST request to save Usuario : {}", usuarioDTO);
-
 //        if (usuarioDTO.getId() != null) {
 //            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A id ja consta na base de dados")).body(null);
 //        }
@@ -56,6 +54,11 @@ public class UsuarioResource {
     public ResponseEntity<?> find(@PathVariable Long id) {
         Usuario obj = usuarioService.find(id);
         return ResponseEntity.ok().body(obj);
+    }
+
+    @GetMapping("/")
+    public String inicio() {
+        return "redirect:/login";
     }
 
 }

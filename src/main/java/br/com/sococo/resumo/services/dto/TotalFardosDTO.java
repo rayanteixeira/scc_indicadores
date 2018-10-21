@@ -9,17 +9,17 @@ public class TotalFardosDTO {
 
     private String mesLancamento;
     private String diaLancamento;
-    private String numeroFardos;
+    private Double numeroFardos;
 
     public TotalFardosDTO() {
     }
 
-    public TotalFardosDTO(String mesLancamento, String numeroFardos) {
+    public TotalFardosDTO(String mesLancamento, Double numeroFardos) {
         this.mesLancamento = mesLancamento;
         this.numeroFardos = numeroFardos;
     }
 
-    public TotalFardosDTO(String mesLancamento, String diaLancamento, String numeroFardos) {
+    public TotalFardosDTO(String mesLancamento, String diaLancamento, Double numeroFardos) {
         this.mesLancamento = mesLancamento;
         this.diaLancamento = diaLancamento;
         this.numeroFardos = numeroFardos;
@@ -49,11 +49,11 @@ public class TotalFardosDTO {
         this.diaLancamento = diaLancamento;
     }
 
-    public String getNumeroFardos() {
+    public Double getNumeroFardos() {
         return numeroFardos;
     }
 
-    public void setNumeroFardos(String numeroFardos) {
+    public void setNumeroFardos(Double numeroFardos) {
         this.numeroFardos = numeroFardos;
     }
 }

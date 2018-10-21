@@ -26,7 +26,6 @@ public class ResumoDiarioService {
         System.out.println("dataLancamento : " +resumoDiario.getDataLancamento());
         // resumoDiario.setDataLancamento(LocalDate.now());
         LocalDate date = resumoDiario.getDataLancamento();
-
         // separando os valores de data_lancamento
         resumoDiario.setDiaLancamento(String.valueOf(date.getDayOfMonth()));
         resumoDiario.setMesLancamento(String.valueOf(date.getMonthValue()));
@@ -64,12 +63,6 @@ public class ResumoDiarioService {
 
         filter.setMesLancamento(String.valueOf(filter.getDataLancamento().getMonthValue()));
         filter.setAnoLancamento(String.valueOf(filter.getDataLancamento().getYear()));
-        System.out.println("buscaResumo : " +filter);
-        System.out.println("buscaResumo : " +filter.getDataLancamento());
-        System.out.println("mes : " + filter.getMesLancamento());
-        System.out.println("ano : " +filter.getAnoLancamento());
-
-
 
         lancamentoDTO.setResumosDiarios(resumoDiarioRepository.findByDataLancamento(filter.getDataLancamento()));
         lancamentoDTO.setResumosMensal(resumoDiarioRepository.findByMesLancamento(filter.getMesLancamento(), filter.getAnoLancamento()));

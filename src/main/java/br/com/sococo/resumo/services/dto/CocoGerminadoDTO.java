@@ -9,18 +9,18 @@ public class CocoGerminadoDTO {
 
     private String mesLancamento;
     private String diaLancamento;
-    private String cocoGerminado;
+    private Double cocoGerminado;
 
 
     public CocoGerminadoDTO() {
     }
 
-    public CocoGerminadoDTO(String mesLancamento, String cocoGerminado) {
+    public CocoGerminadoDTO(String mesLancamento, Double cocoGerminado) {
         this.mesLancamento = mesLancamento;
         this.cocoGerminado = cocoGerminado;
     }
 
-    public CocoGerminadoDTO(String mesLancamento, String diaLancamento, String cocoGerminado) {
+    public CocoGerminadoDTO(String mesLancamento, String diaLancamento, Double cocoGerminado) {
         this.mesLancamento = mesLancamento;
         this.diaLancamento = diaLancamento;
         this.cocoGerminado = cocoGerminado;
@@ -50,11 +50,11 @@ public class CocoGerminadoDTO {
         this.diaLancamento = diaLancamento;
     }
 
-    public String getCocoGerminado() {
+    public Double getCocoGerminado() {
         return cocoGerminado;
     }
 
-    public void setCocoGerminado(String cocoGerminado) {
+    public void setCocoGerminado(Double cocoGerminado) {
         this.cocoGerminado = cocoGerminado;
     }
 }

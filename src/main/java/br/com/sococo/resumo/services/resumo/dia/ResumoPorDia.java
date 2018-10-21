@@ -53,7 +53,7 @@ public class ResumoPorDia {
         List<TotalFardosDTO> objs = new ArrayList<>();
         List<Object[]> objects = repository.findTotalCacambasDia(filter.getMesLancamento(), filter.getAnoLancamento());
         for (Object[] dado : objects) {
-            objs.add(new TotalFardosDTO(null, dado[0].toString(), dado[1].toString()));
+            objs.add(new TotalFardosDTO(null, dado[0].toString(), Double.parseDouble(dado[1].toString())));
         }
         return objs;
     }
@@ -62,7 +62,7 @@ public class ResumoPorDia {
         List<CaixaPadraoDTO> objs = new ArrayList<>();
         List<Object[]> objects = repository.findTotalCacambasDia(filter.getMesLancamento(), filter.getAnoLancamento());
         for (Object[] dado : objects) {
-            objs.add(new CaixaPadraoDTO(null, dado[0].toString(), dado[1].toString()));
+            objs.add(new CaixaPadraoDTO(null, dado[0].toString(), Double.parseDouble(dado[1].toString())));
         }
         return objs;
     }
@@ -71,7 +71,7 @@ public class ResumoPorDia {
         List<TotalCacambaDTO> objs = new ArrayList<>();
         List<Object[]> objects = repository.findTotalCacambasDia(filter.getMesLancamento(), filter.getAnoLancamento());
         for (Object[] dado : objects) {
-            objs.add(new TotalCacambaDTO(null, dado[0].toString(), dado[1].toString()));
+            objs.add(new TotalCacambaDTO(null, dado[0].toString(), Double.parseDouble(dado[1].toString())));
         }
         return objs;
     }
@@ -80,7 +80,7 @@ public class ResumoPorDia {
         List<CocoGerminadoDTO> objs = new ArrayList<>();
         List<Object[]> objects = repository.findPercentGerminadoDia(filter.getMesLancamento(), filter.getAnoLancamento());
         for (Object[] dado : objects) {
-            objs.add(new CocoGerminadoDTO(null, dado[0].toString(), dado[1].toString()));
+            objs.add(new CocoGerminadoDTO(null, dado[0].toString(), Double.parseDouble(dado[1].toString())));
         }
         return objs;
     }
@@ -89,7 +89,7 @@ public class ResumoPorDia {
         List<AguaCocoDTO> objs = new ArrayList<>();
         List<Object[]> objects = repository.findAguasDia(filter.getMesLancamento(), filter.getAnoLancamento());
         for (Object[] dado : objects) {
-            objs.add(new AguaCocoDTO(null, dado[0].toString(), dado[1].toString(), dado[2].toString()));
+            objs.add(new AguaCocoDTO(null, dado[0].toString(), Double.parseDouble(dado[1].toString()), Double.parseDouble(dado[2].toString())));
         }
         return objs;
     }
@@ -98,7 +98,7 @@ public class ResumoPorDia {
         List<TortaDTO> objs = new ArrayList<>();
         List<Object[]> objects = repository.findTortaDia(filter.getMesLancamento(), filter.getAnoLancamento());
         for (Object[] dado : objects) {
-            objs.add(new TortaDTO(null, dado[0].toString(), dado[1].toString()));
+            objs.add(new TortaDTO(null, dado[0].toString(), Double.parseDouble(dado[1].toString())));
         }
         return objs;
     }
@@ -107,7 +107,7 @@ public class ResumoPorDia {
         List<OleoDTO> objs = new ArrayList<>();
         List<Object[]> objects = repository.findOleosDia(filter.getMesLancamento(), filter.getAnoLancamento());
         for (Object[] dado : objects) {
-            objs.add(new OleoDTO(null, dado[0].toString(), dado[1].toString(), dado[2].toString()));
+            objs.add(new OleoDTO(null, dado[0].toString(), Double.parseDouble(dado[1].toString()), Double.parseDouble(dado[2].toString())));
         }
         return objs;
     }
@@ -116,17 +116,16 @@ public class ResumoPorDia {
         List<CRIFlococoDTO> objs = new ArrayList<>();
         List<Object[]> objects = repository.findCriFlococoDia(filter.getMesLancamento(), filter.getAnoLancamento());
         for (Object[] dado : objects) {
-            objs.add(new CRIFlococoDTO(null, dado[0].toString(), dado[1].toString(), dado[2].toString()));
+            objs.add(new CRIFlococoDTO(null, dado[0].toString(), Double.parseDouble(dado[1].toString()), Double.parseDouble(dado[2].toString())));
         }
         return objs;
     }
-
 
     private List<CocoDTO> listaCocos(FiltroBusca filter) {
         List<CocoDTO> objs = new ArrayList<>();
         List<Object[]> objects = repository.findCocos(filter.getMesLancamento(), filter.getAnoLancamento());
         for (Object[] dado : objects) {
-            objs.add(new CocoDTO(null, dado[0].toString(), dado[1].toString(), dado[2].toString()));
+            objs.add(new CocoDTO(null, dado[0].toString(), Double.parseDouble(dado[1].toString()), Double.parseDouble(dado[2].toString())));
         }
         return objs;
     }

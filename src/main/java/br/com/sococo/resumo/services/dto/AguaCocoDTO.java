@@ -9,19 +9,19 @@ public class AguaCocoDTO {
 
     private String mesLancamento;
     private String diaLancamento;
-    private String aguaDeCocoSococo;
-    private String aguaDeCocoVerde;
+    private Double aguaDeCocoSococo;
+    private Double aguaDeCocoVerde;
 
     public AguaCocoDTO() {
     }
 
-    public AguaCocoDTO(String mesLancamento, String aguaDeCocoSococo, String aguaDeCocoVerde) {
+    public AguaCocoDTO(String mesLancamento, Double aguaDeCocoSococo, Double aguaDeCocoVerde) {
         this.mesLancamento = mesLancamento;
         this.aguaDeCocoSococo = aguaDeCocoSococo;
         this.aguaDeCocoVerde = aguaDeCocoVerde;
     }
 
-    public AguaCocoDTO(String mesLancamento, String diaLancamento, String aguaDeCocoSococo, String aguaDeCocoVerde) {
+    public AguaCocoDTO(String mesLancamento, String diaLancamento, Double aguaDeCocoSococo, Double aguaDeCocoVerde) {
         this.mesLancamento = mesLancamento;
         this.diaLancamento = diaLancamento;
         this.aguaDeCocoSococo = aguaDeCocoSococo;
@@ -52,19 +52,19 @@ public class AguaCocoDTO {
         this.diaLancamento = diaLancamento;
     }
 
-    public String getAguaDeCocoSococo() {
+    public Double getAguaDeCocoSococo() {
         return aguaDeCocoSococo;
     }
 
-    public void setAguaDeCocoSococo(String aguaDeCocoSococo) {
+    public void setAguaDeCocoSococo(Double aguaDeCocoSococo) {
         this.aguaDeCocoSococo = aguaDeCocoSococo;
     }
 
-    public String getAguaDeCocoVerde() {
+    public Double getAguaDeCocoVerde() {
         return aguaDeCocoVerde;
     }
 
-    public void setAguaDeCocoVerde(String aguaDeCocoVerde) {
+    public void setAguaDeCocoVerde(Double aguaDeCocoVerde) {
         this.aguaDeCocoVerde = aguaDeCocoVerde;
     }
 }
