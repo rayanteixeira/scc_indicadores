@@ -8,19 +8,19 @@ import java.text.DateFormatSymbols;
 public class OleoDTO {
     private String mesLancamento;
     private String diaLancamento;
-    private String oleoIndustrialTipoA;
-    private String oleoIndustrialETE;
+    private Double oleoIndustrialTipoA;
+    private Double oleoIndustrialETE;
 
     public OleoDTO() {
     }
 
-    public OleoDTO(String mesLancamento, String oleoIndustrialTipoA, String oleoIndustrialETE) {
+    public OleoDTO(String mesLancamento, Double oleoIndustrialTipoA, Double oleoIndustrialETE) {
         this.mesLancamento = mesLancamento;
         this.oleoIndustrialTipoA = oleoIndustrialTipoA;
         this.oleoIndustrialETE = oleoIndustrialETE;
     }
 
-    public OleoDTO(String mesLancamento, String diaLancamento, String oleoIndustrialTipoA, String oleoIndustrialETE) {
+    public OleoDTO(String mesLancamento, String diaLancamento, Double oleoIndustrialTipoA, Double oleoIndustrialETE) {
         this.mesLancamento = mesLancamento;
         this.diaLancamento = diaLancamento;
         this.oleoIndustrialTipoA = oleoIndustrialTipoA;
@@ -52,19 +52,19 @@ public class OleoDTO {
         this.diaLancamento = diaLancamento;
     }
 
-    public String getOleoIndustrialTipoA() {
+    public Double getOleoIndustrialTipoA() {
         return oleoIndustrialTipoA;
     }
 
-    public void setOleoIndustrialTipoA(String oleoIndustrialTipoA) {
+    public void setOleoIndustrialTipoA(Double oleoIndustrialTipoA) {
         this.oleoIndustrialTipoA = oleoIndustrialTipoA;
     }
 
-    public String getOleoIndustrialETE() {
+    public Double getOleoIndustrialETE() {
         return oleoIndustrialETE;
     }
 
-    public void setOleoIndustrialETE(String getOleoIndustrialETE) {
+    public void setOleoIndustrialETE(Double getOleoIndustrialETE) {
         this.oleoIndustrialETE = getOleoIndustrialETE;
     }
 }

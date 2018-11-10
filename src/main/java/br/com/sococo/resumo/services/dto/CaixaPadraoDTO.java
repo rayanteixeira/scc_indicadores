@@ -9,17 +9,17 @@ public class CaixaPadraoDTO {
 
     private String mesLancamento;
     private String diaLancamento;
-    private String caixaPadrao;
+    private Double caixaPadrao;
 
     public CaixaPadraoDTO() {
     }
 
-    public CaixaPadraoDTO(String mesLancamento, String caixaPadrao) {
+    public CaixaPadraoDTO(String mesLancamento, Double caixaPadrao) {
         this.mesLancamento = mesLancamento;
         this.caixaPadrao = caixaPadrao;
     }
 
-    public CaixaPadraoDTO(String mesLancamento, String diaLancamento, String caixaPadrao) {
+    public CaixaPadraoDTO(String mesLancamento, String diaLancamento, Double caixaPadrao) {
         this.mesLancamento = mesLancamento;
         this.diaLancamento = diaLancamento;
         this.caixaPadrao = caixaPadrao;
@@ -49,11 +49,11 @@ public class CaixaPadraoDTO {
         this.diaLancamento = diaLancamento;
     }
 
-    public String getCaixaPadrao() {
+    public Double getCaixaPadrao() {
         return caixaPadrao;
     }
 
-    public void setCaixaPadrao(String caixaPadrao) {
+    public void setCaixaPadrao(Double caixaPadrao) {
         this.caixaPadrao = caixaPadrao;
     }
 }

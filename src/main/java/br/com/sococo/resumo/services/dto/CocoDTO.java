@@ -8,20 +8,20 @@ import java.text.DateFormatSymbols;
 public class CocoDTO {
     private String mesLancamento;
     private String diaLancamento;
-    private String cocoDesfibrados;
-    private String cocoProcessados;
+    private Double cocoDesfibrados;
+    private Double cocoProcessados;
 
     public CocoDTO() {
     }
 
-    public CocoDTO(String mesLancamento, String diaLancamento, String cocoDesfibrados, String cocoProcessados) {
+    public CocoDTO(String mesLancamento, String diaLancamento, Double cocoDesfibrados, Double cocoProcessados) {
         this.mesLancamento = mesLancamento;
         this.diaLancamento = diaLancamento;
         this.cocoDesfibrados = cocoDesfibrados;
         this.cocoProcessados = cocoProcessados;
     }
 
-    public CocoDTO(String mesLancamento, String cocoDesfibrados, String cocoProcessados) {
+    public CocoDTO(String mesLancamento, Double cocoDesfibrados, Double cocoProcessados) {
         this.mesLancamento = mesLancamento;
         this.cocoDesfibrados = cocoDesfibrados;
         this.cocoProcessados = cocoProcessados;
@@ -52,19 +52,19 @@ public class CocoDTO {
         this.diaLancamento = diaLancamento;
     }
 
-    public String getCocoDesfibrados() {
+    public Double getCocoDesfibrados() {
         return cocoDesfibrados;
     }
 
-    public void setCocoDesfibrados(String cocoDesfibrados) {
+    public void setCocoDesfibrados(Double cocoDesfibrados) {
         this.cocoDesfibrados = cocoDesfibrados;
     }
 
-    public String getCocoProcessados() {
+    public Double getCocoProcessados() {
         return cocoProcessados;
     }
 
-    public void setCocoProcessados(String cocoProcessados) {
+    public void setCocoProcessados(Double cocoProcessados) {
         this.cocoProcessados = cocoProcessados;
     }
 }

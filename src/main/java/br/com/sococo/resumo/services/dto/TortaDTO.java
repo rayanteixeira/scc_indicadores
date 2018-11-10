@@ -9,19 +9,19 @@ public class TortaDTO {
 
     private String mesLancamento;
     private String diaLancamento;
-    private String torta;
+    private Double torta;
 
 
     public TortaDTO() {
     }
 
-    public TortaDTO(String mesLancamento, String diaLancamento, String torta) {
+    public TortaDTO(String mesLancamento, String diaLancamento, Double torta) {
         this.mesLancamento = mesLancamento;
         this.diaLancamento = diaLancamento;
         this.torta = torta;
     }
 
-    public TortaDTO(String mesLancamento, String torta) {
+    public TortaDTO(String mesLancamento, Double torta) {
         this.mesLancamento = mesLancamento;
         this.torta = torta;
     }
@@ -50,11 +50,11 @@ public class TortaDTO {
         this.diaLancamento = diaLancamento;
     }
 
-    public String getTorta() {
+    public Double getTorta() {
         return torta;
     }
 
-    public void setTorta(String torta) {
+    public void setTorta(Double torta) {
         this.torta = torta;
     }
 }

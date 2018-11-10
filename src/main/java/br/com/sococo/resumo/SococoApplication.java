@@ -2,6 +2,7 @@ package br.com.sococo.resumo;
 
 import br.com.sococo.resumo.model.Usuario;
 import br.com.sococo.resumo.repository.UsuarioRepository;
+import br.com.sococo.resumo.services.converter.ConverterUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -27,6 +28,9 @@ public class SococoApplication implements CommandLineRunner {
 //        if (usuario.isPresent()) {
 //            System.out.println(usuario.get().getNome());
 //        } else System.out.println("ERRO");
+
+        //System.out.println("Teste: " + ConverterUtil.substituiVirgulaPorPonto("520,10"));
+        //System.out.println("Teste: " + ConverterUtil.converterDoubleDoisDecimais(520.0));
 
     }
 }
