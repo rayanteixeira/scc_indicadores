@@ -34,7 +34,7 @@ public class ResumoDiarioResource {
      * @return
      */
     @PostMapping(value = "/salva-resumo") //salva resumo
-    public ResponseEntity<ResumoDiario> insert(@RequestBody ResumoDiarioDTO resumoDiarioDTO) throws URISyntaxException {
+    public ResponseEntity<ResumoDiario> insert(@RequestBody ResumoDiario resumoDiarioDTO) throws URISyntaxException {
         log.debug("REST request to save Resumo Diario : {}", resumoDiarioDTO);
 
         if (resumoDiarioDTO.getId() != null) {

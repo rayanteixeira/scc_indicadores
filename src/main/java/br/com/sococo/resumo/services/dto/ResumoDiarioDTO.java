@@ -109,6 +109,23 @@ public class ResumoDiarioDTO implements Serializable {
     public ResumoDiario toEntity(ResumoDiarioDTO diarioDTO) {
         ResumoDiario resumoDiario = new ResumoDiario(
                 diarioDTO.getDataLancamento(),
+
+                diarioDTO.getCocosProcessados(),
+                diarioDTO.getCocosDesfibrados(),
+                diarioDTO.getCri(),
+                diarioDTO.getFlococo(),
+                diarioDTO.getOleoIndustrialTipoA(),
+                diarioDTO.getOleoIndustrialETE(),
+                diarioDTO.getTorta(),
+                diarioDTO.getAguaDeCocoSococo(),
+                diarioDTO.getAguaDeCocoVerde(),
+                diarioDTO.getCaixaPadrao(),
+                Double.parseDouble(diarioDTO.getPorcentagemCocoGerminado()),
+                diarioDTO.getTotalDeCacambas(),
+                diarioDTO.getNumeroDeFardos()
+
+
+                /*
                 ConverterUtil.substituiVirgulaPorPonto(diarioDTO.getCocosProcessados()),
                 ConverterUtil.substituiVirgulaPorPonto(diarioDTO.getCocosDesfibrados()),
                 ConverterUtil.substituiVirgulaPorPonto(diarioDTO.getCri()),
@@ -121,7 +138,7 @@ public class ResumoDiarioDTO implements Serializable {
                 ConverterUtil.substituiVirgulaPorPonto(diarioDTO.getCaixaPadrao()),
                 ConverterUtil.substituiVirgulaPorPonto(diarioDTO.getPorcentagemCocoGerminado()),
                 ConverterUtil.substituiVirgulaPorPonto(diarioDTO.getTotalDeCacambas()),
-                ConverterUtil.substituiVirgulaPorPonto(diarioDTO.getNumeroDeFardos())
+                ConverterUtil.substituiVirgulaPorPonto(diarioDTO.getNumeroDeFardos())*/
         );
 
         return resumoDiario;

@@ -28,9 +28,9 @@ public class AguaCocoDTO {
         this.aguaDeCocoVerde = aguaDeCocoVerde;
     }
 
-    public AguaCocoDTO(ResumoDiario resumoDiario) {
+    /*public AguaCocoDTO(ResumoDiario resumoDiario) {
         this(resumoDiario.getMesLancamento(), resumoDiario.getDiaLancamento(), resumoDiario.getAguaDeCocoSococo(), resumoDiario.getAguaDeCocoVerde());
-    }
+    }*/
 
     public String getMesLancamento() {
         if (StringUtils.isEmpty(mesLancamento)) {

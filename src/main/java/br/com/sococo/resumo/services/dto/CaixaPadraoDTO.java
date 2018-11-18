@@ -25,9 +25,9 @@ public class CaixaPadraoDTO {
         this.caixaPadrao = caixaPadrao;
     }
 
-    public CaixaPadraoDTO(ResumoDiario resumoDiario) {
+    /*public CaixaPadraoDTO(ResumoDiario resumoDiario) {
         this(resumoDiario.getMesLancamento(), resumoDiario.getDiaLancamento(), resumoDiario.getCaixaPadrao());
-    }
+    }*/
 
     public String getMesLancamento() {
         if (StringUtils.isEmpty(mesLancamento)) {

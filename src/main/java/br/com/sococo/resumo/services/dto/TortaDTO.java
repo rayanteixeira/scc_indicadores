@@ -26,9 +26,9 @@ public class TortaDTO {
         this.torta = torta;
     }
 
-    public TortaDTO(ResumoDiario resumoDiario) {
+    /*public TortaDTO(ResumoDiario resumoDiario) {
         this(resumoDiario.getMesLancamento(), resumoDiario.getDiaLancamento(), resumoDiario.getTorta());
-    }
+    }*/
 
     public String getMesLancamento() {
         if (StringUtils.isEmpty(mesLancamento)) {

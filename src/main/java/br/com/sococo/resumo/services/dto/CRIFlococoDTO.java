@@ -27,9 +27,9 @@ public class CRIFlococoDTO {
         this.flococo = flococo;
     }
 
-    public CRIFlococoDTO(ResumoDiario resumoDiario){
+    /*public CRIFlococoDTO(ResumoDiario resumoDiario){
         this(resumoDiario.getMesLancamento(), resumoDiario.getDiaLancamento(),resumoDiario.getCri(), resumoDiario.getFlococo());
-    }
+    }*/
 
     public String getMesLancamento() {
         if (StringUtils.isEmpty(mesLancamento)) {

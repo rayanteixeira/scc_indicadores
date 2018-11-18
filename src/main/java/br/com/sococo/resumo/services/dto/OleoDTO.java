@@ -27,9 +27,9 @@ public class OleoDTO {
         this.oleoIndustrialETE = oleoIndustrialETE;
     }
 
-    public OleoDTO(ResumoDiario resumoDiario) {
+    /*public OleoDTO(ResumoDiario resumoDiario) {
         this(resumoDiario.getMesLancamento(), resumoDiario.getDiaLancamento(), resumoDiario.getOleoIndustrialTipoA(), resumoDiario.getOleoIndustrialETE());
-    }
+    }*/
 
 
     public String getMesLancamento() {

@@ -25,9 +25,9 @@ public class TotalCacambaDTO {
         this.totalCacamba = totalCacamba;
     }
 
-    public TotalCacambaDTO(ResumoDiario resumoDiario) {
+    /*public TotalCacambaDTO(ResumoDiario resumoDiario) {
         this(resumoDiario.getMesLancamento(), resumoDiario.getDiaLancamento(), resumoDiario.getTotalDeCacambas());
-    }
+    }*/
 
 
     public String getMesLancamento() {
