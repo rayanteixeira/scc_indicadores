@@ -105,9 +105,9 @@ public class ResumoDiario implements Serializable {
         this.porcentagemCocoGerminado = porcentagemCocoGerminado;
     }
 
-    public Double getTotalCocos() {
+    public Double getRendimento() {
         //DecimalFormat fmt = new DecimalFormat("#.##");
-        return ConverterUtil.converterDoubleDoisDecimais(Double.valueOf(cocosDesfibrados + cocosProcessados));
+        return ConverterUtil.converterDoubleDoisDecimais(Double.valueOf(getTotalCriFlococo() / cocosProcessados));
     }
 
     public Double getTotalCriFlococo() {

@@ -42,11 +42,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private static final String[] PUBLIC_MATHERS_GET = {
             "/api/acesso/**",
+            "/api/login/**"
     };
 
     private static final String[] PUBLIC_MATHERS_POST = {
             "/api/usuario",
-            "/login/**",
+            "/login",
             "/auth/forgot/**"
     };
 
