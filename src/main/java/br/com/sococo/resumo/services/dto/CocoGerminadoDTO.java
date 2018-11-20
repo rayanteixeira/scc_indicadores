@@ -26,9 +26,9 @@ public class CocoGerminadoDTO {
         this.cocoGerminado = cocoGerminado;
     }
 
-    public CocoGerminadoDTO(ResumoDiario resumoDiario) {
+    /*public CocoGerminadoDTO(ResumoDiario resumoDiario) {
         this(resumoDiario.getMesLancamento(), resumoDiario.getDiaLancamento(), resumoDiario.getTorta());
-    }
+    }*/
 
     public String getMesLancamento() {
         if (StringUtils.isEmpty(mesLancamento)) {

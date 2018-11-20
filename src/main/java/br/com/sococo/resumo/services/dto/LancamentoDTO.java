@@ -10,7 +10,7 @@ public class LancamentoDTO {
 
     private List<ResumoDiario> resumosMensal;
 
-    private List<Object[]> buscaSemanal;
+    private List<ResumoDiario> buscaSemanal;
 
     public List<ResumoDiario> getResumosDiarios() {
         return resumosDiarios;
@@ -28,11 +28,11 @@ public class LancamentoDTO {
         this.resumosMensal = resumosMensal;
     }
 
-    public List<Object[]> getBuscaSemanal() {
+    public List<ResumoDiario> getBuscaSemanal() {
         return buscaSemanal;
     }
 
-    public void setBuscaSemanal(List<Object[]> buscaSemanal) {
+    public void setBuscaSemanal(List<ResumoDiario> buscaSemanal) {
         this.buscaSemanal = buscaSemanal;
     }
 }

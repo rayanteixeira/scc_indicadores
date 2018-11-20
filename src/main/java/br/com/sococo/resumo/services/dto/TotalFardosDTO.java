@@ -25,9 +25,9 @@ public class TotalFardosDTO {
         this.numeroFardos = numeroFardos;
     }
 
-    public TotalFardosDTO(ResumoDiario resumoDiario) {
+   /* public TotalFardosDTO(ResumoDiario resumoDiario) {
         this(resumoDiario.getMesLancamento(), resumoDiario.getDiaLancamento(), resumoDiario.getNumeroDeFardos());
-    }
+    }*/
 
     public String getMesLancamento() {
         if (StringUtils.isEmpty(mesLancamento)) {

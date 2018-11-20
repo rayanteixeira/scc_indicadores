@@ -4,13 +4,15 @@ import br.com.sococo.resumo.envio.Mailer;
 import br.com.sococo.resumo.model.FiltroBusca;
 import br.com.sococo.resumo.model.ResumoDiario;
 import br.com.sococo.resumo.repository.ResumoDiarioRepository;
-import br.com.sococo.resumo.services.converter.ConverterUtil;
 import br.com.sococo.resumo.services.dto.LancamentoDTO;
 import br.com.sococo.resumo.services.dto.ResumoDiarioDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
+import java.text.DecimalFormat;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,6 +41,7 @@ public class ResumoDiarioService {
         return resumoDiario;
     }
 
+
     public List<ResumoDiario> findAll() {
         return resumoDiarioRepository.findAll();
     }
@@ -65,9 +68,48 @@ public class ResumoDiarioService {
 
         lancamentoDTO.setResumosDiarios(resumoDiarioRepository.findByDataLancamento(filter.getDataLancamento()));
         lancamentoDTO.setResumosMensal(resumoDiarioRepository.findByMesLancamento(filter.getMesLancamento(), filter.getAnoLancamento()));
-        lancamentoDTO.setBuscaSemanal(resumoDiarioRepository.findByDiasDaSemana(filter.getDataLancamento()));
+        //lancamentoDTO.setBuscaSemanal(resumoDiarioRepository.findByDiasDaSemana(filter.getDataLancamento()));
+        lancamentoDTO.setBuscaSemanal(getListaResumoDiario(filter));
+
 
         return lancamentoDTO;
+    }
+
+    private List<ResumoDiario> getListaResumoDiario(FiltroBusca filter) {
+
+        LancamentoDTO lancamentoDTO = new LancamentoDTO();
+        ResumoDiario resumoDiario = new ResumoDiario();
+        List<ResumoDiario> listaResumoDiario = new ArrayList<>();
+
+        DecimalFormat fmt = new DecimalFormat("#.###");
+        List<Object[]> objects = resumoDiarioRepository.findByDiasDaSemana(filter.getDataLancamento());
+
+        for ( Object[] object : resumoDiarioRepository.findByDiasDaSemana(filter.getDataLancamento())) {
+            if(object[0] == null && object[1] == null && object[2] == null && object[3] == null
+                    && object[4] == null && object[5] == null && object[6] == null && object[7] == null && object[8] == null
+                    && object[9] == null && object[10] == null && object[11] == null && object[12] == null){
+
+                lancamentoDTO.setBuscaSemanal(new ArrayList<>());
+            }else {
+
+                resumoDiario.setCocosProcessados(object[0].toString());
+                resumoDiario.setCocosDesfibrados(object[1].toString());
+                resumoDiario.setCri(object[2].toString());
+                resumoDiario.setFlococo(object[3].toString());
+                resumoDiario.setOleoIndustrialTipoA(object[4].toString());
+                resumoDiario.setOleoIndustrialETE(object[5].toString());
+                resumoDiario.setTorta(object[6].toString());
+                resumoDiario.setAguaDeCocoSococo(object[7].toString());
+                resumoDiario.setAguaDeCocoVerde(object[8].toString());
+                resumoDiario.setCaixaPadrao(object[9].toString());
+                resumoDiario.setPorcentagemCocoGerminado((object[10].toString()));
+                resumoDiario.setTotalDeCacambas(object[11].toString());
+                resumoDiario.setNumeroDeFardos(object[12].toString());
+                listaResumoDiario.add(resumoDiario);
+            }
+        }
+
+        return listaResumoDiario;
     }
 
 }

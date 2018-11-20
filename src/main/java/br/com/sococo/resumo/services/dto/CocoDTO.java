@@ -27,9 +27,9 @@ public class CocoDTO {
         this.cocoProcessados = cocoProcessados;
     }
 
-    public CocoDTO(ResumoDiario resumoDiario){
+    /*public CocoDTO(ResumoDiario resumoDiario){
         this(resumoDiario.getMesLancamento(), resumoDiario.getDiaLancamento(), resumoDiario.getCocosDesfibrados(), resumoDiario.getCocosProcessados());
-    }
+    }*/
 
     public String getMesLancamento() {
         if (StringUtils.isEmpty(mesLancamento)) {

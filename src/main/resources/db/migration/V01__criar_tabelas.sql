@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS `resumo_diario` (
   `agua_coco_sococo` VARCHAR(255) NOT NULL,
   `agua_coco_verde` VARCHAR(255) NOT NULL,
   `porcentagem_coco_germinado` VARCHAR(255) NOT NULL,
-  `total_cacambas` VARCHAR(255) NOT NULL,
+  `total_cacambas` DECIMAL(8) NOT NULL,
   `caixa_padrao` VARCHAR(255) NOT NULL,
 
   `numero_fardos` VARCHAR(255) NOT NULL,

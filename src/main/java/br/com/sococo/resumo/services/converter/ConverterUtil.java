@@ -48,7 +48,13 @@ public class ConverterUtil {
 //        return resumoDiario;
 //    }
 
-    public static double substituiVirgulaPorPonto(String numero) {
-        return Double.parseDouble(numero.replace(',', '.'));
+    public static String substituiVirgulaPorPonto(String numero) {
+        // tira todos os "pontos"
+        String valor = numero.replace(".", "");
+        // substitui virgula por ponto
+        valor = valor.replace(",", ".");
+        return valor;
     }
+
+
 }
