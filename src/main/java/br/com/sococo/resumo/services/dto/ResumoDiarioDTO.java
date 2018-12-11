@@ -109,19 +109,19 @@ public class ResumoDiarioDTO implements Serializable {
     public ResumoDiario toEntity(ResumoDiarioDTO diarioDTO) {
         ResumoDiario resumoDiario = new ResumoDiario(
                 diarioDTO.getDataLancamento(),
-                ConverterUtil.substituiVirgulaPorPonto(diarioDTO.getCocosProcessados()),
-                ConverterUtil.substituiVirgulaPorPonto(diarioDTO.getCocosDesfibrados()),
-                ConverterUtil.substituiVirgulaPorPonto(diarioDTO.getCri()),
-                ConverterUtil.substituiVirgulaPorPonto(diarioDTO.getFlococo()),
-                ConverterUtil.substituiVirgulaPorPonto(diarioDTO.getOleoIndustrialTipoA()),
-                ConverterUtil.substituiVirgulaPorPonto(diarioDTO.getOleoIndustrialETE()),
-                ConverterUtil.substituiVirgulaPorPonto(diarioDTO.getTorta()),
-                ConverterUtil.substituiVirgulaPorPonto(diarioDTO.getAguaDeCocoSococo()),
-                ConverterUtil.substituiVirgulaPorPonto(diarioDTO.getAguaDeCocoVerde()),
-                ConverterUtil.substituiVirgulaPorPonto(diarioDTO.getCaixaPadrao()),
-                ConverterUtil.substituiVirgulaPorPonto(diarioDTO.getPorcentagemCocoGerminado()),
-                ConverterUtil.substituiVirgulaPorPonto(diarioDTO.getTotalDeCacambas()),
-                ConverterUtil.substituiVirgulaPorPonto(diarioDTO.getNumeroDeFardos())
+                (diarioDTO.getCocosProcessados()),
+                (diarioDTO.getCocosDesfibrados()),
+                (diarioDTO.getCri()),
+                (diarioDTO.getFlococo()),
+                (diarioDTO.getOleoIndustrialTipoA()),
+                (diarioDTO.getOleoIndustrialETE()),
+                (diarioDTO.getTorta()),
+                (diarioDTO.getAguaDeCocoSococo()),
+                (diarioDTO.getAguaDeCocoVerde()),
+                (diarioDTO.getCaixaPadrao()),
+                (diarioDTO.getPorcentagemCocoGerminado()),
+                (diarioDTO.getTotalDeCacambas()),
+                (diarioDTO.getNumeroDeFardos())
         );
 
         return resumoDiario;
